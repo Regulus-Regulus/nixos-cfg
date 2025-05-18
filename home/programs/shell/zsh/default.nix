@@ -11,7 +11,7 @@
         syntaxHighlighting.enable = true;
         enableCompletion = true;
         history.size = 100000;
-        history.path = "\${XDG_DATA_HOME}/zsh/history";
+        history.path = "$HOME/.local/share/zsh/history";
         dotDir = ".config/zsh";
         initContent = ''
           source ${pkgs.spaceship-prompt}/share/zsh/themes/spaceship.zsh-theme;

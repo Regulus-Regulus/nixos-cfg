@@ -31,6 +31,7 @@
           
          # Programs
          ./home/programs/shell/zsh
+         ./home/programs/terminal/kitty
            # Inline module to set selectedUsers per-host:
           {
             myUsers.selectedUsers = [ "jo" ];
