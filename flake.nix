@@ -28,11 +28,11 @@
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
             home-manager.users.jo = { config, lib, pkgs, ... }: {
-              # _module.args = { };
+              _module.args = { };
 
-              # imports = [
-              #   ./home/thierry.nix
-              # ];
+              imports = [
+                ./users/jo.nix
+              ];
             };
            } 
          ];

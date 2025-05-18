@@ -86,21 +86,12 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # home manager configuration
-  home-manager = {
-    # also pass inputs to home-manager modules
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      "jo" = import ./home.nix;
-      };
-    };
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jo = {
     isNormalUser = true;
     description = "Jo";
-    shell = pkgs.zsh;
-    useDefaultShell = true;
+    #shell = pkgs.zsh;
+    #useDefaultShell = true;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
     #  thunderbird
