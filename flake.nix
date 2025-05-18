@@ -21,21 +21,23 @@
         specialArgs = {inherit inputs;};
         
         modules = [
-         # Host Files
+            
+          # Host Files
           ./hosts/laptop/configuration.nix
           ./hosts/laptop/hardware-configuration.nix
-          
-         # Nix Logic 
-          ./modules/users.nix
+            
+          # Nix Logic 
           home-manager.nixosModules.home-manager
-          
-         # Programs
-         ./home/programs/shell/zsh
-         ./home/programs/terminal/kitty
-           # Inline module to set selectedUsers per-host:
+          ./modules/users.nix
+            # Inline module to set selectedUsers per-host:
           {
             myUsers.selectedUsers = [ "jo" ];
           }
+
+          # Programs
+          ./home/programs/shell/zsh
+          ./home/programs/terminal/kitty
+
 
 
           ];

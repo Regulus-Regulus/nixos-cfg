@@ -7,7 +7,8 @@
     home.stateVersion = "24.11";
     programs.home-manager.enable = true;
 
-    home.sessionVariables.TEST_USER_LOADED = "1";
+    packages = with pkgs; [
+    ];
   };
 
   system = {
