@@ -17,26 +17,27 @@
     in
     {
     nixosConfigurations = {
-     laptop = nixpkgs.lib.nixosSystem {
-       specialArgs = {inherit inputs;};
-       modules = [
-         ./hosts/laptop/configuration.nix
-         ./hosts/laptop/hardware-configuration.nix
-         ./modules/programs/shell/zsh
-	 
-          home-manager.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "backup";
-            home-manager.users.jo = { config, lib, pkgs, ... }: {
-              _module.args = { };
+      laptop = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        
+        modules = [
+         # Host Files
+          ./hosts/laptop/configuration.nix
+          ./hosts/laptop/hardware-configuration.nix
+          
+         # Nix Logic 
+          ./modules/users.nix
+          home-manager.nixosModules.home-manager
+          
+         # Programs
+         ./home/programs/shell/zsh
+           # Inline module to set selectedUsers per-host:
+          {
+            myUsers.selectedUsers = [ "jo" ];
+          }
 
-              imports = [
-                ./users/jo.nix
-              ];
-            };
-           } 
-         ];
+
+          ];
        };
     };
   };
