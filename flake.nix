@@ -33,7 +33,7 @@
          ./home/programs/shell/zsh
            # Inline module to set selectedUsers per-host:
           {
-            myUsers.selectedUsers = [ "jo" "test" ];
+            myUsers.selectedUsers = [ "jo" ];
           }
 
 
