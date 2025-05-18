@@ -2,8 +2,8 @@
 
 {
   home = {
-    home.username = "jo";
-    home.homeDirectory = "/home/jo";
+    home.username = "test";
+    home.homeDirectory = "/home/test";
     home.stateVersion = "24.11";
     programs.home-manager.enable = true;
 
