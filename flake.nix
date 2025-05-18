@@ -21,6 +21,7 @@
        specialArgs = {inherit inputs;};
        modules = [
          ./hosts/laptop/configuration.nix
+         ./hosts/laptop/hardware-configuration.nix
          ./modules/programs/shell/zsh
 	 
           home-manager.nixosModules.home-manager {

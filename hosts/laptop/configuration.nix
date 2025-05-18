@@ -5,14 +5,6 @@
 { config, pkgs, inputs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      # HomeManager Module
-      inputs.home-manager.nixosModules.default
-
-    ];
-
   # Learning Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

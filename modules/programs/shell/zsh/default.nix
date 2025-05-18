@@ -3,7 +3,6 @@
   pkgs,
   ...
 }: {
-  programs.zsh.enable = true;
   home-manager.sharedModules = [
     (_: {
       programs.zsh = {
