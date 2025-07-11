@@ -8,18 +8,18 @@ let
   userModules = map (username:
     {
       name = username;
-      value = import ../users/${username}.nix { inherit pkgs config; };
+      value = import ../users/${username}.nix { inherit pkgs config lib; };
     }
   ) selectedUsers;
 
   homeUsers = listToAttrs (map (u: {
     name = u.name;
-    value = u.value.home;
+    value = u.value.homeSettings;
   }) userModules);
 
   systemUsers = listToAttrs (map (u: {
     name = u.name;
-    value = u.value.system;
+    value = u.value.systemSettings;
   }) userModules);
 
 in {

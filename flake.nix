@@ -4,10 +4,10 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-     home-manager = {
-       url = "github:nix-community/home-manager";
-       inputs.nixpkgs.follows = "nixpkgs";
-     };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: 
@@ -29,13 +29,14 @@
           # Nix Logic 
           home-manager.nixosModules.home-manager
           ./modules/users.nix
-            # Inline module to set selectedUsers per-host:
+            # module to set selectedUsers per-host:
           {
             myUsers.selectedUsers = [ "jo" ];
           }
 
           # Programs
           ./home/programs/shell/zsh
+          ./home/programs/shell/fish
           ./home/programs/terminal/kitty
 
 

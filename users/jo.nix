@@ -1,19 +1,62 @@
-{ pkgs, config, ... }:
+{ pkgs, lib, config, ... }:
 
 {
-  home = {
-    home.username = "jo";
-    home.homeDirectory = "/home/jo";
-    home.stateVersion = "24.11";
-    programs.home-manager.enable = true;
+  homeSettings = {
+    home = {
+      username = "jo";
+      homeDirectory = "/home/jo";
+      stateVersion = "24.11";
 
-    packages = with pkgs; [
-    ];
+      packages = with pkgs; [
+        # hier eigene Pakete hinzufügen
+      ];
+    };
+    programs.fish.enable = true;
+    programs.zsh = {
+      enable = false;
+      # Overrides und Ergänzungen zum Default:
+      shellAliases = {
+        # z.B. eigene Aliase, die zum Default hinzukommen
+        ll = "${pkgs.eza}/bin/eza -lha --icons=auto";
+        ls = "${pkgs.eza}/bin/eza -1 --icons=auto";
+      };
+      oh-my-zsh.plugins = lib.mkForce [
+        "docker"  # zusätzlich zum Default "git", "gitignore", "z"
+      ];
+    };
+
+    programs.home-manager.enable = true;
   };
 
-  system = {
+  systemSettings = {
     isNormalUser = true;
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
     extraGroups = [ "wheel" ];
   };
 }
+
+
+
+# { pkgs, config, ... }:
+
+# {
+#   homeSettings = {
+#     home = {
+#       username = "jo";
+#       homeDirectory = "/home/jo";
+#       stateVersion = "24.11";
+
+#       packages = with pkgs; [
+#       ];
+#     };
+#     programs.home-manager.enable = true;
+#     programs.zsh.enable = true;
+
+#   };
+
+#   systemSettings = {
+#     isNormalUser = true;
+#     shell = pkgs.zsh;
+#     extraGroups = [ "wheel" ];
+#   };
+# }

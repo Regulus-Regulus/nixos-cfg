@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 
 {
-  home = {
+  homeSettings = {
     home.username = "test";
     home.homeDirectory = "/home/test";
     home.stateVersion = "24.11";
@@ -11,7 +11,7 @@
     ];
   };
 
-  system = {
+  systemSettings = {
     isNormalUser = true;
     shell = pkgs.zsh;
     extraGroups = [ "wheel" ];

@@ -5,14 +5,13 @@
 { config, pkgs, inputs, ... }:
 
 {
-  # Learning Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "rr-laptop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -82,7 +81,8 @@
   # Install firefox.
   programs.firefox.enable = true;
 
-  programs.zsh.enable = true;
+  programs.zsh.enable = false;
+  programs.fish.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
