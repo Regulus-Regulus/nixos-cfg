@@ -8,6 +8,7 @@
           name = "JetBrainsMono Nerd Font";
           size = 12.0;
         };
+        shellIntegration.enableFishIntegration = true;
         themeFile = "Catppuccin-Mocha";
         settings = {
           # shell = "${getExe pkgs.tmux}";

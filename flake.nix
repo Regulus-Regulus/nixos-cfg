@@ -35,7 +35,7 @@
           }
 
           # Programs
-          ./home/programs/shell/zsh
+          #./home/programs/shell/zsh
           ./home/programs/shell/fish
           ./home/programs/terminal/kitty
 
