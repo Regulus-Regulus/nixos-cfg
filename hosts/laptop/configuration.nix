@@ -81,8 +81,7 @@
   # Install firefox.
   programs.firefox.enable = true;
 
-  programs.zsh.enable = false;
-  programs.fish.enable = true;
+  # programs.fish.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

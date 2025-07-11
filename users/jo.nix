@@ -13,7 +13,7 @@
     };
     programs.fish.enable = true;
     programs.zsh = {
-      enable = false;
+      enable = true;
       # Overrides und Ergänzungen zum Default:
       shellAliases = {
         # z.B. eigene Aliase, die zum Default hinzukommen
