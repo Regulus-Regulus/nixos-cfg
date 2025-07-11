@@ -35,10 +35,10 @@
           }
 
           # Programs
-          ./home/programs/shell/zsh
-          ./home/programs/shell/fish
-          ./home/programs/terminal/kitty
-          ./home/programs/browser/firefox
+          ./programs/shell/zsh
+          ./programs/shell/fish
+          ./programs/terminal/kitty
+          ./programs/browser/firefox
 
 
 

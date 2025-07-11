@@ -65,9 +65,13 @@
                 "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
                 "browser.newtabpage.activity-stream.feeds.section.highlights" = false;
                 "browser.newtabpage.activity-stream.showSponsored" = false;
+                "extensions.pocket.enabled" = false;
+                "browser.newtabpage.activity-stream.section.highlights.includePocket" = false;
 
                 # Resist fingerprinting (some breakage possible)
                 "privacy.resistFingerprinting" = true;
+
+
 
                 # Disable geolocation prompts
                 "geo.enabled" = false;

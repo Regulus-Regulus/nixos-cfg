@@ -8,7 +8,7 @@
   home-manager.sharedModules = [
     (_: {
       programs.zsh = {
-        enable = true;
+        #enable = true;
         autosuggestion.enable = true;
         syntaxHighlighting.enable = true;
         enableCompletion = true;

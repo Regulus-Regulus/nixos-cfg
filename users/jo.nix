@@ -11,21 +11,27 @@
         # hier eigene Pakete hinzufügen
       ];
     };
-    programs.fish.enable = true;
-    programs.zsh = {
-      enable = true;
-      # Overrides und Ergänzungen zum Default:
-      shellAliases = {
-        # z.B. eigene Aliase, die zum Default hinzukommen
-        ll = "${pkgs.eza}/bin/eza -lha --icons=auto";
-        ls = "${pkgs.eza}/bin/eza -1 --icons=auto";
-      };
-      oh-my-zsh.plugins = lib.mkForce [
-        "docker"  # zusätzlich zum Default "git", "gitignore", "z"
-      ];
-    };
 
-    programs.home-manager.enable = true;
+    programs = { 
+      home-manager.enable = true;
+
+      fish = {
+        enable = true; 
+      };
+
+      zsh = {
+        enable = false;
+        # Overrides und Ergänzungen zum Default:
+        shellAliases = {
+          # z.B. eigene Aliase, die zum Default hinzukommen
+          ll = "${pkgs.eza}/bin/eza -lha --icons=auto";
+          ls = "${pkgs.eza}/bin/eza -1 --icons=auto";
+        };
+        oh-my-zsh.plugins = lib.mkForce [
+          "docker"  # zusätzlich zum Default "git", "gitignore", "z"
+        ];
+      };
+    };
   };
 
   systemSettings = {
