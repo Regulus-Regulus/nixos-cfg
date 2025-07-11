@@ -39,6 +39,8 @@
           ./programs/shell/fish
           ./programs/terminal/kitty
           ./programs/browser/firefox
+          ./programs/media/steam
+          ./programs/ide/vscodium
 
 
 

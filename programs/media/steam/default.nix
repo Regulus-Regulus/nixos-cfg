@@ -4,8 +4,10 @@
   ...
 }: {
     # Enable 32-bit support
-    hardware.opengl.enable = true;
-    hardware.opengl.driSupport32Bit = true;
+    hardware = {
+      graphics.enable = true;
+      graphics.enable32Bit = true;
+    };
 
     # Optional: For proprietary NVIDIA users
     # services.xserver.videoDrivers = [ "nvidia" ];
@@ -14,10 +16,10 @@
     # Enable Steam system-wide (optional — better to manage via Home Manager usually)
     programs.steam.enable = true;
 
-    # Required for Steam to run properly
+    
     environment.systemPackages = with pkgs; [
-      libva
-      libvdpau
+      libva # Required for Steam to run properly 
+      libvdpau # Required for Steam to run properly
       vulkan-tools
       vulkan-loader
       vulkan-validation-layers
