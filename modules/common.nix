@@ -3,10 +3,9 @@
   pkgs,
   ...
 }: let
-  # Script-Inhalt als Text
   nixGcScript = ''
     #!${pkgs.bash}/bin/bash
-    ${pkgs.nix}/bin/nix-collect-garbage -d
+    ${pkgs.nix}/bin/nix-collect-garbage --delete-older-than +10
   '';
 in {
   environment.etc."nix-gc-shutdown.sh".text = nixGcScript;
