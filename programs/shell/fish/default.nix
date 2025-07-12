@@ -12,6 +12,7 @@
         enable = true;
         shellAbbrs = {
           nrbuild = "sudo nixos-rebuild switch --flake ~/NixosConfiguration#laptop";
+          vim = "nvim"
         };
 
         plugins = [
