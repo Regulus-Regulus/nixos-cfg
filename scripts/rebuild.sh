@@ -27,7 +27,7 @@ fi
 # Show diff
 echo "Diff:"
 git diff -U0 '*.nix'
-
+read -rp "Commit message (enter to skip): " usermsg
 # Rebuild
 echo "Building system for ${host}..."
 start=$(date +%s)
@@ -43,7 +43,6 @@ echo -e "\033[1;36m  Took ${duration}s\033[0m"
 
 # Get generation info
 current=$(nixos-rebuild list-generations | rg current || echo "generation-info-missing")
-read -rp "Commit message (enter to skip): " usermsg
 
 echo "Adding and committing all changes..."
 git add .
