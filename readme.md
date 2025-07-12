@@ -1,7 +1,7 @@
 ### TODO
 - Finish setting up laptop config
 - optional: try out wayland
-- recheck oper user enabling
+- recheck per user enabling
 - move all "maybe" to their specific configs (discord)
 - Figure out installation with pw set and stuff
 - setup desktop host
