@@ -1,6 +1,8 @@
-{ pkgs, config, ... }:
-
 {
+  pkgs,
+  config,
+  ...
+}: {
   homeSettings = {
     home.username = "test";
     home.homeDirectory = "/home/test";
@@ -14,6 +16,6 @@
   systemSettings = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" ];
+    extraGroups = ["wheel"];
   };
 }

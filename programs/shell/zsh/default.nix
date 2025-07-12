@@ -22,7 +22,7 @@
         # '';
         oh-my-zsh = {
           enable = true;
-          plugins = [ "git" "gitignore" "z" ];
+          plugins = ["git" "gitignore" "z"];
           theme = "pure";
         };
         shellAliases = {
@@ -34,10 +34,6 @@
     })
   ];
 }
-
-
-
-
 # {
 #   self,
 #   pkgs,
@@ -86,14 +82,12 @@
 #           # tpr = "${pkgs.trash-cli}/bin/trash-restore";
 #           # grep = "grep --color=always";
 #           # pokemon = "pokego --random 1-8 --no-title";
-
 #           # Nixos
 #           # list-gens = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system/";
 #           # find-store-path = ''function { nix-shell -p $1 --command "nix eval -f \"<nixpkgs>\" --raw $1" }'';
 #           update-input = "nix flake update $@";
 #           nrbuild = "sudo nixos-rebuild switch --flake ~/NixosConfiguration#laptop";
 #           # sysup = "sudo nixos-rebuild switch --flake ~/NixOS#Default --upgrade-all --show-trace";
-
 #           # Directory Shortcuts.
 #           # dots = "cd ~/nix-config/";
 #           # games = "cd /mnt/games/";
@@ -116,3 +110,4 @@
 #     })
 #   ];
 # }
+

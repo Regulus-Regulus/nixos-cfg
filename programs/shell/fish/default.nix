@@ -12,7 +12,7 @@
         enable = true;
         shellAbbrs = {
           nrbuild = "sudo nixos-rebuild switch --flake ~/NixosConfiguration#laptop";
-          vim = "nvim"
+          vim = "nvim";
         };
 
         plugins = [
@@ -23,12 +23,8 @@
               sha256 = "1q4ya4ndm7d7kk8ppzvpsxmk0gkdpaqhp4n5j0mpxq7vv6yrhwvi";
             };
           }
-
         ];
       };
     })
   ];
 }
-
-
-

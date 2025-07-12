@@ -7,7 +7,7 @@
   environment.systemPackages = with pkgs; [
     # Uncomment one of these to install VS Code system-wide
     # vscode    # Official Microsoft build (requires unfree = true)
-    vscodium  # Telemetry-free community build
+    vscodium # Telemetry-free community build
   ];
 
   #nixpkgs.config.allowUnfree = true; # Needed if using vscode
@@ -19,7 +19,7 @@
         enable = true;
 
         # Choose which VS Code package to use:
-        package = pkgs.vscodium;   # Telemetry-free (recommended)
+        package = pkgs.vscodium; # Telemetry-free (recommended)
         # package = pkgs.vscode;   # Official MS build (has telemetry)
 
         # Extensions to install automatically
@@ -48,6 +48,3 @@
     })
   ];
 }
-
-
-

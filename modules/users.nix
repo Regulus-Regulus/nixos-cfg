@@ -1,29 +1,33 @@
-{ config, lib, pkgs, ... }:
-
-with lib;
-
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib; let
   selectedUsers = config.myUsers.selectedUsers;
 
-  userModules = map (username:
-    {
-      name = username;
-      value = import ../users/${username}.nix { inherit pkgs config lib; };
-    }
-  ) selectedUsers;
+  userModules =
+    map (
+      username: {
+        name = username;
+        value = import ../users/${username}.nix {inherit pkgs config lib;};
+      }
+    )
+    selectedUsers;
 
   homeUsers = listToAttrs (map (u: {
-    name = u.name;
-    value = u.value.homeSettings;
-  }) userModules);
+      name = u.name;
+      value = u.value.homeSettings;
+    })
+    userModules);
 
   systemUsers = listToAttrs (map (u: {
-    name = u.name;
-    value = u.value.systemSettings;
-  }) userModules);
-
+      name = u.name;
+      value = u.value.systemSettings;
+    })
+    userModules);
 in {
-  
   options.myUsers.selectedUsers = mkOption {
     type = types.listOf types.str;
     default = [];
