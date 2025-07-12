@@ -25,6 +25,12 @@
           plugins = ["git" "gitignore" "z"];
           theme = "pure";
         };
+
+        initExtra = ''
+          function rebuild() {
+            ~/NixosConfiguration/scripts/rebuild.sh "$@"
+          }
+        '';
         shellAliases = {
           cls = "clear";
           update-input = "nix flake update $@";

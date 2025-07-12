@@ -11,10 +11,15 @@
       programs.fish = {
         enable = true;
         shellAbbrs = {
-          nrbuild = "sudo nixos-rebuild switch --flake ~/NixosConfiguration#laptop";
           vim = "nvim";
         };
-
+        functions = {
+          rebuild = ''
+            function rebuild
+              ~/NixosConfiguration/scripts/rebuild.sh $argv
+            end
+          '';
+        };
         plugins = [
           {
             name = "bobthefish";
