@@ -15,9 +15,7 @@
         };
         functions = {
           rebuild = ''
-            function rebuild
-              ~/NixosConfiguration/scripts/rebuild.sh $argv
-            end
+            ~/NixosConfiguration/scripts/rebuild.sh $argv
           '';
         };
         plugins = [

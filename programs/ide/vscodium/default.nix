@@ -35,6 +35,7 @@
           "files.autoSave" = "onFocusChange";
           "telemetry.enableTelemetry" = false;
           "telemetry.enableCrashReporter" = false;
+          "git.enableSmartCommit" = true;
         };
 
         # Optional keybindings overrides
