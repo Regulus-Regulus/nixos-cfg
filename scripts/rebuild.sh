@@ -29,7 +29,7 @@ echo "Diff:"
 git diff -U0 '*.nix'
 read -rp "Commit message (enter to skip): " usermsg
 # Rebuild
-echo "Building system for ${host}..."
+echo "Building system using [${host}] config..."
 start=$(date +%s)
 if ! sudo nixos-rebuild switch --flake ".#${host}" &> "${logfile}"; then
   echo "Build failed. Showing errors:"
@@ -52,4 +52,4 @@ else
   git commit -m "$current${usermsg:+ - $usermsg}"
 fi
 
-echo "Rebuild for $host complete and committed."
+echo "Rebuild using [${host}] config complete and committed."

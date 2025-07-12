@@ -37,6 +37,8 @@
           "telemetry.enableCrashReporter" = false;
           "git.enableSmartCommit" = true;
           "git.confirmSync" = false;
+          "files.enableMoveConfirmations" = false;
+          "files.enableDeleteConfirmations" = false;
         };
 
         # Optional keybindings overrides
