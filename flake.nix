@@ -35,6 +35,7 @@
           }
 
           # Programs
+          ./programs/evergreens.nix
           ./programs/shell/zsh
           ./programs/shell/fish
           ./programs/terminal/kitty
