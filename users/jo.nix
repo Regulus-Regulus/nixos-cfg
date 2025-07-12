@@ -12,6 +12,7 @@
 
       packages = with pkgs; [
         # hier eigene Pakete hinzufügen
+        discord
       ];
     };
 
