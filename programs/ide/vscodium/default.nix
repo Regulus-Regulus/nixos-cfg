@@ -25,20 +25,27 @@
         # Extensions to install automatically
         profiles.default.extensions = with pkgs.vscode-extensions; [
           jnoortheen.nix-ide
+          eamodio.gitlens
+          ms-kubernetes-tools.vscode-kubernetes-tools
+          tim-koehler.helm-intellisense
+          redhat.vscode-yaml
         ];
 
         # VS Code user settings.json overrides
         profiles.default.userSettings = {
           "editor.fontFamily" = "Fira Code, monospace";
           "editor.fontLigatures" = true;
-          "editor.tabSize" = 4;
+          "editor.insertSpaces" = true;
+          "editor.tabSize" = 2;
           "files.autoSave" = "onFocusChange";
           "telemetry.enableTelemetry" = false;
           "telemetry.enableCrashReporter" = false;
           "git.enableSmartCommit" = true;
           "git.confirmSync" = false;
-          "files.enableMoveConfirmations" = false;
-          "files.enableDeleteConfirmations" = false;
+          "git.autoFetch" = true;
+          "markdown.updateLinksOnFileMove.enabled" = true;
+          "explorer.confirmDragAndDrop" = false;
+          "explorer.confirmDelete" = false;
         };
 
         # Optional keybindings overrides
