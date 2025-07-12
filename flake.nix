@@ -33,6 +33,7 @@
 
           # Nix Logic
           home-manager.nixosModules.home-manager
+          ./modules/common.nix
           ./modules/users.nix
           # module to set selectedUsers per-host:
           {
