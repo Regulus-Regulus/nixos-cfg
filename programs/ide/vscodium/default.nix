@@ -23,12 +23,12 @@
         # package = pkgs.vscode;   # Official MS build (has telemetry)
 
         # Extensions to install automatically
-        extensions = with pkgs.vscode-extensions; [
+        profiles.default.extensions = with pkgs.vscode-extensions; [
           jnoortheen.nix-ide
         ];
 
         # VS Code user settings.json overrides
-        userSettings = {
+        profiles.default.userSettings = {
           "editor.fontFamily" = "Fira Code, monospace";
           "editor.fontLigatures" = true;
           "editor.tabSize" = 4;
