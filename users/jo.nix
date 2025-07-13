@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  hostName,
   ...
 }: {
   homeSettings = {
@@ -10,10 +11,33 @@
       homeDirectory = "/home/jo";
       stateVersion = "24.11";
 
-      packages = with pkgs; [
-        # hier eigene Pakete hinzufügen
-        discord
-      ];
+      packages = with pkgs;
+        builtins.concatLists [
+          # Always install
+          [
+            discord
+            iw
+            gnupg
+          ]
+
+          # Just on the laptop
+          (lib.optionals (hostName == "laptop") [
+            nmap
+            wireshark
+            hydra
+            nikto
+            amass
+            traceroute
+            etherape
+            sqlmap
+            aircrack-ng
+            john
+          ])
+
+          # Only desktop
+          (lib.optionals (hostName == "desktop") [
+            ])
+        ];
     };
 
     programs = {

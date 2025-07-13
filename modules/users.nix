@@ -6,12 +6,12 @@
 }:
 with lib; let
   selectedUsers = config.myUsers.selectedUsers;
-
+  hostName = config.networking.hostName;
   userModules =
     map (
       username: {
         name = username;
-        value = import ../users/${username}.nix {inherit pkgs config lib;};
+        value = import ../users/${username}.nix {inherit pkgs config lib hostName;};
       }
     )
     selectedUsers;
