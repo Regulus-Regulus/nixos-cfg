@@ -37,7 +37,7 @@
           ./modules/users.nix
           # module to set selectedUsers per-host:
           {
-            myUsers.selectedUsers = ["jo"];
+            myUsers.selectedUsers = ["jo" "test"];
           }
 
           # Programs

@@ -68,23 +68,3 @@
     extraGroups = ["wheel"];
   };
 }
-# { pkgs, config, ... }:
-# {
-#   homeSettings = {
-#     home = {
-#       username = "jo";
-#       homeDirectory = "/home/jo";
-#       stateVersion = "24.11";
-#       packages = with pkgs; [
-#       ];
-#     };
-#     programs.home-manager.enable = true;
-#     programs.zsh.enable = true;
-#   };
-#   systemSettings = {
-#     isNormalUser = true;
-#     shell = pkgs.zsh;
-#     extraGroups = [ "wheel" ];
-#   };
-# }
-
