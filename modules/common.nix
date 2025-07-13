@@ -18,7 +18,8 @@ in {
       TimeoutStartSec = 0;
       DefaultDependencies = false;
       Before = ["shutdown.target"];
+      Conflicts = ["shutdown.target"]; # This ensures it runs before shutdown takes hold
     };
-    wantedBy = ["halt.target" "reboot.target" "poweroff.target"];
+    wantedBy = ["shutdown.target"]; # This covers all types of shutdown, including desktop logout, etc.
   };
 }
