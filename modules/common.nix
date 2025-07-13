@@ -11,13 +11,14 @@ in {
   environment.etc."nix-gc-shutdown.sh".text = nixGcScript;
 
   systemd.services.nix-gc-shutdown = {
-    description = "Nix Garbage Collection on shutdown";
-    wantedBy = ["shutdown.target"];
-    before = ["shutdown.target"];
+    description = "Run nix garbage collection before shutdown";
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "/etc/nix-gc-shutdown.sh";
       TimeoutStartSec = 0;
+      DefaultDependencies = false;
+      Before = ["shutdown.target"];
     };
+    wantedBy = ["halt.target" "reboot.target" "poweroff.target"];
   };
 }
