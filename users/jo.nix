@@ -2,7 +2,7 @@
   pkgs,
   lib,
   config,
-  hostName,
+  hostConfigName,
   ...
 }: {
   homeSettings = {
@@ -21,7 +21,7 @@
           ]
 
           # Just on the laptop
-          (lib.optionals (hostName == "rr-laptop") [
+          (lib.optionals (hostConfigName == "laptop") [
             nmap
             wireshark
             hydra
@@ -35,7 +35,7 @@
           ])
 
           # Only desktop
-          (lib.optionals (hostName == "desktop") [
+          (lib.optionals (hostConfigName == "desktop") [
             ])
         ];
     };

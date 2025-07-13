@@ -24,7 +24,10 @@
   in {
     nixosConfigurations = {
       laptop = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
+        specialArgs = {
+          inherit inputs;
+          hostConfigName = "laptop"; # Hier definierst du den Hostnamen
+        };
 
         modules = [
           # Host Files

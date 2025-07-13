@@ -2,7 +2,7 @@
   pkgs,
   lib,
   config,
-  hostName,
+  hostConfigName,
   ...
 }: {
   homeSettings = {
@@ -17,11 +17,11 @@
           ]
 
           # Just on the laptop
-          (lib.optionals (hostName == "laptop") [
+          (lib.optionals (hostConfigName == "laptop") [
             ])
 
           # Only desktop
-          (lib.optionals (hostName == "desktop") [
+          (lib.optionals (hostConfigName == "desktop") [
             ])
         ];
     };
