@@ -8,7 +8,7 @@
     ./waybar
     # ./programs/wlogout
     # ./programs/rofi
-    # #./programs/hypridle
+    # #./programs/hypridle#
     # ./programs/hyprlock
     # ./programs/swaync
     # ./programs/dunst
