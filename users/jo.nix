@@ -21,7 +21,7 @@
           ]
 
           # Just on the laptop
-          (lib.optionals (hostName == "laptop") [
+          (lib.optionals (hostName == "rr-laptop") [
             nmap
             wireshark
             hydra
