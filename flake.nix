@@ -26,7 +26,7 @@
       laptop = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs;
-          hostConfigName = "laptop"; # Hier definierst du den Hostnamen
+          hostConfigName = "laptop"; # Defining hostname to allow users to install per-host
         };
 
         modules = [
@@ -44,6 +44,7 @@
           }
 
           # Programs
+          ./programs/desktop/hyprland
           ./programs/evergreens.nix
           ./programs/shell/zsh
           ./programs/shell/fish
