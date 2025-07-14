@@ -16,4 +16,4 @@ error:
 
        (stack trace truncated; use '--show-trace' to show the full, detailed trace)
 
-       error: path '/nix/store/y45wy0gjhcw3hfz0r03b5dikgadfrrld-source/programs/desktop/hyprland/waybar.nix' does not exist
+       error: path '/nix/store/2is8brxn49m2q0m43gfjsk3lbl62rc6k-source/programs/desktop/hyprland/waybar.nix' does not exist
