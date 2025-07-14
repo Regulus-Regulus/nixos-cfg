@@ -37,7 +37,7 @@
             "$mod, T, exec, kitty"
             "$mod, V, exec, codium"
             "$mod, Space, exec, rofi -show drun"
-            "$mod, ctrl, lalt, q, exec, shutdown"
+            "$mod, ctrl, Alt_L, q, exec, shutdown"
           ]
           ++ (
             # workspaces
