@@ -67,6 +67,15 @@
           "waybar"
         ];
       };
+      xdg.desktopEntries.codium = {
+        name = "Codium (Wayland)";
+        genericName = "Editor";
+        comment = "Visual Studio Codium";
+        exec = "env ELECTRON_ENABLE_WAYLAND=1 codium --ozone-platform=wayland %F";
+        icon = "codium";
+        terminal = false;
+        categories = ["Development" "IDE"];
+      };
     })
   ];
 }
