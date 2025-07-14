@@ -13,6 +13,7 @@
     # ./programs/swaync
     # ./programs/dunst
   ];
+
   # Display Manager für Hyprland
   services.displayManager.sddm.enable = true;
   services.displayManager.defaultSession = "hyprland";
@@ -26,6 +27,10 @@
           "$mod, F, exec, firefox"
           "$mod, T, exec, kitty"
           "$mod, V, exec, vscodium"
+          "$mod, Space, exec, rofi -show drun"
+        ];
+        exec-once = [
+          "waybar"
         ];
       };
     })
