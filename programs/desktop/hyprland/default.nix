@@ -5,7 +5,7 @@
 }: {
   imports = [
     #../../themes/Catppuccin # Catppuccin GTK and QT themes
-    ./waybar
+    ./waybar.nix
     # ./programs/wlogout
     ./rofi.nix
     # #./programs/hypridle#
@@ -26,7 +26,7 @@
         bind = [
           "$mod, F, exec, firefox"
           "$mod, T, exec, kitty"
-          "$mod, V, exec, vscodium"
+          "$mod, V, exec, codium"
           "$mod, Space, exec, rofi -show drun"
         ];
         exec-once = [
