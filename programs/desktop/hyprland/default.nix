@@ -3,9 +3,11 @@
   pkgs,
   ...
 }: {
-  environment.systemPackages = with pkgs; [
-    hyprland
-  ];
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+
   imports = [
     #../../themes/Catppuccin # Catppuccin GTK and QT themes
     ./waybar.nix
@@ -22,7 +24,6 @@
   # Display Manager für Hyprland
   services.displayManager.sddm.enable = true;
   services.displayManager.defaultSession = "hyprland";
-  programs.hyprland.enable = true;
   home-manager.sharedModules = [
     (_: {
       wayland.windowManager.hyprland.enable = true; # enable Hyprland
