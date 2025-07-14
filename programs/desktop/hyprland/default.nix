@@ -3,6 +3,9 @@
   pkgs,
   ...
 }: {
+  environment.systemPackages = with pkgs; [
+    hyprland
+  ];
   imports = [
     #../../themes/Catppuccin # Catppuccin GTK and QT themes
     ./waybar.nix

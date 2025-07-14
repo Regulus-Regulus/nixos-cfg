@@ -54,23 +54,19 @@
     variant = "deadacute";
   };
 
-  # Hyprland und Abhängigkeiten installieren
-  environment.systemPackages = with pkgs; [
-    hyprland
-    waybar
-    wlogout
-    # andere Tools für Hyprland, falls du möchtest
-  ];
-
-  # Session-Datei für Hyprland hinzufügen (damit GDM es sieht)
-  systemd.services.hyprland-session = {
-    description = "Hyprland Wayland Session";
-    wantedBy = ["graphical-session.target"];
-    serviceConfig = {
-      ExecStart = "${pkgs.hyprland}/bin/hyprland";
-      Restart = "on-failure";
-    };
-  };
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  # Enable CUPS to print documents.
+  services.blueman.enable = true;
+  # # Session-Datei für Hyprland hinzufügen (damit GDM es sieht)
+  # systemd.services.hyprland-session = {
+  #   description = "Hyprland Wayland Session";
+  #   wantedBy = ["graphical-session.target"];
+  #   serviceConfig = {
+  #     ExecStart = "${pkgs.hyprland}/bin/hyprland";
+  #     Restart = "on-failure";
+  #   };
+  # };
 
   # Configure console keymap
   console.keyMap = "de";

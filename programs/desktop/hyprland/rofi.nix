@@ -3,6 +3,9 @@
   pkgs,
   ...
 }: {
+  environment.systemPackages = with pkgs; [
+    rofi-wayland
+  ];
   home-manager.sharedModules = [
     (_: {
       programs.rofi.enable = true;

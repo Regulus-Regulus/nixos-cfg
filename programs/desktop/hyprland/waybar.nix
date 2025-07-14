@@ -1,4 +1,7 @@
 {pkgs, ...}: {
+  environment.systemPackages = with pkgs; [
+    waybar
+  ];
   home-manager.sharedModules = [
     (_: {
       programs.waybar = {
