@@ -19,10 +19,10 @@ echo "Host target: $host"
 echo "Formatting .nix files..."
 alejandra . || (echo "Formatting failed!" && exit 1)
 
-if git diff --quiet && git diff --cached --quiet; then
-  echo "No changes detected, exiting."
-  exit 0
-fi
+# if git diff --quiet && git diff --cached --quiet; then
+#   echo "No changes detected, exiting."
+#   exit 0
+# fi
 
 # Show diff
 echo "Diff:"
