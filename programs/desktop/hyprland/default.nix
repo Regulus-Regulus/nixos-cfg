@@ -15,7 +15,7 @@
   ];
   environment.variables = {
     ELECTRON_FORCE_DEVICE_SCALE_FACTOR = "1";
-    ELECTRON_ENABLE_WAYLAND = "1 codium";
+    ELECTRON_ENABLE_WAYLAND = "1";
   };
   # Display Manager für Hyprland
   services.displayManager.sddm.enable = true;
