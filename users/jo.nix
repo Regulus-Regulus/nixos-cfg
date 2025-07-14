@@ -24,14 +24,14 @@
           (lib.optionals (hostConfigName == "laptop") [
             nmap
             wireshark
-            hydra
-            nikto
-            amass
+            # hydra
+            # nikto
+            # amass
             traceroute
-            etherape
-            sqlmap
-            aircrack-ng
-            john
+            # etherape
+            # sqlmap
+            # aircrack-ng
+            # john
           ])
 
           # Only desktop

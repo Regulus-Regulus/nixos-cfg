@@ -7,7 +7,7 @@
     #../../themes/Catppuccin # Catppuccin GTK and QT themes
     ./waybar
     # ./programs/wlogout
-    # ./programs/rofi
+    ./rofi.nix
     # #./programs/hypridle#
     # ./programs/hyprlock
     # ./programs/swaync
