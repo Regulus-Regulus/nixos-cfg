@@ -5,7 +5,9 @@
 }: {
   programs.hyprland = {
     enable = true;
-    xwayland.enable = true;
+    xwayland = {
+      enable = true;
+    };
   };
 
   imports = [
@@ -48,6 +50,7 @@
               )
               9)
           );
+        xwayland.force_zero_scaling = false;
         input = {
           kb_layout = "de";
           kb_variant = "";
@@ -66,15 +69,6 @@
         exec-once = [
           "waybar"
         ];
-      };
-      xdg.desktopEntries.codium = {
-        name = "Codium (Wayland)";
-        genericName = "Editor";
-        comment = "Visual Studio Codium";
-        exec = "env ELECTRON_ENABLE_WAYLAND=1 codium --ozone-platform=wayland %F";
-        icon = "codium";
-        terminal = false;
-        categories = ["Development" "IDE"];
       };
     })
   ];
