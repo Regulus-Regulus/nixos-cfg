@@ -43,7 +43,7 @@
               9)
           );
         keyboard = {
-          layout = "de";
+          layout = "DE";
           variant = "";
         };
         exec-once = [
