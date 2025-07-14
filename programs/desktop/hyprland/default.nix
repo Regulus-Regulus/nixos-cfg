@@ -20,6 +20,14 @@
   home-manager.sharedModules = [
     (_: {
       wayland.windowManager.hyprland.enable = true; # enable Hyprland
+      wayland.windowManager.hyprland.settings = {
+        "$mod" = "SUPER";
+        bind = [
+          "$mod, F, exec, firefox"
+          "$mod, T, exec, kitty"
+          "$mod, V, exec, vscodium"
+        ];
+      };
     })
   ];
 }
