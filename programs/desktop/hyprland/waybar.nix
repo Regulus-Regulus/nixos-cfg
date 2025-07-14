@@ -12,7 +12,7 @@
             position = "top";
             modules-left = ["hyprland/workspaces"];
             modules-center = ["hyprland/window"];
-            modules-right = ["network" "pulseaudio" "bluetooth" "clock"];
+            modules-right = ["network" "pulseaudio" "bluetooth" "battery" "clock"];
 
             "clock" = {
               format = "{:%a %d %b %R}";
