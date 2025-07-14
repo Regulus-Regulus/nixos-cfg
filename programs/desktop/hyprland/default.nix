@@ -13,7 +13,9 @@
     # ./programs/swaync
     # ./programs/dunst
   ];
-
+  environment.variables = {
+    ELECTRON_FORCE_DEVICE_SCALE_FACTOR = "1";
+  };
   # Display Manager für Hyprland
   services.displayManager.sddm.enable = true;
   services.displayManager.defaultSession = "hyprland";
@@ -42,9 +44,20 @@
               )
               9)
           );
-        keyboard = {
-          layout = "DE";
-          variant = "";
+        input = {
+          kb_layout = "de";
+          kb_variant = "";
+          repeat_delay = 300; # or 212
+          repeat_rate = 30;
+
+          follow_mouse = 1;
+
+          touchpad.natural_scroll = false;
+
+          tablet.output = "current";
+
+          sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
+          force_no_accel = true;
         };
         exec-once = [
           "waybar"

@@ -4,7 +4,7 @@
 
 set -euo pipefail
 
-logfile=rebuild.log
+logfile=.rebuild.log
 
 host=${1:-${DEFAULT_REBUILD_HOST:-}}
 
