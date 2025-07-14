@@ -24,7 +24,7 @@
 
             "battery" = {
               states = {
-                warning = 30;
+                warning = 40;
                 critical = 15;
               };
               format = "<span size='13000' foreground='#a6e3a1'>{icon} </span> {capacity}%";
