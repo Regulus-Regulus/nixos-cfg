@@ -4,7 +4,8 @@
 
 set -euo pipefail
 
-logfile=.rebuild.log
+logfile=~/NixosConfiguration/rebuild.log
+flake_path="$HOME/NixosConfiguration"
 
 host=${1:-${DEFAULT_REBUILD_HOST:-}}
 
@@ -31,7 +32,7 @@ read -rp "Commit message (enter to skip): " usermsg
 # Rebuild
 echo "Building system using [${host}] config..."
 start=$(date +%s)
-if ! sudo nixos-rebuild switch --flake ".#${host}" &> "${logfile}"; then
+if ! sudo nixos-rebuild switch --flake "${flake_path}#${host}" &> "${logfile}"; then
   echo "Build failed. Showing errors:"
   cat "${logfile}" | rg error || cat "${logfile}"
   exit 1

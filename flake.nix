@@ -46,6 +46,7 @@
           # Programs
           ./programs/desktop/hyprland
           ./programs/evergreens.nix
+          ./prograkms/cli/yazi
           ./programs/shell/zsh
           ./programs/shell/fish
           ./programs/terminal/kitty
