@@ -35,22 +35,33 @@
           [
             "$mod, F, exec, firefox"
             "$mod, T, exec, kitty"
-            "$mod, V, exec, codium"
+            "$mod, C, exec, codium"
             "$mod, Space, exec, rofi -show drun"
             "$mod Ctrl Alt, Q, exec, poweroff"
+
+            # Move focus with mainMod + arrow keys
+            "$mainMod, left, movefocus, l"
+            "$mainMod, right, movefocus, r"
+            "$mainMod, up, movefocus, u"
+            "$mainMod, down, movefocus, d"
+
+            # Move focus with mainMod + HJKL keys
+            "$mainMod, h, movefocus, l"
+            "$mainMod, l, movefocus, r"
+            "$mainMod, k, movefocus, u"
+            "$mainMod, j, movefocus, d"
           ]
-          ++ (
-            # workspaces
-            builtins.concatLists (builtins.genList (
-                i: let
-                  ws = i + 1;
-                in [
-                  "$mod, code:1${toString i}, workspace, ${toString ws}"
-                  "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-                ]
-              )
-              9)
-          );
+          ++ (builtins.concatLists (builtins.genList (x: let
+              ws = let
+                c = (x + 1) / 10;
+              in
+                builtins.toString (x + 1 - (c * 10));
+            in [
+              "$mainMod, ${ws}, workspace, ${toString (x + 1)}"
+              "$mainMod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
+              "$mainMod CTRL, ${ws}, movetoworkspacesilent, ${toString (x + 1)}"
+            ])
+            10));
         xwayland.force_zero_scaling = true;
         env = [
           "XDG_CURRENT_DESKTOP,Hyprland"
@@ -75,6 +86,16 @@
           "XCURSOR_THEME,Bibata-Modern-Ice"
           "XCURSOR_SIZE,24"
         ];
+        general = {
+          gaps_in = 4;
+          gaps_out = 9;
+          border_size = 2;
+          "col.active_border" = "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
+          "col.inactive_border" = "rgba(b4befecc) rgba(6c7086cc) 45deg";
+          resize_on_border = true;
+          layout = "master"; # dwindle or master
+          # allow_tearing = true; # Allow tearing for games (use immediate window rules for specific games or all titles)
+        };
         input = {
           kb_layout = "de";
           kb_variant = "";
