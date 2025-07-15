@@ -18,7 +18,7 @@
             modules-right = ["network" "pulseaudio" "bluetooth" "battery" "clock"];
 
             "clock" = {
-              format = "{:%I:%M %p}";
+              format = "{:%H.%M}";
               format-alt = "{:%a %d %b %R}";
             };
 
