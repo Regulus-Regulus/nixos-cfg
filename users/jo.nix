@@ -18,6 +18,7 @@
             discord
             iw
             gnupg
+            thunderbird
           ]
 
           # Just on the laptop
