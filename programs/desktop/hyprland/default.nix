@@ -14,7 +14,7 @@
     #../../themes/Catppuccin # Catppuccin GTK and QT themes
     ./waybar.nix
     # ./programs/wlogout
-    ./rofi.nix
+    ./rofi
     # #./programs/hypridle#
     # ./programs/hyprlock
     # ./programs/swaync

@@ -16,4 +16,4 @@ error:
 
        (stack trace truncated; use '--show-trace' to show the full, detailed trace)
 
-       error: path '/nix/store/hfqvix32lsk98fci96dakc8bbz7pdykp-source/prograkms/cli/yazi' does not exist
+       error: path '/nix/store/dgp8kspwr69y33fj3imwi5nn6hbzjmdf-source/programs/desktop/hyprland/rofi' does not exist
