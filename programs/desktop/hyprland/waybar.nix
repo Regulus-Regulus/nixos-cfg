@@ -18,8 +18,8 @@
             modules-right = ["network" "pulseaudio" "bluetooth" "battery" "clock"];
 
             "clock" = {
-              format = "{:%a %d %b %R}";
-              format-alt = "{:%I:%M %p}";
+              format = "{:%I:%M %p}";
+              format-alt = "{:%a %d %b %R}";
             };
 
             "battery" = {
@@ -39,7 +39,7 @@
             };
 
             "network" = {
-              format-wifi = "<span size='13000' foreground='#f5e0dc'>  </span>";
+              format-wifi = "<span size='13000' foreground='#f5e0dc'> </span>";
               format-ethernet = "<span size='13000' foreground='#f5e0dc'>󰤭  </span> Disconnected";
               format-linked = "{ifname} (No IP) ";
               format-disconnected = "<span size='13000' foreground='#f5e0dc'>  </span>Disconnected";
