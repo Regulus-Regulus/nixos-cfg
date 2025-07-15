@@ -90,11 +90,25 @@
           gaps_in = 4;
           gaps_out = 9;
           border_size = 2;
-          "col.active_border" = "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
-          "col.inactive_border" = "rgba(b4befecc) rgba(6c7086cc) 45deg";
+          "col.active_border" = "0xFFFFECFD";
+          "col.inactive_border" = "0xFFEDFDFF";
           resize_on_border = true;
           layout = "master"; # dwindle or master
           # allow_tearing = true; # Allow tearing for games (use immediate window rules for specific games or all titles)
+        };
+        decoration = {
+          shadow.enabled = false;
+          rounding = 5;
+          dim_special = 0.3;
+          blur = {
+            enabled = true;
+            special = true;
+            size = 6;
+            passes = 3;
+            new_optimizations = true;
+            ignore_opacity = true;
+            xray = false;
+          };
         };
         input = {
           kb_layout = "de";
