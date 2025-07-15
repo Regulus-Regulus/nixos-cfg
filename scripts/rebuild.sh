@@ -4,7 +4,7 @@
 
 set -euo pipefail
 
-logfile=~/NixosConfiguration/rebuild.log
+logfile=~/NixosConfiguration/.rebuild.log
 flake_path="$HOME/NixosConfiguration"
 
 host=${1:-${DEFAULT_REBUILD_HOST:-}}
