@@ -122,6 +122,27 @@
             "specialWorkspace, 1, 3, md3_decel, slidevert"
           ];
         };
+        layerrule = [
+          "blur, rofi"
+          "ignorezero, rofi"
+          "ignorealpha 0.7, rofi"
+
+          "blur, swaync-control-center"
+          "blur, swaync-notification-window"
+          "ignorezero, swaync-control-center"
+          "ignorezero, swaync-notification-window"
+          "ignorealpha 0.7, swaync-control-center"
+          # "ignorealpha 0.8, swaync-notification-window"
+          # "dimaround, swaync-control-center"
+        ];
+        misc = {
+          disable_hyprland_logo = true;
+          mouse_move_focuses_monitor = true;
+          swallow_regex = "^(Alacritty|kitty)$";
+          enable_swallow = true;
+          vfr = true; # always keep on
+          vrr = 0; # enable variable refresh rate (0=off, 1=on, 2=fullscreen only)
+        };
         decoration = {
           shadow.enabled = false;
           rounding = 8;
