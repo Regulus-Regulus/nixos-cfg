@@ -51,7 +51,7 @@
               )
               9)
           );
-        xwayland.force_zero_scaling = false;
+        xwayland.force_zero_scaling = true;
         env = [
           "XDG_CURRENT_DESKTOP,Hyprland"
           "XDG_SESSION_DESKTOP,Hyprland"
