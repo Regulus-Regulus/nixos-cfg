@@ -39,17 +39,17 @@
             "$mod, Space, exec, rofi -show drun"
             "$mod Ctrl Alt, Q, exec, poweroff"
 
-            # Move focus with mainMod + arrow keys
-            "$mainMod, left, movefocus, l"
-            "$mainMod, right, movefocus, r"
-            "$mainMod, up, movefocus, u"
-            "$mainMod, down, movefocus, d"
+            # Move focus with mod + arrow keys
+            "$mod, left, movefocus, l"
+            "$mod, right, movefocus, r"
+            "$mod, up, movefocus, u"
+            "$mod, down, movefocus, d"
 
-            # Move focus with mainMod + HJKL keys
-            "$mainMod, h, movefocus, l"
-            "$mainMod, l, movefocus, r"
-            "$mainMod, k, movefocus, u"
-            "$mainMod, j, movefocus, d"
+            # Move focus with mod + HJKL keys
+            "$mod, h, movefocus, l"
+            "$mod, l, movefocus, r"
+            "$mod, k, movefocus, u"
+            "$mod, j, movefocus, d"
           ]
           ++ (builtins.concatLists (builtins.genList (x: let
               ws = let
@@ -57,9 +57,9 @@
               in
                 builtins.toString (x + 1 - (c * 10));
             in [
-              "$mainMod, ${ws}, workspace, ${toString (x + 1)}"
-              "$mainMod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
-              "$mainMod CTRL, ${ws}, movetoworkspacesilent, ${toString (x + 1)}"
+              "$mod, ${ws}, workspace, ${toString (x + 1)}"
+              "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
+              "$mod CTRL, ${ws}, movetoworkspacesilent, ${toString (x + 1)}"
             ])
             10));
         xwayland.force_zero_scaling = true;
