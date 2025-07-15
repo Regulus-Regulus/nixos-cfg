@@ -17,7 +17,7 @@
           pkgs.rofi-games # https://github.com/Rolv-Apneseth/rofi-games 🎮
         ];
       };
-      xdg.configFile."rofi/config-music.rasi".source = ./themes/rounded-purple-dark.rasi;
+      xdg.configFile."rofi/themes/rounded-purple-dark.rasi".source = ./themes/rounded-purple-dark.rasi;
     })
   ];
 }
