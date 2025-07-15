@@ -39,11 +39,11 @@
             };
 
             "network" = {
-              format-wifi = "<span size='13000' foreground='#f5e0dc'>";
+              format-wifi = "<span size='13000' foreground='#f5e0dc'>  </span>";
               format-ethernet = "<span size='13000' foreground='#f5e0dc'>󰤭  </span> Disconnected";
               format-linked = "{ifname} (No IP) ";
               format-disconnected = "<span size='13000' foreground='#f5e0dc'>  </span>Disconnected";
-              tooltip-format-wifi = "Signal Strenght: {signalStrength}%";
+              tooltip-format-wifi = "{essid} - Signal: {signalStrength}%";
             };
 
             "pulseaudio" = {
