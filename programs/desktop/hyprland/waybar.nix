@@ -119,13 +119,13 @@ in {
         "hyprland/workspaces"
         "tray"
       ];
-      modules-center = ["hyprland/window"];
+      modules-center = ["clock"];
       modules-right = [
         "pulseaudio"
         "network"
         "battery"
         "bluetooth"
-        "clock"
+
         # "hyprland/language"
         # "custom/notification"
       ];
