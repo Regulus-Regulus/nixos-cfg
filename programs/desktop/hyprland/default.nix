@@ -59,6 +59,7 @@
         GTK_THEME = "Colloid-Green-Dark-Gruvbox";
         GRIMBLAST_HIDE_CURSOR = 0;
       };
+
       wayland.windowManager.hyprland.enable = true; # enable Hyprland
       wayland.windowManager.hyprland.settings = {
         "$mod" = "SUPER";
@@ -164,6 +165,11 @@
           focus_on_activate = true;
           new_window_takes_over_fullscreen = 2;
           middle_click_paste = false;
+        };
+        render = {
+          explicit_sync = 2; # 0 = off, 1 = on, 2 = auto based on gpu driver.
+          explicit_sync_kms = 2; # 0 = off, 1 = on, 2 = auto based on gpu driver.
+          direct_scanout = true; # Set to true for less Fullscreen game lag (may cause glitches).
         };
         decoration = {
           rounding = 3;
