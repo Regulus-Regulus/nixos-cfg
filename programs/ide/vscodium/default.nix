@@ -52,6 +52,7 @@ in {
           "markdown.updateLinksOnFileMove.enabled" = true;
           "explorer.confirmDragAndDrop" = false;
           "explorer.confirmDelete" = false;
+          "workbench.colorTheme" = "Selenized Black Theme";
         };
 
         # Optional keybindings overrides
