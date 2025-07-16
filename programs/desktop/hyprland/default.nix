@@ -13,7 +13,7 @@
     #../../themes/Catppuccin # Catppuccin GTK and QT themes
     ./waybar.nix
     # ./programs/wlogout
-    ./rofi.nix
+
     # #./programs/hypridle#
     # ./programs/hyprlock
     # ./programs/swaync
@@ -27,6 +27,9 @@
   services.displayManager.defaultSession = "hyprland";
   home-manager.sharedModules = [
     (_: {
+      imports = [
+        ./rofi.nix
+      ];
       wayland.windowManager.hyprland.enable = true; # enable Hyprland
       wayland.windowManager.hyprland.settings = {
         "$mod" = "SUPER";
