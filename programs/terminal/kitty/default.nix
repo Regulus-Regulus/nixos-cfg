@@ -5,12 +5,35 @@
       programs.kitty = {
         enable = true;
         font = {
-          name = "JetBrainsMono Nerd Font";
+          name = "Maple Mono";
           size = 12.0;
         };
+        extraConfig = ''
+          font_features MapleMono-Regular +ss01 +ss02 +ss04
+          font_features MapleMono-Bold +ss01 +ss02 +ss04
+          font_features MapleMono-Italic +ss01 +ss02 +ss04
+          font_features MapleMono-Light +ss01 +ss02 +ss04
+        '';
         shellIntegration.enableFishIntegration = true;
-        themeFile = "Catppuccin-Mocha";
+        themeFile = "gruvbox-dark-hard";
         settings = {
+          confirm_os_window_close = 0;
+          background_opacity = "0.66";
+          scrollback_lines = 10000;
+          enable_audio_bell = false;
+          mouse_hide_wait = 60;
+          window_padding_width = 10;
+
+          ## Tabs
+          tab_title_template = "{index}";
+          active_tab_font_style = "normal";
+          inactive_tab_font_style = "normal";
+          tab_bar_style = "powerline";
+          tab_powerline_style = "angled";
+          active_tab_foreground = "#FBF1C7";
+          active_tab_background = "#7C6F64";
+          inactive_tab_foreground = "#FBF1C7";
+          inactive_tab_background = "#3C3836";
           # shell = "${getExe pkgs.tmux}";
           # cursor_trail = 3; # Fancy cursor movements (especially in nixvim)
           # cursor_trail_decay = "0.08 0.3"; # Animation speed
@@ -19,26 +42,7 @@
           macos_option_as_alt = "yes";
           macos_quit_when_last_window_closed = true;
           copy_on_select = "yes";
-          confirm_os_window_close = 0;
-          scrollback_lines = 10000;
-          enable_audio_bell = false;
-          mouse_hide_wait = 60;
           update_check_interval = 0;
-
-          # padding_width = 0;
-          # padding_height = 0;
-          # window_margin_width = 0;
-
-          ## Tabs
-          tab_title_template = "{index}";
-          active_tab_font_style = "normal";
-          inactive_tab_font_style = "normal";
-          tab_bar_style = "powerline";
-          tab_powerline_style = "round";
-          active_tab_foreground = "#1e1e2e";
-          active_tab_background = "#cba6f7";
-          inactive_tab_foreground = "#bac2de";
-          inactive_tab_background = "#313244";
         };
         # shellIntegration.mode = "no-sudo";
         keybindings = {

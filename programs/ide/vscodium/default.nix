@@ -4,14 +4,16 @@
   lib,
   ...
 }: let
-  dieghernanSelenizedTheme = pkgs.vscode-utils.buildVscodeMarketplaceExtension {
-    mktplcRef = {
-      name = "selenized-theme";
-      publisher = "dieghernan";
-      version = "0.1.3";
-      hash = "sha256-ths+FSTKNHjq46vPfUxbdgPDQ90pbX77Kt4k9Zw5r30=";
+  jonathanharty.gruvbox-material-icon-theme =
+    pkgs.vscode-utils.buildVscodeMarketplaceExtension
+    {
+      mktplcRef = {
+        name = "gruvbox-material-icon-theme";
+        publisher = "JonathanHarty";
+        version = "1.1.5";
+        hash = "sha256-86UWUuWKT6adx4hw4OJw3cSZxWZKLH4uLTO+Ssg75gY=";
+      };
     };
-  };
 in {
   environment.systemPackages = with pkgs; [
     vscodium # Telemetry-free community build
@@ -34,7 +36,9 @@ in {
           ms-kubernetes-tools.vscode-kubernetes-tools
           tim-koehler.helm-intellisense
           redhat.vscode-yaml
-          dieghernanSelenizedTheme
+          ## Color scheme
+          jdinhlife.gruvbox
+          jonathanharty.gruvbox-material-icon-theme
         ];
 
         # VS Code user settings.json overrides
@@ -52,7 +56,8 @@ in {
           "markdown.updateLinksOnFileMove.enabled" = true;
           "explorer.confirmDragAndDrop" = false;
           "explorer.confirmDelete" = false;
-          "workbench.colorTheme" = "Selenized Black Theme";
+          "workbench.colorTheme" = "Gruvbox Dark Hard";
+          "workbench.iconTheme" = "gruvbox-material-icon-theme";
         };
 
         # Optional keybindings overrides
