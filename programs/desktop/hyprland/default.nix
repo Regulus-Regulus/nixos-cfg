@@ -96,39 +96,42 @@
         xwayland.force_zero_scaling = true;
 
         general = {
-          gaps_in = 4;
-          gaps_out = 9;
+          layout = "dwindle";
+          gaps_in = 6;
+          gaps_out = 12;
           border_size = 2;
-          "col.active_border" = "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
-          "col.inactive_border" = "rgba(b4befecc) rgba(6c7086cc) 45deg";
-          resize_on_border = true;
-          layout = "master"; # dwindle or master
-          # allow_tearing = true; # Allow tearing for games (use immediate window rules for specific games or all titles)
+          "col.active_border" = "rgb(98971A) rgb(CC241D) 45deg";
+          "col.inactive_border" = "0x00000000";
+          # border_part_of_window = false;
+          no_border_on_floating = false;
         };
         animations = {
           enabled = true;
+
           bezier = [
-            "linear, 0, 0, 1, 1"
-            "md3_standard, 0.2, 0, 0, 1"
-            "md3_decel, 0.05, 0.7, 0.1, 1"
-            "md3_accel, 0.3, 0, 0.8, 0.15"
-            "overshot, 0.05, 0.9, 0.1, 1.1"
-            "crazyshot, 0.1, 1.5, 0.76, 0.92"
-            "hyprnostretch, 0.05, 0.9, 0.1, 1.0"
-            "fluent_decel, 0.1, 1, 0, 1"
-            "easeInOutCirc, 0.85, 0, 0.15, 1"
+            "fluent_decel, 0, 0.2, 0.4, 1"
             "easeOutCirc, 0, 0.55, 0.45, 1"
-            "easeOutExpo, 0.16, 1, 0.3, 1"
+            "easeOutCubic, 0.33, 1, 0.68, 1"
+            "fade_curve, 0, 0.55, 0.45, 1"
           ];
+
           animation = [
-            "windows, 1, 3, md3_decel, popin 60%"
-            "border, 1, 10, default"
-            "fade, 1, 2.5, md3_decel"
-            # "workspaces, 1, 3.5, md3_decel, slide"
-            "workspaces, 1, 3.5, easeOutExpo, slide"
-            # "workspaces, 1, 7, fluent_decel, slidefade 15%"
-            # "specialWorkspace, 1, 3, md3_decel, slidefadevert 15%"
-            "specialWorkspace, 1, 3, md3_decel, slidevert"
+            # name, enable, speed, curve, style
+
+            # Windows
+            "windowsIn,   0, 4, easeOutCubic,  popin 20%" # window open
+            "windowsOut,  0, 4, fluent_decel,  popin 80%" # window close.
+            "windowsMove, 1, 2, fluent_decel, slide" # everything in between, moving, dragging, resizing.
+
+            # Fade
+            "fadeIn,      1, 3,   fade_curve" # fade in (open) -> layers and windows
+            "fadeOut,     1, 3,   fade_curve" # fade out (close) -> layers and windows
+            "fadeSwitch,  0, 1,   easeOutCirc" # fade on changing activewindow and its opacity
+            "fadeShadow,  1, 10,  easeOutCirc" # fade on changing activewindow for shadows
+            "fadeDim,     1, 4,   fluent_decel" # the easing of the dimming of inactive windows
+            # "border,      1, 2.7, easeOutCirc"  # for animating the border's color switch speed
+            # "borderangle, 1, 30,  fluent_decel, once" # for animating the border's gradient angle - styles: once (default), loop
+            "workspaces,  1, 4,   easeOutCubic, fade" # styles: slide, slidevert, fade, slidefade, slidefadevert
           ];
         };
         layerrule = [
@@ -151,20 +154,40 @@
           enable_swallow = true;
           vfr = true; # always keep on
           vrr = 0; # enable variable refresh rate (0=off, 1=on, 2=fullscreen only)
+          disable_autoreload = true;
+          always_follow_on_dnd = true;
+          layers_hog_keyboard_focus = true;
+          animate_manual_resizes = false;
+          focus_on_activate = true;
+          new_window_takes_over_fullscreen = 2;
+          middle_click_paste = false;
         };
         decoration = {
-          shadow.enabled = false;
-          rounding = 8;
-          dim_special = 0.3;
+          rounding = 0;
+          # active_opacity = 0.90;
+          # inactive_opacity = 0.90;
+          # fullscreen_opacity = 1.0;
+
           blur = {
             enabled = true;
-            special = true;
-            size = 10;
-            passes = 3;
-            new_optimizations = true;
+            size = 3;
+            passes = 2;
+            brightness = 1;
+            contrast = 1.4;
             ignore_opacity = true;
-            xray = false;
-            noise = 0.04;
+            noise = 0;
+            new_optimizations = true;
+            xray = true;
+          };
+
+          shadow = {
+            enabled = true;
+
+            ignore_window = true;
+            offset = "0 2";
+            range = 20;
+            render_power = 3;
+            color = "rgba(00000055)";
           };
         };
         input = {
