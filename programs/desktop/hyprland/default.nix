@@ -95,7 +95,7 @@
               "$mod CTRL, ${ws}, movetoworkspacesilent, ${toString (x + 1)}"
             ])
             10));
-        xwayland.force_zero_scaling = true;
+        xwayland.force_zero_scaling = false;
 
         general = {
           layout = "dwindle";
@@ -149,6 +149,8 @@
           # "ignorealpha 0.8, swaync-notification-window"
           # "dimaround, swaync-control-center"
         ];
+        monitor = {
+        };
         misc = {
           disable_hyprland_logo = true;
           mouse_move_focuses_monitor = true;
