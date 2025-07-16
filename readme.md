@@ -16,5 +16,5 @@ users/ # contains <user>.nix files with user-specific configurations
 ```
 
 Inspiration:
-https://github.com/ryan4yin/nix-config
 https://github.com/staakman/nixos-config/blob/main/flake.nix
+https://github.com/Frost-Phoenix/nixos-config/tree/main

@@ -63,6 +63,11 @@ in {
       #workspaces button.active {
         color: ${orange_bright};
       }
+      #workspaces button:hover {
+        box-shadow: ${background_0};
+        text-shadow: ${red};
+        background: ${yellow};
+      }
 
       #clock {
         color: ${text_color};
@@ -132,11 +137,11 @@ in {
       clock = {
         calendar = {
           format = {
-            today = "<span color='#98971A'><b>{}</b></span>";
+            today = "<span color='${red}'><b>{}</b></span>";
           };
         };
         format = "{:%H:%M}";
-        tooltip = "true";
+        tooltip = true;
         tooltip-format = "<tt><small>{calendar}</small></tt>";
         format-alt = "{:%a %d %b %R}";
       };
@@ -206,7 +211,7 @@ in {
         on-click-right = "pavucontrol";
       };
       battery = {
-        format = "<span foreground='${yellow}'>{icon}</span> {capacity}%";
+        format = "<span foreground='${yellow}'>{icon}</span>{capacity}%";
         format-icons = [
           " "
           " "
