@@ -185,7 +185,7 @@
           };
 
           shadow = {
-            enabled = true;
+            enabled = false;
 
             ignore_window = true;
             offset = "0 2";
