@@ -30,6 +30,7 @@
         ./rofi.nix
         ./waybar.nix
         ./swaync.nix
+        ./swaylock.nix
       ];
       home.sessionVariables = {
         NIXOS_OZONE_WL = 1;
