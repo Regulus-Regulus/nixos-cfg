@@ -141,7 +141,7 @@ in {
           };
         };
         format = "{:%H:%M}";
-        tooltip = true;
+        tooltip = "true";
         tooltip-format = "<tt><small>{calendar}</small></tt>";
         format-alt = "{:%a %d %b %R}";
       };

@@ -29,6 +29,7 @@
       imports = [
         ./rofi.nix
         ./waybar.nix
+        ./swaync.nix
       ];
       home.sessionVariables = {
         NIXOS_OZONE_WL = 1;
@@ -162,7 +163,7 @@
           middle_click_paste = false;
         };
         decoration = {
-          rounding = 0;
+          rounding = 3;
           # active_opacity = 0.90;
           # inactive_opacity = 0.90;
           # fullscreen_opacity = 1.0;
