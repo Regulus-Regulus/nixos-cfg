@@ -1,7 +1,7 @@
 {...}: let
   custom = {
     font = "Maple Mono";
-    font_size = "12px";
+    font_size = "15px";
     font_weight = "bold";
     text_color = "#FBF1C7";
     background_0 = "#1D2021";
@@ -81,7 +81,7 @@ in {
         padding: 1px;
       }
 
-      #pulseaudio, #network, #cpu, #memory, #disk, #battery, #language, #custom-notification {
+      #pulseaudio, #bluetooth, #network, #cpu, #memory, #disk, #battery, #language, #custom-notification {
         padding-left: 5px;
         padding-right: 5px;
         margin-right: 10px;
@@ -109,7 +109,7 @@ in {
     settings.mainBar = with custom; {
       position = "top";
       layer = "top";
-      height = 20;
+      height = 18;
       margin-top = 0;
       margin-bottom = 0;
       margin-left = 0;
@@ -135,10 +135,10 @@ in {
             today = "<span color='#98971A'><b>{}</b></span>";
           };
         };
-        format = "  {:%H:%M}";
+        format = "{:%H:%M}";
         tooltip = "true";
-        tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-        format-alt = "  {:%d/%m}";
+        tooltip-format = "<tt><small>{calendar}</small></tt>";
+        format-alt = "{:%a %d %b %R}";
       };
       "hyprland/workspaces" = {
         active-only = false;
@@ -146,16 +146,16 @@ in {
         format = "{icon}";
         on-click = "activate";
         format-icons = {
-          "1" = "I";
-          "2" = "II";
-          "3" = "III";
-          "4" = "IV";
-          "5" = "V";
-          "6" = "VI";
-          "7" = "VII";
-          "8" = "VIII";
-          "9" = "IX";
-          "10" = "X";
+          "1" = "1";
+          "2" = "2";
+          "3" = "3";
+          "4" = "4";
+          "5" = "5";
+          "6" = "6";
+          "7" = "7";
+          "8" = "8";
+          "9" = "9";
+          "10" = "10";
           sort-by-number = true;
         };
         persistent-workspaces = {
@@ -197,9 +197,9 @@ in {
       };
       pulseaudio = {
         format = "{icon} {volume}%";
-        format-muted = "<span foreground='${blue}'> </span> {volume}%";
+        format-muted = "<span foreground='${green}'> </span> {volume}%";
         format-icons = {
-          default = ["<span foreground='${blue}'> </span>"];
+          default = ["<span foreground='${green}'> </span>"];
         };
         scroll-step = 2;
         on-click = "pamixer -t";
@@ -228,8 +228,8 @@ in {
       bluetooth = {
         format = "";
         # format-disabled = ""; # an empty format will hide the module
-        format-connected = "<span foreground='${cyan}'> </span>{num_connections}  ";
-        tooltip-format = "<span foreground='${cyan}'> </span> {device_alias}  ";
+        format-connected = "<span foreground='${blue}'> </span>{num_connections}";
+        tooltip-format = "<span foreground='${blue}'> </span> {device_alias}";
         tooltip-format-connected = "{device_enumerate}";
         tooltip-format-enumerate-connected = " {device_alias}";
         on-click = "blueman-manager";
