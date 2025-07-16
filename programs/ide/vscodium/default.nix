@@ -3,14 +3,19 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  dieghernanSelenizedTheme = pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+    mktplcRef = {
+      name = "selenized-theme";
+      publisher = "dieghernan";
+      version = "0.1.3";
+      hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+    };
+  };
+in {
   environment.systemPackages = with pkgs; [
-    # Uncomment one of these to install VS Code system-wide
-    # vscode    # Official Microsoft build (requires unfree = true)
     vscodium # Telemetry-free community build
   ];
-
-  #nixpkgs.config.allowUnfree = true; # Needed if using vscode
 
   # Home Manager shared modules (user-level config)
   home-manager.sharedModules = [

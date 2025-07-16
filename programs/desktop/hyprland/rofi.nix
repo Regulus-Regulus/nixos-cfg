@@ -32,7 +32,7 @@
       display-run: " Run ";
       display-window: " Window ";
       /* display-Network: " Network"; */
-      sidebar-mode: false;
+      sidebar-mode: true;
       sorting-method: "fzf";
     }
 
