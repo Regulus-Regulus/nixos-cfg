@@ -154,7 +154,7 @@
           swallow_regex = "^(Alacritty|kitty)$";
           enable_swallow = true;
           vfr = true; # always keep on
-          vrr = 0; # enable variable refresh rate (0=off, 1=on, 2=fullscreen only)
+          vrr = 1; # enable variable refresh rate (0=off, 1=on, 2=fullscreen only)
           disable_autoreload = true;
           always_follow_on_dnd = true;
           layers_hog_keyboard_focus = true;
