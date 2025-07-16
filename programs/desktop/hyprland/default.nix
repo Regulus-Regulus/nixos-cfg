@@ -35,7 +35,7 @@
       home.sessionVariables = {
         NIXOS_OZONE_WL = 1;
         __GL_GSYNC_ALLOWED = 0;
-        __GL_VRR_ALLOWED = 1;
+        __GL_VRR_ALLOWED = 0;
         _JAVA_AWT_WM_NONEREPARENTING = 1;
         SSH_AUTH_SOCK = "/run/user/1000/ssh-agent";
         DISABLE_QT5_COMPAT = 0;
@@ -157,7 +157,7 @@
           swallow_regex = "^(Alacritty|kitty)$";
           enable_swallow = true;
           vfr = true; # always keep on
-          vrr = 1; # enable variable refresh rate (0=off, 1=on, 2=fullscreen only)
+          vrr = 0; # enable variable refresh rate (0=off, 1=on, 2=fullscreen only)
           disable_autoreload = true;
           always_follow_on_dnd = true;
           layers_hog_keyboard_focus = true;
@@ -167,8 +167,8 @@
           middle_click_paste = false;
         };
         render = {
-          explicit_sync = 2; # 0 = off, 1 = on, 2 = auto based on gpu driver.
-          explicit_sync_kms = 2; # 0 = off, 1 = on, 2 = auto based on gpu driver.
+          explicit_sync = 1; # 0 = off, 1 = on, 2 = auto based on gpu driver.
+          explicit_sync_kms = 1; # 0 = off, 1 = on, 2 = auto based on gpu driver.
           direct_scanout = true; # Set to true for less Fullscreen game lag (may cause glitches).
         };
         decoration = {
