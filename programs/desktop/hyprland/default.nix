@@ -42,7 +42,7 @@
         GDK_BACKEND = "wayland";
         ANKI_WAYLAND = 1;
         DIRENV_LOG_FORMAT = "";
-        WLR_DRM_NO_ATOMIC = 1;
+        WLR_DRM_NO_ATOMIC = 0; # Testing to avoid flicker
         QT_AUTO_SCREEN_SCALE_FACTOR = 1;
         QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
         QT_QPA_PLATFORMTHEME = "qt5ct";
