@@ -14,7 +14,9 @@
           font_features MapleMono-Italic +ss01 +ss02 +ss04
           font_features MapleMono-Light +ss01 +ss02 +ss04
           disable_opengl yes
-           vsync yes
+          vsync yes
+          env EGL_PLATFORM=wayland
+          env LIBGL_ALWAYS_INDIRECT=1
         '';
         shellIntegration.enableFishIntegration = true;
         themeFile = "gruvbox-dark-hard";
