@@ -9,7 +9,7 @@
       name = "selenized-theme";
       publisher = "dieghernan";
       version = "0.1.3";
-      hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+      hash = "sha256-ths+FSTKNHjq46vPfUxbdgPDQ90pbX77Kt4k9Zw5r30=";
     };
   };
 in {
@@ -34,6 +34,7 @@ in {
           ms-kubernetes-tools.vscode-kubernetes-tools
           tim-koehler.helm-intellisense
           redhat.vscode-yaml
+          dieghernanSelenizedTheme
         ];
 
         # VS Code user settings.json overrides
