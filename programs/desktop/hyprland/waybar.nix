@@ -1,247 +1,263 @@
-{pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
-    waybar
-  ];
-  home-manager.sharedModules = [
-    (_: {
-      programs.waybar = {
-        enable = true;
-        systemd = {
-          enable = false;
-          target = "graphical-session.target";
+{...}: let
+  custom = {
+    font = "Maple Mono";
+    font_size = "18px";
+    font_weight = "bold";
+    text_color = "#FBF1C7";
+    background_0 = "#1D2021";
+    background_1 = "#282828";
+    border_color = "#928374";
+    red = "#CC241D";
+    green = "#98971A";
+    yellow = "#FABD2F";
+    blue = "#458588";
+    magenta = "#B16286";
+    cyan = "#689D6A";
+    orange = "#D65D0E";
+    orange_bright = "#FE8019";
+    opacity = "1";
+    indicator_height = "2px";
+  };
+in {
+  programs.waybar = {
+    enable = true;
+
+    style = with custom; ''
+      * {
+        border: none;
+        border-radius: 0px;
+        padding: 0;
+        margin: 0;
+        font-family: ${font};
+        font-weight: ${font_weight};
+        opacity: ${opacity};
+        font-size: ${font_size};
+      }
+
+      window#waybar {
+        background: #282828;
+        border-top: 1px solid ${border_color};
+      }
+
+      tooltip {
+        background: ${background_1};
+        border: 1px solid ${border_color};
+      }
+      tooltip label {
+        margin: 5px;
+        color: ${text_color};
+      }
+
+      #workspaces {
+        padding-left: 15px;
+      }
+      #workspaces button {
+        color: ${yellow};
+        padding-left:  5px;
+        padding-right: 5px;
+        margin-right: 10px;
+      }
+      #workspaces button.empty {
+        color: ${text_color};
+      }
+      #workspaces button.active {
+        color: ${orange_bright};
+      }
+
+      #clock {
+        color: ${text_color};
+      }
+
+      #tray {
+        margin-left: 10px;
+        color: ${text_color};
+      }
+      #tray menu {
+        background: ${background_1};
+        border: 1px solid ${border_color};
+        padding: 8px;
+      }
+      #tray menuitem {
+        padding: 1px;
+      }
+
+      #pulseaudio, #network, #cpu, #memory, #disk, #battery, #language, #custom-notification {
+        padding-left: 5px;
+        padding-right: 5px;
+        margin-right: 10px;
+        color: ${text_color};
+      }
+
+      #pulseaudio, #language {
+        margin-left: 15px;
+      }
+
+      #custom-notification {
+        margin-left: 15px;
+        padding-right: 2px;
+        margin-right: 5px;
+      }
+
+      #custom-launcher {
+        font-size: 20px;
+        color: ${text_color};
+        font-weight: bold;
+        margin-left: 15px;
+        padding-right: 10px;
+      }
+    '';
+    settings.mainBar = with custom; {
+      position = "bottom";
+      layer = "top";
+      height = 28;
+      margin-top = 0;
+      margin-bottom = 0;
+      margin-left = 0;
+      margin-right = 0;
+      modules-left = [
+        "custom/launcher"
+        "hyprland/workspaces"
+        "tray"
+      ];
+      modules-center = ["clock"];
+      modules-right = [
+        "cpu"
+        "memory"
+        "disk"
+        "pulseaudio"
+        "network"
+        "battery"
+        "hyprland/language"
+        "custom/notification"
+      ];
+      clock = {
+        calendar = {
+          format = {
+            today = "<span color='#98971A'><b>{}</b></span>";
+          };
         };
-        settings = [
-          {
-            position = "top";
-            modules-left = ["hyprland/workspaces"];
-            modules-center = ["hyprland/window"];
-            modules-right = ["network" "pulseaudio" "bluetooth" "battery" "clock"];
-
-            "clock" = {
-              format = "{:%H:%M}";
-              format-alt = "{:%a %d %b %R}";
-              tooltip = false;
-            };
-
-            "battery" = {
-              states = {
-                warning = 40;
-                critical = 15;
-              };
-              format = "<span size='13000' foreground='#a6e3a1'>{icon} </span> {capacity}%";
-              format-warning = "<span size='13000' foreground='#B1E3AD'>{icon} </span> {capacity}%";
-              format-critical = "<span size='13000' foreground='#E38C8F'>{icon} </span> {capacity}%";
-              format-charging = "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%";
-              format-plugged = "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%";
-              format-alt = "<span size='13000' foreground='#B1E3AD'>{icon} </span> {time}";
-              format-full = "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%";
-              format-icons = ["" "" "" "" ""];
-              tooltip-format = "{time}";
-            };
-
-            "network" = {
-              format-wifi = "<span size='13000' foreground='#f5e0dc'> </span>";
-              format-ethernet = "<span size='13000' foreground='#f5e0dc'>󰤭  </span> Disconnected";
-              format-linked = "{ifname} (No IP) ";
-              format-disconnected = "<span size='13000' foreground='#f5e0dc'>  </span>Disconnected";
-              tooltip-format-wifi = "{essid} - Signal: {signalStrength}%";
-            };
-
-            "pulseaudio" = {
-              format = "{icon}  {volume}%";
-              format-muted = "";
-              format-icons = {
-                default = ["" "" " "];
-              };
-              on-click = "pavucontrol";
-            };
-
-            "bluetooth" = {
-              format = "";
-              # format-disabled = ""; # an empty format will hide the module
-              format-connected = " {num_connections}";
-              tooltip-format = " {device_alias}";
-              tooltip-format-connected = "{device_enumerate}";
-              tooltip-format-enumerate-connected = " {device_alias}";
-              on-click = "blueman-manager";
-            };
-
-            "hyprland/workspaces" = {
-              disable-scroll = true;
-              all-outputs = true;
-              active-only = false;
-              on-click = "activate";
-              persistent-workspaces = {
-                "*" = [1 2 3 4 5 6 7 8 9 10];
-              };
-            };
-          }
-        ];
-        style = ''
-          @define-color rosewater #f5e0dc;
-          @define-color flamingo #f2cdcd;
-          @define-color pink #f5c2e7;
-          @define-color mauve #cba6f7;
-          @define-color red #f38ba8;
-          @define-color maroon #eba0ac;
-          @define-color peach #fab387;
-          @define-color yellow #f9e2af;
-          @define-color green #a6e3a1;
-          @define-color teal #94e2d5;
-          @define-color sky #89dceb;
-          @define-color sapphire #74c7ec;
-          @define-color blue #89b4fa;
-          @define-color lavender #b4befe;
-          @define-color text #cdd6f4;
-          @define-color subtext1 #bac2de;
-          @define-color subtext0 #a6adc8;
-          @define-color overlay2 #9399b2;
-          @define-color overlay1 #7f849c;
-          @define-color overlay0 #6c7086;
-          @define-color surface2 #585b70;
-          @define-color surface1 #45475a;
-          @define-color surface0 #313244;
-          @define-color base #1e1e2e;
-          @define-color mantle #181825;
-          @define-color crust #11111b;
-
-          * {
-            font-family: "JetBrainsMono Nerd Font";
-            font-size: 14px;
-            font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
-            margin: 0px;
-            padding: 0px;
-            min-height: 0;
-            font-weight: bold;
-          }
-
-          window#waybar {
-              background: transparent;
-              background-color: @crust;
-              color: @overlay0;
-              transition-property: background-color;
-              transition-duration: 0.1s;
-              border-bottom: 2px solid @overlay1;
-          }
-
-          #window {
-              margin: 8px;
-              padding-left: 8;
-              padding-right: 8;
-          }
-
-          button {
-              box-shadow: inset 0 -3px transparent;
-              border: none;
-              border-radius: 0;
-          }
-
-          button:hover {
-              background: inherit;
-              color: @mauve;
-              /*border-bottom: 2px solid @mauve;*/
-          }
-
-          #workspaces button {
-              padding: 0 4px;
-          }
-
-          #workspaces button.focused {
-              background-color: @crust;
-              color: @rosewater;
-              border-bottom: 2px solid @mauve;
-          }
-
-          #workspaces button.active {
-              background-color: @crust;
-              color: @mauve;
-              border-bottom: 2px solid @mauve;
-          }
-
-          #workspaces button.urgent {
-              background-color: #eb4d4b;
-          }
-
-          #pulseaudio,
-          #clock,
-          #battery,
-          #cpu,
-          #bluetooth,
-          #memory,
-          #disk,
-          #temperature,
-          #backlight,
-          #wireplumber,
-          #tray,
-          #network,
-          #mode,
-          #workspaces,
-          #scratchpad {
-            margin-top: 2px;
-            margin-bottom: 2px;
-            margin-left: 4px;
-            margin-right: 4px;
-            padding-left: 4px;
-            padding-right: 4px;
-          }
-
-          #clock {
-              color: @maroon;
-              border-bottom: 2px solid @maroon;
-          }
-
-          #clock.date {
-              color: @mauve;
-              border-bottom: 2px solid @mauve;
-          }
-
-          #pulseaudio {
-              color: @blue;
-              border-bottom: 2px solid @blue;
-          }
-
-          #network {
-              color: @yellow;
-              border-bottom: 2px solid @yellow;
-          }
-
-          #idle_inhibitor {
-              margin-right: 12px;
-              color: #7cb342;
-          }
-
-          #bluetooth {
-              color: @green;
-              border-bottom: 2px solid @green;
-          }
-
-          #idle_inhibitor.activated {
-              color: @red;
-          }
-
-          #battery {
-              color: @green;
-              border-bottom: 2px solid @green;
-          }
-
-          /* If workspaces is the leftmost module, omit left margin */
-          .modules-left>widget:first-child>#workspaces {
-              margin-left: 0;
-          }
-
-          /* If workspaces is the rightmost module, omit right margin */
-          .modules-right>widget:last-child>#workspaces {
-              margin-right: 0;
-          }
-
-          #custom-vpn {
-              color: @lavender;
-              border-radius: 15px;
-              padding-left: 6px;
-              padding-right: 6px;
-          }
-        '';
+        format = "  {:%H:%M}";
+        tooltip = "true";
+        tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+        format-alt = "  {:%d/%m}";
       };
-    })
-  ];
+      "hyprland/workspaces" = {
+        active-only = false;
+        disable-scroll = true;
+        format = "{icon}";
+        on-click = "activate";
+        format-icons = {
+          "1" = "I";
+          "2" = "II";
+          "3" = "III";
+          "4" = "IV";
+          "5" = "V";
+          "6" = "VI";
+          "7" = "VII";
+          "8" = "VIII";
+          "9" = "IX";
+          "10" = "X";
+          sort-by-number = true;
+        };
+        persistent-workspaces = {
+          "1" = [];
+          "2" = [];
+          "3" = [];
+          "4" = [];
+          "5" = [];
+        };
+      };
+      cpu = {
+        format = "<span foreground='${green}'> </span> {usage}%";
+        format-alt = "<span foreground='${green}'> </span> {avg_frequency} GHz";
+        interval = 2;
+        on-click-right = "hyprctl dispatch exec '[float; center; size 950 650] kitty --override font_size=14 --title float_kitty btop'";
+      };
+      memory = {
+        format = "<span foreground='${cyan}'>󰟜 </span>{}%";
+        format-alt = "<span foreground='${cyan}'>󰟜 </span>{used} GiB"; # 
+        interval = 2;
+        on-click-right = "hyprctl dispatch exec '[float; center; size 950 650] kitty --override font_size=14 --title float_kitty btop'";
+      };
+      disk = {
+        # path = "/";
+        format = "<span foreground='${orange}'>󰋊 </span>{percentage_used}%";
+        interval = 60;
+        on-click-right = "hyprctl dispatch exec '[float; center; size 950 650] kitty --override font_size=14 --title float_kitty btop'";
+      };
+      network = {
+        format-wifi = "<span foreground='${magenta}'> </span> {signalStrength}%";
+        format-ethernet = "<span foreground='${magenta}'>󰀂 </span>";
+        tooltip-format = "Connected to {essid} {ifname} via {gwaddr}";
+        format-linked = "{ifname} (No IP)";
+        format-disconnected = "<span foreground='${magenta}'>󰖪 </span>";
+      };
+      tray = {
+        icon-size = 20;
+        spacing = 8;
+      };
+      pulseaudio = {
+        format = "{icon} {volume}%";
+        format-muted = "<span foreground='${blue}'> </span> {volume}%";
+        format-icons = {
+          default = ["<span foreground='${blue}'> </span>"];
+        };
+        scroll-step = 2;
+        on-click = "pamixer -t";
+        on-click-right = "pavucontrol";
+      };
+      battery = {
+        format = "<span foreground='${yellow}'>{icon}</span> {capacity}%";
+        format-icons = [
+          " "
+          " "
+          " "
+          " "
+          " "
+        ];
+        format-charging = "<span foreground='${yellow}'> </span>{capacity}%";
+        format-full = "<span foreground='${yellow}'> </span>{capacity}%";
+        format-warning = "<span foreground='${yellow}'> </span>{capacity}%";
+        interval = 5;
+        states = {
+          warning = 20;
+        };
+        format-time = "{H}h{M}m";
+        tooltip = true;
+        tooltip-format = "{time}";
+      };
+      "hyprland/language" = {
+        format = "<span foreground='#FABD2F'> </span> {}";
+        format-fr = "FR";
+        format-en = "US";
+      };
+      "custom/launcher" = {
+        format = "";
+        on-click = "random-wallpaper";
+        on-click-right = "rofi -show drun";
+        tooltip = "true";
+        tooltip-format = "Random Wallpaper";
+      };
+      "custom/notification" = {
+        tooltip = false;
+        format = "{icon} ";
+        format-icons = {
+          notification = "<span foreground='red'><sup></sup></span>  <span foreground='${red}'></span>";
+          none = "  <span foreground='${red}'></span>";
+          dnd-notification = "<span foreground='red'><sup></sup></span>  <span foreground='${red}'></span>";
+          dnd-none = "  <span foreground='${red}'></span>";
+          inhibited-notification = "<span foreground='red'><sup></sup></span>  <span foreground='${red}'></span>";
+          inhibited-none = "  <span foreground='${red}'></span>";
+          dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>  <span foreground='${red}'></span>";
+          dnd-inhibited-none = "  <span foreground='${red}'></span>";
+        };
+        return-type = "json";
+        exec-if = "which swaync-client";
+        exec = "swaync-client -swb";
+        on-click = "swaync-client -t -sw";
+        on-click-right = "swaync-client -d -sw";
+        escape = true;
+      };
+    };
+  };
 }

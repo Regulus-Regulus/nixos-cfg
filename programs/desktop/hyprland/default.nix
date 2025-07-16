@@ -11,9 +11,7 @@
   };
   imports = [
     #../../themes/Catppuccin # Catppuccin GTK and QT themes
-    ./waybar.nix
     # ./programs/wlogout
-
     # #./programs/hypridle#
     # ./programs/hyprlock
     # ./programs/swaync
@@ -30,6 +28,7 @@
     (_: {
       imports = [
         ./rofi.nix
+        ./waybar.nix
       ];
       home.sessionVariables = {
         NIXOS_OZONE_WL = 1;
