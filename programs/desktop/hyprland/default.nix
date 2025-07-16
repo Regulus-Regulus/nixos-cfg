@@ -9,12 +9,11 @@
       enable = true;
     };
   };
-
   imports = [
     #../../themes/Catppuccin # Catppuccin GTK and QT themes
     ./waybar.nix
     # ./programs/wlogout
-    ./rofi
+    ./rofi.nix
     # #./programs/hypridle#
     # ./programs/hyprlock
     # ./programs/swaync
