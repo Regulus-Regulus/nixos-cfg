@@ -70,6 +70,7 @@
             "$mod, C, exec, codium"
             "$mod, Space, exec, rofi -show drun"
             "$mod Ctrl Alt, Q, exec, poweroff"
+            "$mod, SHIFT, L, exit"
 
             # Move focus with mod + arrow keys
             "$mod, left, movefocus, l"
