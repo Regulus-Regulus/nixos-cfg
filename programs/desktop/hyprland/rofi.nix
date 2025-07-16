@@ -23,7 +23,7 @@
       font: "Maple Mono Bold 16";
       show-icons: true;
       icon-theme: "Papirus-dark";
-      terminal: "ghostty";
+      terminal: "kitty";
       drun-display-format: "{icon} {name}";
       location: 0;
       disable-history: true;
@@ -32,7 +32,7 @@
       display-run: " Run ";
       display-window: " Window ";
       /* display-Network: " Network"; */
-      sidebar-mode: true;
+      sidebar-mode: false;
       sorting-method: "fzf";
     }
 
