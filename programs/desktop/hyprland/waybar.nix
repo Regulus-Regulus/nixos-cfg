@@ -119,7 +119,7 @@ in {
         "hyprland/workspaces"
         "tray"
       ];
-      modules-center = ["clock"];
+      modules-center = ["hyprland/window"];
       modules-right = [
         "pulseaudio"
         "network"
@@ -228,8 +228,8 @@ in {
       bluetooth = {
         format = "";
         # format-disabled = ""; # an empty format will hide the module
-        format-connected = " {num_connections}";
-        tooltip-format = " {device_alias}";
+        format-connected = "<span foreground='${cyan}'> </span>{num_connections}  ";
+        tooltip-format = "<span foreground='${cyan}'> </span> {device_alias}  ";
         tooltip-format-connected = "{device_enumerate}";
         tooltip-format-enumerate-connected = " {device_alias}";
         on-click = "blueman-manager";
