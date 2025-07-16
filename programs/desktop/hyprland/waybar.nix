@@ -107,9 +107,9 @@ in {
       }
     '';
     settings.mainBar = with custom; {
-      position = "bottom";
+      position = "top";
       layer = "top";
-      height = 28;
+      height = 20;
       margin-top = 0;
       margin-bottom = 0;
       margin-left = 0;
@@ -121,14 +121,13 @@ in {
       ];
       modules-center = ["clock"];
       modules-right = [
-        "cpu"
-        "memory"
-        "disk"
         "pulseaudio"
         "network"
         "battery"
-        "hyprland/language"
-        "custom/notification"
+        "bluetooth"
+        "clock"
+        # "hyprland/language"
+        # "custom/notification"
       ];
       clock = {
         calendar = {
@@ -226,6 +225,15 @@ in {
         tooltip = true;
         tooltip-format = "{time}";
       };
+      bluetooth = {
+        format = "";
+        # format-disabled = ""; # an empty format will hide the module
+        format-connected = " {num_connections}";
+        tooltip-format = " {device_alias}";
+        tooltip-format-connected = "{device_enumerate}";
+        tooltip-format-enumerate-connected = " {device_alias}";
+        on-click = "blueman-manager";
+      };
       "hyprland/language" = {
         format = "<span foreground='#FABD2F'> </span> {}";
         format-fr = "FR";
@@ -233,8 +241,8 @@ in {
       };
       "custom/launcher" = {
         format = "";
-        on-click = "random-wallpaper";
-        on-click-right = "rofi -show drun";
+        on-click-right = "random-wallpaper";
+        on-click = "rofi -show drun";
         tooltip = "true";
         tooltip-format = "Random Wallpaper";
       };
