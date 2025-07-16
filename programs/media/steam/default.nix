@@ -8,7 +8,6 @@
     graphics.enable = true;
     graphics.enable32Bit = true;
   };
-
   # Optional: For proprietary NVIDIA users
   # services.xserver.videoDrivers = [ "nvidia" ];
   # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
@@ -22,6 +21,8 @@
     vulkan-tools
     vulkan-loader
     vulkan-validation-layers
+    mesa
+    mesa.drivers
     gamemode
     mangohud
   ];
