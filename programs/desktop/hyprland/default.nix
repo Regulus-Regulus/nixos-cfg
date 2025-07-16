@@ -156,7 +156,7 @@
           mouse_move_focuses_monitor = true;
           swallow_regex = "^(Alacritty|kitty)$";
           enable_swallow = true;
-          vfr = true; # always keep on
+          vfr = false; # always keep on
           vrr = 0; # enable variable refresh rate (0=off, 1=on, 2=fullscreen only)
           disable_autoreload = true;
           always_follow_on_dnd = true;
@@ -169,7 +169,7 @@
         render = {
           explicit_sync = 1; # 0 = off, 1 = on, 2 = auto based on gpu driver.
           explicit_sync_kms = 1; # 0 = off, 1 = on, 2 = auto based on gpu driver.
-          direct_scanout = true; # Set to true for less Fullscreen game lag (may cause glitches).
+          direct_scanout = false; # Set to true for less Fullscreen game lag (may cause glitches).
         };
         decoration = {
           rounding = 3;
