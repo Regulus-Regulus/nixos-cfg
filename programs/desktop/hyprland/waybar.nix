@@ -211,7 +211,7 @@ in {
         on-click-right = "pavucontrol";
       };
       battery = {
-        format = "<span foreground='${yellow}'>{icon}</span>{capacity}%";
+        format = "<span foreground='${yellow}'>{icon}</span> {capacity}%";
         format-icons = [
           " "
           " "
