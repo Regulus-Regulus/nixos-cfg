@@ -234,7 +234,7 @@ in {
         format = "";
         # format-disabled = ""; # an empty format will hide the module
         format-connected = "<span foreground='${blue}'> </span>{num_connections}";
-        tooltip-format = "<span foreground='${blue}'> </span> {device_alias}";
+        tooltip-format-on = "<span foreground='${blue}'> </span> {device_alias}";
         tooltip-format-connected = "{device_enumerate}";
         tooltip-format-enumerate-connected = " {device_alias}";
         on-click = "blueman-manager";
