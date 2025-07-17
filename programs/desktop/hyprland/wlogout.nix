@@ -66,7 +66,7 @@ in {
 
         style = with custom; ''
           window {
-            font-family: monospace;
+            font-family: ${font};
             font-size: 14pt;
             color: ${text_color}; /* text */
             background-color: ${background_0};
