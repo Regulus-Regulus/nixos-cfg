@@ -32,6 +32,7 @@
         ./waybar.nix
         ./swaync.nix
         ./swaylock.nix
+        ./wallpapers/randomizeWallpapers.nix
       ];
       home.sessionVariables = {
         NIXOS_OZONE_WL = 1;
