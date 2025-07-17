@@ -141,8 +141,8 @@
         };
         layerrule = [
           "blur, rofi"
-          "ignorezero, rofi"
-          "ignorealpha 0.7, rofi"
+          # "ignorezero, rofi"
+          # "ignorealpha 0.7, rofi"
 
           "blur, swaync-control-center"
           "blur, swaync-notification-window"
