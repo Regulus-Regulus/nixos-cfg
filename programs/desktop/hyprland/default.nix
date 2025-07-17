@@ -202,7 +202,6 @@
             color = "rgba(00000055)";
           };
         };
-        windowrulev2 = "blur,class:^(wlogout)$";
         input = {
           kb_layout = "de";
           kb_variant = "";
