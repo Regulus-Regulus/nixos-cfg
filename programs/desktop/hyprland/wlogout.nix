@@ -95,14 +95,14 @@
             background-image: image(url("./icons/power.png"));
           }
           #shutdown:focus {
-            background-image: image(url("icons/power-hover.png"));
+            background-image: image(url("./icons/power-hover.png"));
           }
 
           #reboot {
-            background-image: image(url("icons/restart.png"));
+            background-image: image(url("./icons/restart.png"));
           }
           #reboot:focus {
-            background-image: image(url("icons/restart-hover.png"));
+            background-image: image(url("./icons/restart-hover.png"));
           }
         '';
       };
