@@ -57,7 +57,7 @@
             background-position: center;
             background-size: 25%;
             border: none;
-            background-color: rgba(30, 30, 46, 0);
+            background-color: rgba(30, 30, 46, 1);
             margin: 5px;
             transition: box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
           }
