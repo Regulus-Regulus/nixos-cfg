@@ -65,7 +65,7 @@
       wayland.windowManager.hyprland.enable = true; # enable Hyprland
       wayland.windowManager.hyprland.settings = {
         "$mod" = "SUPER";
-        bindl = "switch:Lid Switch, exec, hyprlock";
+        # bindl = "switch:Lid Switch, exec, hyprlock";
         bind =
           [
             "$mod, F, exec, firefox"
