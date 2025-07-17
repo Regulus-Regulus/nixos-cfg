@@ -140,7 +140,8 @@
           ];
         };
         layerrule = [
-          "blur, rofi"
+          # "blur, rofi"
+          "dimaround, rofi"
           # "ignorezero, rofi"
           # "ignorealpha 0.7, rofi"
 
