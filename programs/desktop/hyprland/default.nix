@@ -136,7 +136,7 @@
             "fadeDim,     1, 4,   fluent_decel" # the easing of the dimming of inactive windows
             # "border,      1, 2.7, easeOutCirc"  # for animating the border's color switch speed
             # "borderangle, 1, 30,  fluent_decel, once" # for animating the border's gradient angle - styles: once (default), loop
-            "workspaces,  1, 4,   easeOutCubic, fade" # styles: slide, slidevert, fade, slidefade, slidefadevert
+            "workspaces,  1, 2,   easeOutCubic, slide" # styles: slide, slidevert, fade, slidefade, slidefadevert
           ];
         };
         layerrule = [
