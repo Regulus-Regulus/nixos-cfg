@@ -71,7 +71,7 @@
             "$mod, F, exec, firefox"
             "$mod, T, exec, kitty"
             "$mod, C, exec, codium"
-            "$mod, Space, exec, rofi -show drun"
+            "$mod, Space, exec, rofi -show drun --protocol layer-shell"
             "$mod Ctrl Alt, Q, exec, poweroff"
             "$mod, L, exec, hyprlock"
 
