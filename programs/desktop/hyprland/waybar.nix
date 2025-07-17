@@ -66,7 +66,7 @@ in {
       #workspaces button:hover {
         box-shadow: ${yellow};
         text-shadow: ${red};
-        background: ${background_0};
+        background: ${background_1};
       }
 
       #clock {
@@ -231,7 +231,7 @@ in {
         tooltip-format = "{time}";
       };
       bluetooth = {
-        format = "";
+        format = "<span foreground='${blue}'> </span>";
         # format-disabled = ""; # an empty format will hide the module
         format-connected = "<span foreground='${blue}'> </span>{num_connections}";
         tooltip-format-on = "{device_alias}";
