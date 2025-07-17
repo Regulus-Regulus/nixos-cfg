@@ -42,7 +42,7 @@ in {
     services.wallpaperRandomizer = {
       Install = {WantedBy = ["default.target"];};
       Unit = {
-        Description = "Set randomh desktop background using hyprpaper";
+        Description = "Set random desktop background using hyprpaper";
         After = ["graphical-session-pre.target"];
         PartOf = ["graphical-session.target"];
       };
