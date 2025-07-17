@@ -219,8 +219,6 @@
         };
         exec-once = [
           "waybar"
-
-          "hyprlock"
         ];
       };
     })

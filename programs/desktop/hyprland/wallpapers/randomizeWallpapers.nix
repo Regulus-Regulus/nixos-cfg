@@ -40,7 +40,7 @@ in {
 
   systemd.user = {
     services.wallpaperRandomizer = {
-      Install = {WantedBy = ["graphical-session.target"];};
+      Install = {WantedBy = ["default.target"];};
 
       Unit = {
         Description = "Set random desktop background using hyprpaper";
