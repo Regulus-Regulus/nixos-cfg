@@ -64,6 +64,7 @@
       wayland.windowManager.hyprland.enable = true; # enable Hyprland
       wayland.windowManager.hyprland.settings = {
         "$mod" = "SUPER";
+        bindl = "switch:Lid Switch, exec, hyprlock";
         bind =
           [
             "$mod, F, exec, firefox"
@@ -71,7 +72,7 @@
             "$mod, C, exec, codium"
             "$mod, Space, exec, rofi -show drun"
             "$mod Ctrl Alt, Q, exec, poweroff"
-            "$mod, L, hyprlock"
+            "$mod, L, exec, hyprlock"
 
             # Move focus with mod + arrow keys
             "$mod, left, movefocus, l"
