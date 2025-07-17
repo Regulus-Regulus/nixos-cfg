@@ -1,125 +1,99 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
-  programs.hyprlock = {
-    enable = true;
+{...}: {
+  home-manager.sharedModules = [
+    (_: {
+      programs.hyprlock = {
+        enable = true;
+        settings = {
+          general = {
+            hide_cursor = true;
+          };
 
-    package = inputs.hyprlock.packages.${pkgs.system}.hyprlock;
+          background = [
+            {
+              monitor = "";
+              color = "rgb(36, 39, 58)";
+              # path = "${../../../../themes/wallpapers/dark-forest.jpg}";
 
-    settings = {
-      general = {
-        hide_cursor = true;
-        no_fade_in = false;
-        disable_loading_bar = true;
-        ignore_empty_input = true;
-        fractional_scaling = 0;
+              new_optimizations = true;
+              blur_size = 3;
+              blur_passes = 2;
+              noise = 0.0117;
+              contrast = 1.000;
+              brightness = 1.0000;
+              vibrancy = 0.2100;
+              vibrancy_darkness = 0.0;
+            }
+          ];
+
+          input-field = [
+            {
+              monitor = "";
+              size = "250, 50";
+              outline_thickness = 3;
+              outer_color = "rgb(198, 160, 246)";
+              inner_color = "rgb(36, 39, 58)";
+              font_color = "rgb(198, 160, 246)";
+              fail_color = "rgb(237, 135, 150)";
+              fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
+              fail_transition = 300;
+              fade_on_empty = false;
+              placeholder_text = "Password...";
+              dots_size = 0.2;
+              dots_spacing = 0.64;
+              dots_center = true;
+              position = "0, 140";
+              halign = "center";
+              valign = "bottom";
+            }
+          ];
+
+          label = [
+            {
+              monitor = "";
+              # text = "cmd[update:1000] echo \"<b><big> $(date +\"%H:%M:%S\") </big></b>\"";
+              text = "$TIME";
+              font_size = 64;
+              font_family = "JetBrains Mono Nerd Font 10";
+              color = "rgb(198, 160, 246)";
+              position = "0, 16";
+              valign = "center";
+              halign = "center";
+            }
+            {
+              monitor = "";
+              text = "Hello <span text_transform=\"capitalize\" size=\"larger\">$USER!</span>";
+              color = "rgb(198, 160, 246)";
+              font_size = 20;
+              font_family = "JetBrains Mono Nerd Font 10";
+              position = "0, 100";
+              halign = "center";
+              valign = "center";
+            }
+            {
+              monitor = "";
+              text = "Password Required";
+              color = "rgb(198, 160, 246)";
+              font_size = 14;
+              font_family = "JetBrains Mono Nerd Font 10";
+              position = "0, 20";
+              halign = "center";
+              valign = "bottom";
+            }
+            /*
+               {
+              monitor = "";
+              text = "Enter your password to unlock.";
+              color = "rgb(198, 160, 246)";
+              font_size = 14;
+              font_family = "JetBrains Mono Nerd Font 10";
+              position = "0, 60";
+              halign = "center";
+              valign = "bottom";
+            }
+            */
+          ];
+        };
       };
-
-      background = [
-        {
-          monitor = "";
-          path = "${../../../wallpapers/otherWallpaper/gruvbox/forest_road.jpg}";
-          blur_passes = 2;
-          contrast = 0.8916;
-          brightness = 0.8172;
-          vibrancy = 0.1696;
-          vibrancy_darkness = 0.0;
-        }
-      ];
-
-      shape = [
-        # User box
-        {
-          monitor = "";
-          size = "300, 50";
-          color = "rgba(102, 92, 84, 0.33)";
-          rounding = 10;
-          border_color = "rgba(255, 255, 255, 0)";
-          position = "0, 270";
-          halign = "center";
-          valign = "bottom";
-        }
-      ];
-
-      label = [
-        # Time
-        {
-          monitor = "";
-          text = ''cmd[update:1000] echo "$(date +'%k:%M')"'';
-          color = "rgba(235, 219, 178, 0.9)";
-          font_size = 115;
-          font_family = "Maple Mono Bold";
-          shadow_passes = 3;
-          position = "0, ${
-            if host == "laptop"
-            then "-25"
-            else "-150"
-          }";
-          halign = "center";
-          valign = "top";
-        }
-        # Date
-        {
-          monitor = "";
-          text = ''cmd[update:1000] echo "- $(date +'%A, %B %d') -" '';
-          color = "rgba(235, 219, 178, 0.9)";
-          font_size = 18;
-          font_family = "Maple Mono";
-          shadow_passes = 3;
-          position = "0, ${
-            if host == "laptop"
-            then "-225"
-            else "-350"
-          }";
-          halign = "center";
-          valign = "top";
-        }
-        # Username
-        {
-          monitor = "";
-          text = "  $USER";
-          color = "rgba(235, 219, 178, 1)";
-          font_size = 15;
-          font_family = "Maple Mono Bold";
-          position = "0, ${
-            if host == "laptop"
-            then "131"
-            else "281"
-          }";
-          halign = "center";
-          valign = "bottom";
-        }
-      ];
-
-      input-field = [
-        {
-          monitor = "";
-          size = "300, 50";
-          outline_thickness = 1;
-          rounding = 10;
-          dots_size = 0.25;
-          dots_spacing = 0.4;
-          dots_center = true;
-          outer_color = "rgba(102, 92, 84, 0.33)";
-          inner_color = "rgba(102, 92, 84, 0.33)";
-          color = "rgba(235, 219, 178, 0.9)";
-          font_color = "rgba(235, 219, 178, 0.9)";
-          font_size = 14;
-          font_family = "Maple Mono Bold";
-          fade_on_empty = false;
-          placeholder_text = ''<i><span foreground="##fbf1c7">Enter Password</span></i>'';
-          hide_input = false;
-          position = "0, ${
-            if host == "laptop"
-            then "50"
-            else "200"
-          }";
-          halign = "center";
-          valign = "bottom";
-        }
-      ];
-    };
-  };
+    })
+  ];
 }

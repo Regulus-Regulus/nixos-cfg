@@ -1,6 +1,7 @@
 {
   self,
   pkgs,
+  inputs,
   ...
 }: {
   programs.hyprland = {
@@ -13,7 +14,7 @@
     #../../themes/Catppuccin # Catppuccin GTK and QT themes
     # ./programs/wlogout
     # #./programs/hypridle#
-    # ./programs/hyprlock
+    ./hyprlock.nix
     # ./programs/swaync
     # ./programs/dunst
   ];
