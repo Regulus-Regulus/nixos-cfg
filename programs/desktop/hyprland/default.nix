@@ -12,7 +12,7 @@
   };
   imports = [
     #../../themes/Catppuccin # Catppuccin GTK and QT themes
-    # ./programs/wlogout
+    ./wlogout.nix
     # #./programs/hypridle#
     ./hyprlock.nix
     # ./programs/swaync
