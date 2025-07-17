@@ -64,9 +64,9 @@ in {
         color: ${orange_bright};
       }
       #workspaces button:hover {
-        box-shadow: ${background_0};
+        box-shadow: ${yellow};
         text-shadow: ${red};
-        background: ${yellow};
+        background: ${background_0};
       }
 
       #clock {
@@ -137,7 +137,7 @@ in {
       clock = {
         calendar = {
           format = {
-            today = "<span color='${red}'><b>{}</b></span>";
+            today = "<span color='${orange_bright}'><b>{}</b></span>";
           };
         };
         format = "{:%H:%M}";
@@ -234,7 +234,7 @@ in {
         format = "";
         # format-disabled = ""; # an empty format will hide the module
         format-connected = "<span foreground='${blue}'> </span>{num_connections}";
-        tooltip-format-on = "<span foreground='${blue}'> </span> {device_alias}";
+        tooltip-format-on = "{device_alias}";
         tooltip-format-connected = "{device_enumerate}";
         tooltip-format-enumerate-connected = " {device_alias}";
         on-click = "blueman-manager";
