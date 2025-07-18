@@ -16,7 +16,7 @@
     };
 
     theme = {
-      name = "gruvbox-material";
+      name = "Gruvbox-Material-Dark-HIDPI";
       package = pkgs.gruvbox-material-gtk-theme;
     };
 
@@ -38,7 +38,7 @@
     };
   };
 
-  home.sessionVariables.GTK_THEME = "gruvbox-material";
+  home.sessionVariables.GTK_THEME = "Gruvbox-Material-Dark-HIDPI";
 
   # ...
   dconf = {
