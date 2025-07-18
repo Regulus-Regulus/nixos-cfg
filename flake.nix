@@ -9,29 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland";
-
-    hypr-contrib = {
-      url = "github:hyprwm/contrib";
-      inputs.nixpkgs.follows = "hyprland/nixpkgs";
-    };
-
-    hyprpicker = {
-      url = "github:hyprwm/hyprpicker";
-      inputs.nixpkgs.follows = "hyprland/nixpkgs";
-    };
-
-    hyprlock = {
-      url = "github:hyprwm/hyprlock";
-      inputs = {
-        hyprgraphics.follows = "hyprland/hyprgraphics";
-        hyprlang.follows = "hyprland/hyprlang";
-        hyprutils.follows = "hyprland/hyprutils";
-        nixpkgs.follows = "hyprland/nixpkgs";
-        systems.follows = "hyprland/systems";
-      };
-    };
-
     alejandra.url = "github:kamadorueda/alejandra/4.0.0";
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -60,23 +37,23 @@
 
           # Nix Logic
           home-manager.nixosModules.home-manager
-          ./modules/common.nix
-          ./modules/users.nix
+          ./modules/nix-logic/common.nix
+          ./modules/nix-logic/users.nix
           # module to set selectedUsers per-host:
           {
             myUsers.selectedUsers = ["jo" "test"];
           }
 
           # Programs
-          ./programs/desktop/hyprland
-          ./programs/evergreens.nix
-          ./programs/cli/yazi
-          ./programs/shell/zsh
-          ./programs/shell/fish
-          ./programs/terminal/kitty
-          ./programs/browser/firefox
-          ./programs/media/steam
-          ./programs/ide/vscodium
+          ./modules/programs/desktop/gnome
+          ./modules/programs/evergreens.nix
+          ./modules/programs/cli/yazi
+          ./modules/programs/shell/zsh
+          ./modules/programs/shell/fish
+          ./modules/programs/terminal/kitty
+          ./modules/programs/browser/firefox
+          ./modules/programs/media/steam
+          ./modules/programs/ide/vscodium
         ];
       };
     };
