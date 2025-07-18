@@ -1,70 +1,52 @@
-{
-  self,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
-    gnomeExtensions.just-perfection
-    gnomeExtensions.arc-menu
+    gnome-tweaks
+    gnomeExtensions.user-themes
   ];
+
   gtk = {
     enable = true;
+
+    theme = {
+      name = "Gruvbox-Material-Dark"; # Exakter Name!
+      package = pkgs.gruvbox-gtk-theme;
+    };
 
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
     };
 
-    theme = {
-      name = "Gruvbox-Material-Dark";
-      package = pkgs.gruvbox-material-gtk-theme;
-    };
-
     cursorTheme = {
       name = "Numix-Cursor";
       package = pkgs.numix-cursor-theme;
     };
-
-    gtk3.extraConfig = {
-      Settings = ''
-        gtk-application-prefer-dark-theme=1
-      '';
-    };
-
-    gtk4.extraConfig = {
-      Settings = ''
-        gtk-application-prefer-dark-theme=1
-      '';
-    };
   };
 
-  home.sessionVariables.GTK_THEME = "Gruvbox-Material-Dark";
+  # Nur notwendig, wenn manche X11-Apps das brauchen
+  home.sessionVariables = {
+    GTK_THEME = "Gruvbox-Material-Dark";
+  };
 
-  # ...
-  dconf = {
-    enable = true;
-    settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
-    settings = {
-      "org/gnome/shell" = {
-        disable-user-extensions = false; # enables user extensions
-        enabled-extensions = [
-          # Put UUIDs of extensions that you want to enable here.
-          # If the extension you want to enable is packaged in nixpkgs,
-          # you can easily get its UUID by accessing its extensionUuid
-          # field (look at the following example).
-          pkgs.gnomeExtensions.gsconnect.extensionUuid
+  dconf.enable = true;
 
-          # Alternatively, you can manually pass UUID as a string.
-          # "blur-my-shell@aunetx"
-          # ...
-        ];
-      };
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+      gtk-theme = "Gruvbox-Material-Dark"; # Wichtig für GNOME selbst
+      icon-theme = "Papirus-Dark";
+      cursor-theme = "Numix-Cursor";
+    };
 
-      # # Configure individual extensions
-      # "org/gnome/shell/extensions/blur-my-shell" = {
-      #   brightness = 0.75;
-      #   noise-amount = 0;
-      # };
+    "org/gnome/shell/extensions/user-theme" = {
+      name = "Gruvbox-Material-Dark"; # Für Shell-Theming
+    };
+
+    "org/gnome/shell" = {
+      disable-user-extensions = false;
+      enabled-extensions = [
+        pkgs.gnomeExtensions.user-themes.extensionUuid
+      ];
     };
   };
 }
