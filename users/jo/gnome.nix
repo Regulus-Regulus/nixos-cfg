@@ -19,8 +19,8 @@
     };
 
     theme = {
-      name = "palenight";
-      package = pkgs.palenight-theme;
+      name = "gruvbox-material";
+      package = pkgs.gruvbox-material-gtk-theme;
     };
 
     cursorTheme = {
