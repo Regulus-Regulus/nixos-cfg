@@ -1,10 +1,10 @@
 {pkgs, ...}: let
-  gruvboxTheme = pkgs.gruvbox-gtk-theme.overrideAttrs (oldAttrs: {
+  gruvboxCustom = pkgs.gruvbox-gtk-theme.override {
     colorVariants = ["dark"]; # dark, light
     sizeVariants = ["standard"]; # compact, standard
     themeVariants = ["pink"]; # default, green, grey, orange, pink, purple, red, teal, yellow, all
     tweakVariants = ["medium"]; # medium, soft, black, float, outline, macos
-  });
+  };
 in {
   home.packages = with pkgs; [
     gnome-tweaks
@@ -16,7 +16,7 @@ in {
 
     theme = {
       name = "Gruvbox-dark-standard-pink-medium"; # Gruvbox-<Color>-<Size>-<Theme>-<Tweak>
-      package = gruvboxTheme;
+      package = gruvboxCustom;
     };
 
     iconTheme = {
