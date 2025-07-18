@@ -5,6 +5,9 @@
   hostConfigName,
   ...
 }: {
+  import = [
+    ./gnome.nix
+  ];
   homeSettings = {
     home = {
       username = "jo";
