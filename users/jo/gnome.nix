@@ -15,7 +15,7 @@ in {
     enable = true;
 
     theme = {
-      name = "Gruvbox-Dark-Standard-Pink-Medium"; # Gruvbox-<Color>-<Size>-<Theme>-<Tweak>
+      name = "Gruvbox-dark-standard-pink-medium"; # Gruvbox-<Color>-<Size>-<Theme>-<Tweak>
       package = gruvboxTheme;
     };
 
@@ -31,7 +31,7 @@ in {
   };
 
   home.sessionVariables = {
-    GTK_THEME = "Gruvbox-Dark-Standard-Pink-Medium";
+    GTK_THEME = "Gruvbox-dark-standard-pink-medium";
   };
 
   dconf.enable = true;
@@ -39,13 +39,13 @@ in {
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
-      gtk-theme = "Gruvbox-Dark-Standard-Pink-Medium";
+      gtk-theme = "Gruvbox-dark-standard-pink-medium";
       icon-theme = "Papirus-Dark";
       cursor-theme = "Numix-Cursor";
     };
 
     "org/gnome/shell/extensions/user-theme" = {
-      name = "Gruvbox-Dark-Standard-Pink-Medium";
+      name = "Gruvbox-dark-standard-pink-medium";
     };
 
     "org/gnome/shell" = {
