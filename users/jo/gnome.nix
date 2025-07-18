@@ -1,11 +1,4 @@
-{pkgs, ...}: let
-  gruvboxCustom = pkgs.gruvbox-gtk-theme.override {
-    colorVariants = ["dark"]; # dark, light
-    sizeVariants = ["standard"]; # compact, standard
-    themeVariants = ["pink"]; # default, green, grey, orange, pink, purple, red, teal, yellow, all
-    tweakVariants = ["medium"]; # medium, soft, black, float, outline, macos
-  };
-in {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     gnome-tweaks
     gnomeExtensions.user-themes
@@ -15,8 +8,8 @@ in {
     enable = true;
 
     theme = {
-      name = "Gruvbox-dark-standard-pink-medium"; # Gruvbox-<Color>-<Size>-<Theme>-<Tweak>
-      package = gruvboxCustom;
+      name = "Gruvbox-dark";
+      package = pkgs.gruvbox-gtk-theme;
     };
 
     iconTheme = {
@@ -31,7 +24,7 @@ in {
   };
 
   home.sessionVariables = {
-    GTK_THEME = "Gruvbox-dark-standard-pink-medium";
+    GTK_THEME = "Gruvbox-dark";
   };
 
   dconf.enable = true;
@@ -39,13 +32,13 @@ in {
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
-      gtk-theme = "Gruvbox-dark-standard-pink-medium";
+      gtk-theme = "Gruvbox-dark";
       icon-theme = "Papirus-Dark";
       cursor-theme = "Numix-Cursor";
     };
 
     "org/gnome/shell/extensions/user-theme" = {
-      name = "Gruvbox-dark-standard-pink-medium";
+      name = "Gruvbox-dark";
     };
 
     "org/gnome/shell" = {
