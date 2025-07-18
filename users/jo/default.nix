@@ -5,10 +5,10 @@
   hostConfigName,
   ...
 }: {
-  import = [
-    ./gnome.nix
-  ];
   homeSettings = {
+    imports = [
+      ./gnome.nix
+    ];
     home = {
       username = "jo";
       homeDirectory = "/home/jo";

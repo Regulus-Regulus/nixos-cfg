@@ -3,14 +3,11 @@
   pkgs,
   ...
 }: {
-  environment.systemPackages = with pkgs; [
-    # gnomeExtensions.blur-my-shell
+  home.packages = with pkgs; [
     gnomeExtensions.just-perfection
     gnomeExtensions.arc-menu
   ];
-  # ...
-
-  options.gtk = {
+  gtk = {
     enable = true;
 
     iconTheme = {
@@ -41,7 +38,7 @@
     };
   };
 
-  home.sessionVariables.GTK_THEME = "palenight";
+  home.sessionVariables.GTK_THEME = "gruvbox-material";
 
   # ...
   dconf = {
