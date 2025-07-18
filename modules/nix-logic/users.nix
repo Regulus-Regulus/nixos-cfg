@@ -11,7 +11,7 @@ with lib; let
     map (
       username: {
         name = username;
-        value = import ../../users/${username}.nix {inherit pkgs config lib hostConfigName;};
+        value = import ../../users/${username} {inherit pkgs config lib hostConfigName;};
       }
     )
     selectedUsers;
