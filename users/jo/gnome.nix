@@ -10,7 +10,7 @@
   ];
   # ...
 
-  gtk = {
+  options.gtk = {
     enable = true;
 
     iconTheme = {
