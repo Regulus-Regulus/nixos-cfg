@@ -18,7 +18,7 @@
           env EGL_PLATFORM=wayland
           env LIBGL_ALWAYS_INDIRECT=1
         '';
-        shellIntegration.enableFishIntegration = true;
+        shellIntegration.enableZshIntegration = true;
         themeFile = "gruvbox-dark-hard";
         settings = {
           confirm_os_window_close = 0;
