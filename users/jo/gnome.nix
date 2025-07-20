@@ -7,10 +7,10 @@
   gtk = {
     enable = true;
 
-    theme = {
-      name = "Gruvbox-Dark";
-      package = pkgs.gruvbox-gtk-theme;
-    };
+    # theme = {
+    #   name = "n";
+    #   package = pkgs.gruvbox-gtk-theme;
+    # };
 
     iconTheme = {
       name = "Papirus-Dark";
@@ -23,23 +23,23 @@
     };
   };
 
-  home.sessionVariables = {
-    GTK_THEME = "Gruvbox-Dark";
-  };
+  # home.sessionVariables = {
+  #   GTK_THEME = "Gruvbox-Dark";
+  # };
 
   dconf.enable = true;
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
-      gtk-theme = "Gruvbox-Dark";
+      gtk-theme = "Nordic";
       icon-theme = "Papirus-Dark";
       cursor-theme = "Numix-Cursor";
     };
 
-    "org/gnome/shell/extensions/user-theme" = {
-      name = "Gruvbox-dark";
-    };
+    # "org/gnome/shell/extensions/user-theme" = {
+    #   name = "Gruvbox-dark";
+    # };
 
     "org/gnome/shell" = {
       disable-user-extensions = false;
