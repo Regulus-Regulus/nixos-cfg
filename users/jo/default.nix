@@ -10,6 +10,9 @@
       ./gnome.nix
     ];
     home = {
+      sessionVariables = {
+        DEFAULT_REBUILD_HOST = "laptop";
+      };
       username = "jo";
       homeDirectory = "/home/jo";
       stateVersion = "24.11";

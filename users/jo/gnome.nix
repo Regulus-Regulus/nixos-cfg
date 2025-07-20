@@ -2,6 +2,7 @@
   home.packages = with pkgs; [
     gnome-tweaks
     gnomeExtensions.user-themes
+    gnomeExtensions.paperwm
   ];
 
   gtk = {
@@ -88,6 +89,8 @@
       move-to-workspace-10 = ["<Super><Alt>0"];
       move-to-workspace-right = ["<Super><Alt>Right"];
       move-to-workspace-left = ["<Super><Alt>Left"];
+      move-to-side-w = [];
+      move-to-side-e = [];
     };
 
     "org/gnome/mutter" = {
@@ -110,6 +113,7 @@
       disable-user-extensions = false;
       enabled-extensions = [
         pkgs.gnomeExtensions.user-themes.extensionUuid
+        pkgs.gnomeExtensions.paperwm.extensionUuid
       ];
     };
   };
