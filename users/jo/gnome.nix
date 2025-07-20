@@ -73,6 +73,26 @@
       custom-keybindings = builtins.map (name: "/${cbPrefix}/${name}/") (builtins.attrNames customBindings);
     };
 
+    "org/gnome/desktop/wm/keybindings" = {
+      move-to-workspace-left = [];
+      move-to-workspace-right = [];
+      move-to-workspace-up = [];
+      move-to-workspace-down = [];
+
+      switch-to-workspace-up = [];
+      switch-to-workspace-down = [];
+      switch-to-workspace-left = [];
+      switch-to-workspace-right = [];
+
+      # Window movement
+      move-left = [];
+      move-right = [];
+    };
+
+    "org/gnome/shell/keybindings" = {
+      toggle-overview = []; # unbinds <Super>s
+    };
+
     # "org/gnome/shell/extensions/user-theme" = {
     #   name = "Gruvbox-dark";
     # };
