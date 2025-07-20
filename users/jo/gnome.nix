@@ -63,10 +63,12 @@
       cursor-theme = "Numix-Cursor";
     };
 
-    "org/gnome/desktop/wm/preferences" = {
-      num-workspaces = 10;
+    "org/gnome/shell/extensions/paperwm" = {
+      "switch-down-workspace" = "<Super>s";
+      "switch-up-workspace" = "<Super>w";
+      "switch-right" = "<Super>d";
+      "switch-left" = "<Super>a";
     };
-
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings = builtins.map (name: "/${cbPrefix}/${name}/") (builtins.attrNames customBindings);
     };
