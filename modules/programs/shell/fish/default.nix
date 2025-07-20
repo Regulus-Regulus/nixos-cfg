@@ -4,12 +4,12 @@
   lib,
   ...
 }: {
-  programs.fish.enable = true;
+  programs.fish.enable = false;
 
   home-manager.sharedModules = [
     (_: {
       programs.fish = {
-        enable = true;
+        enable = false;
         shellAbbrs = {
           vim = "nvim";
         };

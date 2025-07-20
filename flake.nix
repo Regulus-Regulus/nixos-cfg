@@ -47,7 +47,7 @@
           # Programs
           ./modules/programs/desktop/gnome
           ./modules/programs/evergreens.nix
-          ./modules/programs/cli/yazi
+          # ./modules/programs/cli/yazi
           ./modules/programs/shell/zsh
           ./modules/programs/shell/fish
           ./modules/programs/terminal/kitty

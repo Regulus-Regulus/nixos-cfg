@@ -48,11 +48,11 @@
       home-manager.enable = true;
 
       fish = {
-        enable = true;
+        enable = false;
       };
 
       zsh = {
-        enable = false;
+        enable = true;
         # Overrides und Ergänzungen zum Default:
         shellAliases = {
           # z.B. eigene Aliase, die zum Default hinzukommen
@@ -68,7 +68,7 @@
 
   systemSettings = {
     isNormalUser = true;
-    shell = pkgs.fish;
+    shell = pkgs.zsh;
     extraGroups = ["wheel"];
   };
 }

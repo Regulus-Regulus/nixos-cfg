@@ -8,7 +8,7 @@
     enable = true;
 
     theme = {
-      name = "Gruvbox-dark";
+      name = "Gruvbox-Dark";
       package = pkgs.gruvbox-gtk-theme;
     };
 
@@ -24,7 +24,7 @@
   };
 
   home.sessionVariables = {
-    GTK_THEME = "Gruvbox-dark";
+    GTK_THEME = "Gruvbox-Dark";
   };
 
   dconf.enable = true;
@@ -32,7 +32,7 @@
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
-      gtk-theme = "Gruvbox-dark";
+      gtk-theme = "Gruvbox-Dark";
       icon-theme = "Papirus-Dark";
       cursor-theme = "Numix-Cursor";
     };

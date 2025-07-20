@@ -9,6 +9,7 @@
 
   environment.systemPackages = with pkgs; [
     gruvbox-gtk-theme
+    # themechanger
     # gnomeExtensions.blur-my-shell
     # gnomeExtensions.just-perfection
     # gnomeExtensions.arc-menu
