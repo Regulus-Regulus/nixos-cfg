@@ -8,7 +8,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     alejandra.url = "github:kamadorueda/alejandra/4.0.0";
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -18,6 +21,7 @@
     nixpkgs,
     home-manager,
     alejandra,
+    stylix,
     ...
   } @ inputs: let
     system = "x86_64-linux";
