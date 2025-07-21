@@ -9,6 +9,7 @@
     imports = [
       ./gnome.nix
       ./hyfetch.nix
+      ./stylix.nix
     ];
     home = {
       sessionVariables = {
