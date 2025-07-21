@@ -21,6 +21,7 @@
     polarity = "dark";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
     targets.grub.enable = true;
+    targets.gnome.enable = true;
     fonts = {
       serif = {
         package = pkgs.dejavu_fonts;
