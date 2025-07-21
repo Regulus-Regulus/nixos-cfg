@@ -27,9 +27,9 @@
     };
   };
 
-  # home.sessionVariables = {
-  #   GTK_THEME = "Gruvbox-Dark";
-  # };
+  home.sessionVariables = {
+    GTK_THEME = "Gruvbox-Dark";
+  };
 
   dconf.enable = true;
 
