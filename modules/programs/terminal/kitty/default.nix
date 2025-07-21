@@ -4,10 +4,6 @@
     (_: {
       programs.kitty = {
         enable = true;
-        font = {
-          name = "Maple Mono";
-          size = 12.0;
-        };
         extraConfig = ''
           font_features MapleMono-Regular +ss01 +ss02 +ss04
           font_features MapleMono-Bold +ss01 +ss02 +ss04
@@ -22,7 +18,6 @@
         themeFile = "gruvbox-dark-hard";
         settings = {
           confirm_os_window_close = 0;
-          background_opacity = "1";
           scrollback_lines = 10000;
           enable_audio_bell = false;
           mouse_hide_wait = 60;

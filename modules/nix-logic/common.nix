@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  boot.loader.systemd-boot.configurationLimit = 10;
+  boot.loader.systemd-boot.configurationLimit = 20;
   nix.gc.dates = "weekly";
   nix.gc.automatic = true;
 

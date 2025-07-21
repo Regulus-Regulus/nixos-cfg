@@ -41,6 +41,7 @@
 
           # Nix Logic
           home-manager.nixosModules.home-manager
+          inputs.stylix.nixosModules.stylix
           ./modules/nix-logic/common.nix
           ./modules/nix-logic/users.nix
           # module to set selectedUsers per-host:

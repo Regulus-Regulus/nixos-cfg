@@ -43,8 +43,6 @@ in {
 
         # VS Code user settings.json overrides
         profiles.default.userSettings = {
-          "editor.fontFamily" = "Fira Code, monospace";
-          "editor.fontLigatures" = true;
           "editor.insertSpaces" = true;
           "editor.tabSize" = 2;
           "files.autoSave" = "onFocusChange";
@@ -56,8 +54,6 @@ in {
           "markdown.updateLinksOnFileMove.enabled" = true;
           "explorer.confirmDragAndDrop" = false;
           "explorer.confirmDelete" = false;
-          "workbench.colorTheme" = "Gruvbox Dark Hard";
-          "workbench.iconTheme" = "gruvbox-material-icon-theme";
         };
 
         # Optional keybindings overrides
