@@ -8,10 +8,10 @@
   gtk = {
     enable = true;
 
-    # theme = {
-    #   name = "n";
-    #   package = pkgs.gruvbox-gtk-theme;
-    # };
+    theme = {
+      name = "Gruvbox-Dark";
+      package = pkgs.gruvbox-gtk-theme;
+    };
 
     iconTheme = {
       name = "Papirus-Dark";
@@ -58,7 +58,7 @@
   in {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
-      gtk-theme = "Nordic";
+      gtk-theme = "Gruvbox-Dark";
       icon-theme = "Papirus-Dark";
       cursor-theme = "Numix-Cursor";
     };
