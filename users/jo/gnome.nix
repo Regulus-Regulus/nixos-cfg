@@ -7,7 +7,10 @@
 
   gtk = {
     enable = true;
-
+    gtk4.theme = {
+      name = "Gruvbox-Dark";
+      package = pkgs.gruvbox-gtk-theme;
+    };
     theme = {
       name = "Gruvbox-Dark";
       package = pkgs.gruvbox-gtk-theme;
