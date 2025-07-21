@@ -8,6 +8,7 @@
   homeSettings = {
     imports = [
       ./gnome.nix
+      ./hyfetch.nix
     ];
     home = {
       sessionVariables = {
