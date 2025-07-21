@@ -22,7 +22,6 @@
     vulkan-loader
     vulkan-validation-layers
     mesa
-    mesa.drivers
     gamemode
     mangohud
   ];
