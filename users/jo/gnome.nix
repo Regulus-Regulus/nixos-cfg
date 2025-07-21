@@ -7,14 +7,6 @@
 
   gtk = {
     enable = true;
-    gtk4.theme = {
-      name = "Gruvbox-Dark";
-      package = pkgs.gruvbox-gtk-theme;
-    };
-    theme = {
-      name = "Gruvbox-Dark";
-      package = pkgs.gruvbox-gtk-theme;
-    };
 
     iconTheme = {
       name = "Papirus-Dark";
@@ -25,10 +17,6 @@
       name = "Numix-Cursor";
       package = pkgs.numix-cursor-theme;
     };
-  };
-
-  home.sessionVariables = {
-    GTK_THEME = "Gruvbox-Dark";
   };
 
   dconf.enable = true;
@@ -61,7 +49,6 @@
   in {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
-      gtk-theme = "Gruvbox-Dark";
       icon-theme = "Papirus-Dark";
       cursor-theme = "Numix-Cursor";
     };
