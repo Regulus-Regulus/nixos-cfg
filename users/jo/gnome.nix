@@ -5,19 +5,19 @@
     gnomeExtensions.paperwm
   ];
 
-  gtk = {
-    enable = true;
+  # gtk = {
+  #   enable = true;
 
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
+  #   iconTheme = {
+  #     name = "Papirus-Dark";
+  #     package = pkgs.papirus-icon-theme;
+  #   };
 
-    cursorTheme = {
-      name = "Numix-Cursor";
-      package = pkgs.numix-cursor-theme;
-    };
-  };
+  #   cursorTheme = {
+  #     name = "Numix-Cursor";
+  #     package = pkgs.numix-cursor-theme;
+  #   };
+  # };
 
   dconf.enable = true;
 
