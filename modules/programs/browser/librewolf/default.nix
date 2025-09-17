@@ -21,7 +21,7 @@
           DisableFirefoxStudies = true;
           ExtensionSettings = {
             # Ecosia
-            "	{d04b0b40-3dab-4f0b-97a6-04ec3eddbfb0}" = {
+            "{d04b0b40-3dab-4f0b-97a6-04ec3eddbfb0}" = {
               install_url = "https://addons.mozilla.org/firefox/downloads/file/4519632/ecosia_the_green_search-latest.xpi";
               installation_mode = "force_installed";
             };
