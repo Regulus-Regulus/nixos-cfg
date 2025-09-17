@@ -57,6 +57,7 @@
           ./modules/programs/shell/fish
           ./modules/programs/terminal/kitty
           ./modules/programs/browser/firefox
+          ./modules/programs/browser/librewolf
           ./modules/programs/media/steam
           ./modules/programs/ide/vscodium
         ];
