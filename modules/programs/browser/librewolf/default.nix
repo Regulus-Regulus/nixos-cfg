@@ -20,9 +20,14 @@
           DisableTelemetry = true;
           DisableFirefoxStudies = true;
           ExtensionSettings = {
+            # Ecosia
+            "	{d04b0b40-3dab-4f0b-97a6-04ec3eddbfb0}" = {
+              install_url = "https://addons.mozilla.org/firefox/downloads/file/4519632/ecosia_the_green_search-latest.xpi";
+              installation_mode = "force_installed";
+            };
             # BitWarden Password Manager
             "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
-              install_url = "https://addons.mozilla.org/firefox/downloads/file/4567044/bitwarden_password_manager-2025.8.2.xpi";
+              install_url = "https://addons.mozilla.org/firefox/downloads/file/4567044/bitwarden_password_manager-latest.xpi";
               installation_mode = "force_installed";
             };
             # uBlock Origin
