@@ -46,7 +46,7 @@
           ./modules/nix-logic/users.nix
           # module to set selectedUsers per-host:
           {
-            myUsers.selectedUsers = ["jo" "test"];
+            myUsers.selectedUsers = ["jo" "test" "katharina"];
           }
 
           # Programs
