@@ -49,6 +49,7 @@
   };
 
   systemSettings = {
+    initialPassword = "Password123!";
     isNormalUser = true;
     shell = pkgs.zsh;
     extraGroups = ["wheel"];
