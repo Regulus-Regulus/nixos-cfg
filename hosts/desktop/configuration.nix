@@ -10,7 +10,7 @@
 }: {
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  hardware.nvidia.modesetting.enable = true;
+  hardware.nvidia.modesetting.enable = false;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

@@ -65,7 +65,7 @@
     };
 
     "org/gnome/desktop/wm/keybindings" = {
-      move-to-workspace-left = "disabled";
+      move-to-workspace-left = [];
       move-to-workspace-right = [];
       move-to-workspace-up = [];
       move-to-workspace-down = [];
@@ -82,7 +82,7 @@
 
     "org/gnome/shell/keybindings" = {
       toggle-overview = []; # unbinds <Super>s
-      toggle-application-view = "disabled"; # unbinds <Super>
+      toggle-application-view = []; # unbinds <Super>
     };
 
     # "org/gnome/shell/extensions/user-theme" = {
