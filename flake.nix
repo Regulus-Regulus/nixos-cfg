@@ -63,40 +63,40 @@
           ./modules/programs/ide/vscodium
         ];
       };
-      # laptop = nixpkgs.lib.nixosSystem {
-      #   specialArgs = {
-      #     inherit inputs;
-      #     hostConfigName = "laptop"; # Defining hostname to allow users to install per-host
-      #   };
+      laptop = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs;
+          hostConfigName = "laptop"; # Defining hostname to allow users to install per-host
+        };
 
-      #   modules = [
-      #     # Host Files
-      #     ./hosts/laptop/configuration.nix
-      #     ./hosts/laptop/hardware-configuration.nix
+        modules = [
+          # Host Files
+          ./hosts/laptop/configuration.nix
+          ./hosts/laptop/hardware-configuration.nix
 
-      #     # Nix Logic
-      #     home-manager.nixosModules.home-manager
-      #     inputs.stylix.nixosModules.stylix
-      #     ./modules/nix-logic/common.nix
-      #     ./modules/nix-logic/users.nix
-      #     # module to set selectedUsers per-host:
-      #     {
-      #       myUsers.selectedUsers = ["jo" "katharina"];
-      #     }
+          # Nix Logic
+          home-manager.nixosModules.home-manager
+          inputs.stylix.nixosModules.stylix
+          ./modules/nix-logic/common.nix
+          ./modules/nix-logic/users.nix
+          # module to set selectedUsers per-host:
+          {
+            myUsers.selectedUsers = ["jo" "katharina"];
+          }
 
-      #     # Programs
-      #     ./modules/programs/desktop/gnome
-      #     ./modules/programs/evergreens.nix
-      #     # ./modules/programs/cli/yazi
-      #     ./modules/programs/shell/zsh
-      #     ./modules/programs/shell/fish
-      #     ./modules/programs/terminal/kitty
-      #     ./modules/programs/browser/firefox
-      #     ./modules/programs/browser/librewolf
-      #     ./modules/programs/media/steam
-      #     ./modules/programs/ide/vscodium
-      #   ];
-      # };
+          # Programs
+          ./modules/programs/desktop/gnome
+          ./modules/programs/evergreens.nix
+          # ./modules/programs/cli/yazi
+          ./modules/programs/shell/zsh
+          ./modules/programs/shell/fish
+          ./modules/programs/terminal/kitty
+          ./modules/programs/browser/firefox
+          ./modules/programs/browser/librewolf
+          ./modules/programs/media/steam
+          ./modules/programs/ide/vscodium
+        ];
+      };
       beamo = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs;
