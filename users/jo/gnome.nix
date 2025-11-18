@@ -35,9 +35,9 @@
       };
 
       firefox = {
-        name = "Firefox";
-        command = "firefox";
-        binding = "<Super>f";
+        name = "Librewolf";
+        command = "librewolf";
+        binding = "<Super>b";
       };
     };
 
@@ -73,7 +73,7 @@
       switch-to-workspace-down = [];
       switch-to-workspace-left = [];
       switch-to-workspace-right = [];
-      show-all-apps = [];
+
       # Window movement
       move-left = [];
       move-right = [];
