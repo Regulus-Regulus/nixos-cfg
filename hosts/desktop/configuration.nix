@@ -8,6 +8,9 @@
   stylix,
   ...
 }: {
+  # To allow building RPI SD Images
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
+
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Load nvidia driver for Xorg and Wayland

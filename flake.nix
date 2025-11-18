@@ -111,6 +111,13 @@
           ./hosts/bmo/configuration.nix
           nixos-hardware.nixosModules.raspberry-pi-5
 
+          # IMPORTANT: Enables config.system.build.sdImage
+          ({modulesPath, ...}: {
+            imports = [
+              "${modulesPath}/installer/sd-card/sd-image-aarch64.nix"
+            ];
+          })
+
           # Nix Logic
           home-manager.nixosModules.home-manager
           inputs.stylix.nixosModules.stylix
@@ -129,7 +136,6 @@
           ./modules/programs/terminal/kitty
           ./modules/programs/browser/firefox
           ./modules/programs/browser/librewolf
-          ./modules/programs/media/steam
           ./modules/programs/ide/vscodium
         ];
       };
