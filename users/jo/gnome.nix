@@ -58,6 +58,7 @@
       "switch-up-workspace" = "<Super>w";
       "switch-right" = "<Super>d";
       "switch-left" = "<Super>a";
+      "restore-keybinds" = "";
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings = builtins.map (name: "/${cbPrefix}/${name}/") (builtins.attrNames customBindings);
