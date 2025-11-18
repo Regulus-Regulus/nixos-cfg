@@ -22,19 +22,19 @@
   dconf.enable = true;
 
   dconf.settings = let
-    cbPrefix = "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings";
+    cbPrefix = "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings";
     makeBinding = name: cfg: {
       "${cbPrefix}/${name}/" = cfg;
     };
 
     customBindings = {
-      kitty = {
+      custom0 = {
         name = "Kitty Terminal";
         command = "kitty";
         binding = "<Ctrl><Alt>t";
       };
 
-      firefox = {
+      custom1 = {
         name = "Librewolf";
         command = "librewolf";
         binding = "<Super>b";
