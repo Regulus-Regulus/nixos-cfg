@@ -53,7 +53,7 @@
       cursor-theme = "Numix-Cursor";
     };
 
-    "org/gnome/shell/extensions/paperwm" = {
+    "org/gnome/shell/extensions/paperwm/keybindings" = {
       "switch-down-workspace" = "<Super>s";
       "switch-up-workspace" = "<Super>w";
       "switch-right" = "<Super>d";
