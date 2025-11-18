@@ -65,7 +65,7 @@
     };
 
     "org/gnome/desktop/wm/keybindings" = {
-      move-to-workspace-left = [];
+      move-to-workspace-left = "disabled";
       move-to-workspace-right = [];
       move-to-workspace-up = [];
       move-to-workspace-down = [];
