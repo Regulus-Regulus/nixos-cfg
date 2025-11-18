@@ -20,7 +20,6 @@
         builtins.concatLists [
           # Always install
           [
-            discord
             iw
             gnupg
             thunderbird
@@ -30,6 +29,7 @@
           (lib.optionals (hostConfigName == "laptop") [
             nmap
             wireshark
+            discord
             # hydra
             # nikto
             # amass
@@ -42,7 +42,8 @@
 
           # Only desktop
           (lib.optionals (hostConfigName == "desktop") [
-            ])
+            discord
+          ])
         ];
     };
 

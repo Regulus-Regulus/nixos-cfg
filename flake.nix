@@ -100,15 +100,16 @@
           ./modules/programs/ide/vscodium
         ];
       };
-      beamo = nixpkgs.lib.nixosSystem {
+      bmo = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
         specialArgs = {
           inherit inputs;
-          hostConfigName = "beamo"; # Defining hostname to allow users to install per-host
+          hostConfigName = "bmo"; # Defining hostname to allow users to install per-host
         };
         modules = [
           # Host Files
-          ./hosts/beamo/configuration.nix
-          nixos-hardware.nixosModules.raspberry-pi-4
+          ./hosts/bmo/configuration.nix
+          nixos-hardware.nixosModules.raspberry-pi-5
 
           # Nix Logic
           home-manager.nixosModules.home-manager
@@ -117,7 +118,7 @@
           ./modules/nix-logic/users.nix
           # module to set selectedUsers per-host:
           {
-            myUsers.selectedUsers = ["admin" "jo" "katharina"];
+            myUsers.selectedUsers = ["jo" "katharina"];
           }
 
           # Programs
@@ -125,7 +126,6 @@
           ./modules/programs/evergreens.nix
           # ./modules/programs/cli/yazi
           ./modules/programs/shell/zsh
-          ./modules/programs/shell/fish
           ./modules/programs/terminal/kitty
           ./modules/programs/browser/firefox
           ./modules/programs/browser/librewolf
