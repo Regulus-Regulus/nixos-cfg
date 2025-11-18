@@ -47,11 +47,11 @@
         acc // (makeBinding name (customBindings.${name}))
     ) {} (builtins.attrNames customBindings);
   in {
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-      icon-theme = "Papirus-Dark";
-      cursor-theme = "Numix-Cursor";
-    };
+    # "org/gnome/desktop/interface" = {
+    #   color-scheme = "prefer-dark";
+    #   icon-theme = "Papirus-Dark";
+    #   cursor-theme = "Numix-Cursor";
+    # };
 
     "org/gnome/shell/extensions/paperwm/keybindings" = {
       "switch-down-workspace" = "<Super>s";
