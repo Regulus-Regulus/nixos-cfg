@@ -81,6 +81,7 @@
 
     "org/gnome/shell/keybindings" = {
       toggle-overview = []; # unbinds <Super>s
+      toggle-application-view = []; # unbinds <Super>
     };
 
     # "org/gnome/shell/extensions/user-theme" = {
