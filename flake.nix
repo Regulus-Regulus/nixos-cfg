@@ -12,6 +12,10 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     alejandra.url = "github:kamadorueda/alejandra/4.0.0";
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -24,12 +28,10 @@
     alejandra,
     stylix,
     ...
-  } @ inputs: let
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
-  in {
+  } @ inputs: {
     nixosConfigurations = {
       desktop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
         specialArgs = {
           inherit inputs;
           hostConfigName = "desktop"; # Defining hostname to allow users to install per-host
@@ -64,6 +66,7 @@
         ];
       };
       laptop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
         specialArgs = {
           inherit inputs;
           hostConfigName = "laptop"; # Defining hostname to allow users to install per-host
