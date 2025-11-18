@@ -73,7 +73,7 @@
       switch-to-workspace-down = [];
       switch-to-workspace-left = [];
       switch-to-workspace-right = [];
-
+      show-all-apps = [];
       # Window movement
       move-left = [];
       move-right = [];
