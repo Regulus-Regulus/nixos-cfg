@@ -22,7 +22,7 @@
   dconf.enable = true;
 
   dconf.settings = let
-    cbPrefix = "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings";
+    cbPrefix = "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings";
     makeBinding = name: cfg: {
       "${cbPrefix}/${name}/" = cfg;
     };
