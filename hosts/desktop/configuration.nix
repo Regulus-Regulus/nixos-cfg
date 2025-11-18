@@ -5,6 +5,7 @@
   config,
   pkgs,
   inputs,
+  stylix,
   ...
 }: {
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -13,9 +14,36 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "rr-desktop"; # Define your hostname.
+  networking.hostName = "rr-laptop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  stylix = {
+    enable = true;
+    polarity = "dark";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+    targets.grub.enable = true;
+    targets.gnome.enable = true;
+    fonts = {
+      serif = {
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Serif";
+      };
 
+      sansSerif = {
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Sans";
+      };
+
+      monospace = {
+        package = pkgs.maple-mono.NF;
+        name = "Maple Mono";
+      };
+
+      emoji = {
+        package = pkgs.noto-fonts-emoji;
+        name = "Noto Color Emoji";
+      };
+    };
+  };
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -44,15 +72,25 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "de";
     variant = "deadacute";
   };
+
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  # Enable CUPS to print documents.
+  services.blueman.enable = true;
+  # # Session-Datei für Hyprland hinzufügen (damit GDM es sieht)
+  # systemd.services.hyprland-session = {
+  #   description = "Hyprland Wayland Session";
+  #   wantedBy = ["graphical-session.target"];
+  #   serviceConfig = {
+  #     ExecStart = "${pkgs.hyprland}/bin/hyprland";
+  #     Restart = "on-failure";
+  #   };
+  # };
 
   # Configure console keymap
   console.keyMap = "de";
@@ -78,15 +116,6 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    #  wget
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
