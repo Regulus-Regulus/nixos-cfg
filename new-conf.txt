@@ -52,13 +52,19 @@ icon-theme='Papirus-Dark'
 monospace-font-name='Maple Mono 12'
 
 [org/gnome/desktop/notifications]
-application-children=['gnome-power-panel', 'org-gnome-nautilus']
+application-children=['gnome-power-panel', 'org-gnome-nautilus', 'discord']
+
+[org/gnome/desktop/notifications/application/discord]
+application-id='discord.desktop'
 
 [org/gnome/desktop/notifications/application/gnome-power-panel]
 application-id='gnome-power-panel.desktop'
 
 [org/gnome/desktop/notifications/application/org-gnome-nautilus]
 application-id='org.gnome.Nautilus.desktop'
+
+[org/gnome/desktop/peripherals/keyboard]
+numlock-state=true
 
 [org/gnome/desktop/wm/keybindings]
 maximize=@as []
@@ -120,6 +126,16 @@ night-light-schedule-automatic=false
 custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']
 rotate-video-lock-static=@as []
 
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
+binding='<Ctrl><Alt>t'
+command='kitty'
+name='Kitty Terminal'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1]
+binding='<Super>b'
+command='librewolf'
+name='Librewolf'
+
 [org/gnome/shell]
 disable-user-extensions=false
 disabled-extensions=@as []
@@ -131,7 +147,7 @@ gesture-horizontal-fingers=4
 last-used-display-server='Wayland'
 restore-attach-modal-dialogs='true'
 restore-edge-tiling='true'
-restore-keybinds='{}'
+restore-keybinds='{"move-to-workspace-left":{"bind":"[\\"<Super><Shift>Page_Up\\",\\"<Super><Shift><Alt>Left\\",\\"<Control><Shift><Alt>Left\\"]","schema_id":"org.gnome.desktop.wm.keybindings"}}'
 restore-workspaces-only-on-primary='true'
 selection-border-size=8
 

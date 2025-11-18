@@ -30,11 +30,10 @@
       };
 
       "org/gnome/shell/extensions/paperwm/keybindings" = {
-        "switch-down-workspace" = "<Super>s";
-        "switch-up-workspace" = "<Super>w";
-        "switch-right" = "<Super>d";
-        "switch-left" = "<Super>a";
-        "restore-keybinds" = "";
+        "switch-down-workspace" = ["<Super>s"];
+        "switch-up-workspace" = ["<Super>w"];
+        "switch-right" = ["<Super>d"];
+        "switch-left" = ["<Super>a"];
       };
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
         name = "Kitty Terminal";
@@ -48,10 +47,17 @@
         binding = "<Super>b";
       };
 
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
+        name = "VSCodium";
+        command = "vscodium";
+        binding = "<Super>c";
+      };
+
       "org/gnome/settings-daemon/plugins/media-keys" = {
         custom-keybindings = [
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
         ];
       };
 
