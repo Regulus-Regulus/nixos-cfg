@@ -139,6 +139,45 @@
           ./modules/programs/ide/vscodium
         ];
       };
+      HELPeR = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+        specialArgs = {
+          inherit inputs;
+          hostConfigName = "HELPeR"; # Defining hostname to allow users to install per-host
+        };
+        modules = [
+          # Host Files
+          ./hosts/HELPeR/configuration.nix
+          nixos-hardware.nixosModules.raspberry-pi-4
+
+          # IMPORTANT: Enables config.system.build.sdImage
+          ({modulesPath, ...}: {
+            imports = [
+              "${modulesPath}/installer/sd-card/sd-image-aarch64.nix"
+            ];
+          })
+
+          # Nix Logic
+          home-manager.nixosModules.home-manager
+          inputs.stylix.nixosModules.stylix
+          ./modules/nix-logic/common.nix
+          ./modules/nix-logic/users.nix
+          # module to set selectedUsers per-host:
+          {
+            myUsers.selectedUsers = ["jo"];
+          }
+
+          ./modules/programs/virtualisation/podman
+          # Programs
+          ./modules/programs/evergreens.nix
+          # ./modules/programs/cli/yazi
+          ./modules/programs/shell/zsh
+          ./modules/programs/terminal/kitty
+          ./modules/programs/browser/firefox
+          ./modules/programs/browser/librewolf
+          ./modules/programs/ide/vscodium
+        ];
+      };
     };
   };
 }
