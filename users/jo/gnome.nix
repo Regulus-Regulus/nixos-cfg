@@ -36,6 +36,7 @@
         "switch-left" = ["<Super>a"];
         "move-down-workspace" = ["<Ctrl><Super>s"];
         "move-up-workspace" = ["<Ctrl><Super>w"];
+        "center-horizontally" = [];
       };
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
         name = "Kitty Terminal";
