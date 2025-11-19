@@ -15,6 +15,7 @@
 
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
+  nix.settings.trusted-users = ["jo"];
 
   hardware.nvidia = {
     # Modesetting is required.
