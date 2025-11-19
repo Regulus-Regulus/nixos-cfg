@@ -16,6 +16,7 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-raspberrypi.url = "github:nvmd/nixos-raspberrypi/main";
     alejandra.url = "github:kamadorueda/alejandra/4.0.0";
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -25,6 +26,7 @@
     nixpkgs,
     home-manager,
     nixos-hardware,
+    nixos-raspberrypi,
     alejandra,
     stylix,
     ...

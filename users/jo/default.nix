@@ -23,6 +23,7 @@
             iw
             gnupg
             thunderbird
+            wget
           ]
 
           # Just on the laptop

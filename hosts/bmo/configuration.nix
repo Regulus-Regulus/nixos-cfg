@@ -11,16 +11,20 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # These options make the sd card image build faster
-  sdImage.compressImage = false;
+  nixpkgs.sdImage.compressImage = false;
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = false;
-  boot.loader.efi.canTouchEfiVariables = true;
-  # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
-  boot.loader.grub.enable = false;
-  # Enables the generation of /boot/extlinux/extlinux.conf
-  boot.loader.generic-extlinux-compatible.enable = true;
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # Raspberry Pi 5 bootloader
+  boot.loader = {
+    grub.enable = false;
+    systemd-boot.enable = false;
+    efi.canTouchEfiVariables = false;
+
+    # The RPi-specific bootloader (U-Boot + firmware)
+    raspberryPi.enable = true;
+    raspberryPi.version = 5;
+  };
+  boot.kernelPackages = pkgs.linuxPackages_rpi5;
+
   stylix = {
     enable = true;
     polarity = "dark";
@@ -52,8 +56,10 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "bmo";
+    networkmanager.enable = true;
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -119,24 +125,24 @@
   };
 
   # networking config. important for ssh!
-  networking = {
-    hostName = "beamo";
-    interfaces.end0 = {
-      ipv4.addresses = [
-        {
-          address = "192.168.1.42";
-          prefixLength = 24;
-        }
-      ];
-    };
-    defaultGateway = {
-      address = "192.168.0.1"; # or whichever IP your router is
-      interface = "end0";
-    };
-    nameservers = [
-      "192.168.0.1" # or whichever DNS server you want to use
-    ];
-  };
+  # networking = {
+  #   hostName = "beamo";
+  #   interfaces.end0 = {
+  #     ipv4.addresses = [
+  #       {
+  #         address = "192.168.1.42";
+  #         prefixLength = 24;
+  #       }
+  #     ];
+  #   };
+  #   defaultGateway = {
+  #     address = "192.168.0.1"; # or whichever IP your router is
+  #     interface = "end0";
+  #   };
+  #   nameservers = [
+  #     "192.168.0.1" # or whichever DNS server you want to use
+  #   ];
+  # };
 
   services.openssh = {
     enable = true;

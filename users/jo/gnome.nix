@@ -29,6 +29,7 @@
         cursor-theme = "Numix-Cursor";
       };
 
+      # https://github.com/paperwm/PaperWM/blob/3be8a508470a319be343c4f7171a44c69b6105a8/prefsKeybinding.js#L74
       "org/gnome/shell/extensions/paperwm/keybindings" = {
         "switch-down-workspace" = ["<Super>s"];
         "switch-up-workspace" = ["<Super>w"];
