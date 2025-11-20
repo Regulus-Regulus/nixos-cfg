@@ -23,7 +23,6 @@
         oh-my-zsh = {
           enable = true;
           plugins = ["git" "gitignore" "z"];
-          theme = "gruvbox";
         };
 
         initExtra = ''
