@@ -69,7 +69,9 @@
       };
     };
   };
-  openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBgie5aHSr0ikC8xqW+7nPjFKlDcrwPsZv6EOwtMM3eR jo key"];
+  openssh.authorizedKeys.keys = [ 
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBgie5aHSr0ikC8xqW+7nPjFKlDcrwPsZv6EOwtMM3eR jo key" # Helper 
+    ];
   systemSettings = {
     isNormalUser = true;
     shell = pkgs.zsh;

@@ -169,13 +169,8 @@
 
           ./modules/programs/virtualisation/podman
           # Programs
-          ./modules/programs/evergreens.nix
           # ./modules/programs/cli/yazi
           ./modules/programs/shell/zsh
-          ./modules/programs/terminal/kitty
-          ./modules/programs/browser/firefox
-          ./modules/programs/browser/librewolf
-          ./modules/programs/ide/vscodium
         ];
       };
     };

@@ -68,7 +68,16 @@
   #     Restart = "on-failure";
   #   };
   # };
-
+  environment.systemPackages = with pkgs; [
+    git # git!
+    ripgrep # Better grep
+    ripgrep-all #ripgrep, but also searches pdfs, office, ebooks etc
+    fd # Better find
+    bat # Better cat
+    eza # better ls
+    hyperfine # Benchmarking tool
+    fselect # find with SQL queries
+  ];
   # Configure console keymap
   console.keyMap = "de";
 
@@ -93,7 +102,7 @@
 
   # networking config. important for ssh!
   networking = {
-    hostName = "H.E.L.P.eR";
+    hostName = "HELPeR";
     interfaces.end0 = {
       ipv4.addresses = [
         {
