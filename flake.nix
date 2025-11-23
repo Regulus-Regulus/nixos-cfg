@@ -148,14 +148,8 @@
         modules = [
           # Host Files
           ./hosts/HELPeR/configuration.nix
-          nixos-hardware.nixosModules.raspberry-pi-4
-
-          # IMPORTANT: Enables config.system.build.sdImage
-          ({modulesPath, ...}: {
-            imports = [
-              "${modulesPath}/installer/sd-card/sd-image-aarch64.nix"
-            ];
-          })
+          ./hosts/HELPeR/hardware-configuration.nix
+          #nixos-hardware.nixosModules.raspberry-pi-4
 
           # Nix Logic
           home-manager.nixosModules.home-manager

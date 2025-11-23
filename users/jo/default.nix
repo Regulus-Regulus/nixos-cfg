@@ -70,7 +70,7 @@
     };
   };
   openssh.authorizedKeys.keys = [ 
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBgie5aHSr0ikC8xqW+7nPjFKlDcrwPsZv6EOwtMM3eR jo key" # Helper 
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBrd6LHfR66IA+p+40RyIqGtYqFrcdf09p5REwTjkWZW jo@rr-desktop" # Helper 
     ];
   systemSettings = {
     isNormalUser = true;

@@ -10,9 +10,6 @@
 }: {
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  # These options make the sd card image build faster
-  sdImage.compressImage = false;
-
   # Bootloader.
   boot.loader.systemd-boot.enable = false;
   boot.loader.efi.canTouchEfiVariables = true;
