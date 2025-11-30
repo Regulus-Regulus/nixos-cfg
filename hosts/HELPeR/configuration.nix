@@ -112,9 +112,6 @@
       address = "192.168.0.1"; # or whichever IP your router is
       interface = "end0";
     };
-    nameservers = [
-      "192.168.0.1" # or whichever DNS server you want to use
-    ];
   };
 
   services.openssh = {
