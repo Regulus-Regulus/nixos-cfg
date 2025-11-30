@@ -103,7 +103,7 @@
     interfaces.end0 = {
       ipv4.addresses = [
         {
-          address = "192.168.1.43";
+          address = "192.168.0.244";
           prefixLength = 24;
         }
       ];
