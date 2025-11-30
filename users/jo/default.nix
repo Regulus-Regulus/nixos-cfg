@@ -44,6 +44,7 @@
           # Only desktop
           (lib.optionals (hostConfigName == "desktop") [
             discord
+            nmap
           ])
         ];
     };
