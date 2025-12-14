@@ -20,7 +20,7 @@
   systemd.targets.suspend.enable = false;
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
-
+  hardware.sane.enable = true; # enables support for SANE scanners
   hardware.nvidia = {
     # Modesetting is required.
     modesetting.enable = true;
