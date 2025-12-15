@@ -20,14 +20,13 @@
     # eog # image viewer
     epiphany # web browser
     gedit # text editor
-    simple-scan # document scanner
+    #simple-scan # document scanner
     totem # video player
     yelp # help viewer
     evince # document viewer
     # file-roller # archive manager
     geary # email client
     seahorse # password manager
-
     # these should be self explanatory
     # gnome-calculator
     # gnome-calendar
