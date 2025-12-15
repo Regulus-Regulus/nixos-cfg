@@ -14,6 +14,13 @@
   services.xserver.videoDrivers = ["nvidia"];
   nix.settings.trusted-users = ["jo"];
 
+  # Drivers for Printer
+  services.printing.drivers = [
+    pkgs.brlaser
+    pkgs.brgenml1lpr
+    pkgs.brgenml1cupswrapper
+  ];
+
   # Disable the GNOME3/GDM auto-suspend feature that cannot be disabled in GUI!
   # If no user is logged in, the machine will power down after 20 minutes.
   systemd.targets.sleep.enable = false;
