@@ -1,3 +1,4 @@
 .rebuild.log
 .ssh/
 secrets/
+flake.lock
