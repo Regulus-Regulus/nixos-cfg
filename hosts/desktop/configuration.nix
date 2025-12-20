@@ -9,7 +9,7 @@
   ...
 }: {
   nix.settings.experimental-features = ["nix-command" "flakes"];
-  services.xserver.displayManager.gdm.wayland = true;
+  services.xserver.displayManager.gdm.wayland = false;
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
   nix.settings.trusted-users = ["jo"];
@@ -117,7 +117,7 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = false;
+  services.xserver.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
