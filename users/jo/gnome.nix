@@ -89,6 +89,9 @@
       # "org/gnome/shell/extensions/user-theme" = {
       #   name = "Gruvbox-dark";
       # };
+      "org/gnome/mutter/wayland" = {
+        xwayland-disable-extension = ["Xtest"];
+      };
 
       "org/gnome/shell" = {
         disable-user-extensions = false;
