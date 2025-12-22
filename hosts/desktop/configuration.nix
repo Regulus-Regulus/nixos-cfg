@@ -9,7 +9,7 @@
   ...
 }: {
   nix.settings.experimental-features = ["nix-command" "flakes"];
-  services.xserver.displayManager.gdm.wayland = true;
+  services.displayManager.gdm.wayland = true;
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
   nix.settings.trusted-users = ["jo"];
