@@ -129,7 +129,7 @@
   services.pihole-ftl = {
     enable = true;
     queryLogDeleter = {
-      enabled = true;
+      enable = true;
       age = 30;
     };
   };
