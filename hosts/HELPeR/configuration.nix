@@ -121,7 +121,7 @@
     settings = {
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
-      PermitRootLogin = "no";
+      PermitRootLogin = "prohibit-password";
       AllowUsers = ["jo"];
     };
   };
@@ -131,8 +131,8 @@
     queryLogDeleter = {
       enabled = true;
       age = 30;
-    }
-  }
+    };
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
