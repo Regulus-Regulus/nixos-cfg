@@ -45,6 +45,7 @@
           (lib.optionals (hostConfigName == "desktop") [
             discord
             nmap
+            obsidian # Personal Knowledge Management, unfree, no home-manager config as of now
           ])
         ];
     };
@@ -67,6 +68,9 @@
         oh-my-zsh.plugins = lib.mkForce [
           "docker" # zusätzlich zum Default "git", "gitignore", "z"
         ];
+        sessionVariables = {
+          NIX_SSHOPTS = "-p 7373"
+        };
       };
     };
   };

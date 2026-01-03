@@ -2,3 +2,4 @@
 .ssh/
 secrets/
 flake.lock
+.remote.log

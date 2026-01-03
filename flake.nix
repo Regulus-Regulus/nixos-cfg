@@ -104,45 +104,6 @@
           ./modules/programs/ide/vscodium
         ];
       };
-      bmo = nixpkgs.lib.nixosSystem {
-        system = "aarch64-linux";
-        specialArgs = {
-          inherit inputs;
-          hostConfigName = "bmo"; # Defining hostname to allow users to install per-host
-        };
-        modules = [
-          # Host Files
-          ./hosts/bmo/configuration.nix
-          nixos-hardware.nixosModules.raspberry-pi-5
-
-          # IMPORTANT: Enables config.system.build.sdImage
-          ({modulesPath, ...}: {
-            imports = [
-              "${modulesPath}/installer/sd-card/sd-image-aarch64.nix"
-            ];
-          })
-
-          # Nix Logic
-          home-manager.nixosModules.home-manager
-          inputs.stylix.nixosModules.stylix
-          ./modules/nix-logic/common.nix
-          ./modules/nix-logic/users.nix
-          # module to set selectedUsers per-host:
-          {
-            myUsers.selectedUsers = ["jo" "katharina"];
-          }
-
-          # Programs
-          ./modules/programs/desktop/gnome
-          ./modules/programs/evergreens.nix
-          # ./modules/programs/cli/yazi
-          ./modules/programs/shell/zsh
-          ./modules/programs/terminal/kitty
-          ./modules/programs/browser/firefox
-          ./modules/programs/browser/librewolf
-          ./modules/programs/ide/vscodium
-        ];
-      };
       HELPeR = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         specialArgs = {
@@ -153,16 +114,17 @@
           # Host Files
           ./hosts/HELPeR/configuration.nix
           ./hosts/HELPeR/hardware-configuration.nix
-          #nixos-hardware.nixosModules.raspberry-pi-4
 
           # Nix Logic
           home-manager.nixosModules.home-manager
           inputs.stylix.nixosModules.stylix
           ./modules/nix-logic/common.nix
           ./modules/nix-logic/users.nix
+          ./modules/programs/evergreens.nix
+          ./modules/programs/terminal/kitty
           # module to set selectedUsers per-host:
           {
-            myUsers.selectedUsers = ["jo"];
+            myUsers.selectedUsers = ["jo" "admin"];
           }
 
           ./modules/programs/virtualisation/podman

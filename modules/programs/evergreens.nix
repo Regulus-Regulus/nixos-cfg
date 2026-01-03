@@ -4,13 +4,11 @@
   ...
 }: {
   nixpkgs.config.allowUnfree = true;
-  services.flatpak.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     neovim # text-editor
     git # git!
-    obsidian # Personal Knowledge Management, unfree, no home-manager config as of now
     ripgrep # Better grep
     ripgrep-all #ripgrep, but also searches pdfs, office, ebooks etc
     fd # Better find
