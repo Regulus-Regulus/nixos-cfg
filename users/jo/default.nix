@@ -69,7 +69,7 @@
           "docker" # zusätzlich zum Default "git", "gitignore", "z"
         ];
         sessionVariables = {
-          NIX_SSHOPTS = "-p 7373"
+          NIX_SSHOPTS = "-p 7373";
         };
       };
     };
