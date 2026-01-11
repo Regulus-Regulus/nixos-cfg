@@ -68,6 +68,8 @@
   environment.systemPackages = with pkgs; [
     haskellPackages.gpio
     libraspberrypi
+    pihole-ftl
+    iproute2
   ];
   # Configure console keymap
   console.keyMap = "de";

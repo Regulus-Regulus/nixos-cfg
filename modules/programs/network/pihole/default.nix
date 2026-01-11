@@ -1,6 +1,7 @@
 {
   self,
   pkgs,
+  config,
   ...
 }: {
   services.pihole-ftl = {
@@ -13,10 +14,11 @@
       age = 30;
     };
     settings = {
-      debug = {
-        all = true;
-      };
+      # debug = {
+      #   all = true;
+      # };
       dns = {
+        domain = "homelab.me";
         domainNeeded = true;
         expandHosts = true;
         upstreams = ["1.1.1.1" "8.8.8.8" "192.168.0.1"];
