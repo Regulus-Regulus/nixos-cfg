@@ -25,7 +25,7 @@
         interface = "end0";
       };
       dhcp = {
-        active = false;
+        active = true;
         start = "192.168.0.2";
         end = "192.168.0.200";
         router = "192.168.0.1";

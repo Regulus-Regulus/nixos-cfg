@@ -34,7 +34,7 @@ read -rp "Commit message (enter to skip): " usermsg
 # Rebuild
 echo "Building system using [${host}] config..."
 start=$(date +%s)
-if ! nixos-rebuild --flake "${flake_path}#${host}" --upgrade --sudo --ask-sudo-password --build-host "${target}" --target-host "${target}" switch  &> "${logfile}"; then
+if ! nixos-rebuild --flake "${flake_path}#${host}" --use-substitutes --sudo --ask-sudo-password --build-host "${target}" --target-host "${target}" switch  &> "${logfile}"; then
   echo "Build failed. Showing errors:"
   cat "${logfile}" | rg error || cat "${logfile}"
   exit 1
