@@ -91,15 +91,7 @@
       };
     };
   };
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-  # networking.interfaces.eno1.ipv4.addresses = [
-  #   {
-  #     address = "192.168.0.10"; # The static IP address you want to assign to this device.
-  #     prefixLength = 24; # CIDR notation for the subnet (255.255.255.0)
-  #   }
-  # ];
+
   # Enable networking
   networking.networkmanager.enable = true;
 

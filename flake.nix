@@ -67,6 +67,7 @@
           ./modules/programs/browser/librewolf
           ./modules/programs/media/steam
           ./modules/programs/ide/vscodium
+          ./modules/programs/virtualisation/podman
         ];
       };
       laptop = nixpkgs.lib.nixosSystem {
