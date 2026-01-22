@@ -35,6 +35,8 @@
         "switch-up-workspace" = ["<Super>w"];
         "switch-right" = ["<Super>d"];
         "switch-left" = ["<Super>a"];
+        "move-right" = ["<Ctrl><Super>d"];
+        "move-left" = ["<Ctrl><Super>a"];
         "move-down-workspace" = ["<Ctrl><Super>s"];
         "move-up-workspace" = ["<Ctrl><Super>w"];
         "center-horizontally" = [];

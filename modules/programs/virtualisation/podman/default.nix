@@ -2,13 +2,16 @@
   environment.systemPackages = with pkgs; [
     podman-compose
   ];
-
   # Enable common container config files in /etc/containers
-  virtualisation.containers.enable = true;
   virtualisation = {
+    oci-containers.backend = "podman";
+    containers.enable = true;
     podman = {
       enable = true;
 
+      autoPrune = {
+        enable = true;
+      };
       # Create a `docker` alias for podman, to use it as a drop-in replacement
       dockerCompat = true;
 
