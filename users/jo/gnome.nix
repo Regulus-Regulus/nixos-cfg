@@ -39,22 +39,6 @@
               "focus": true
             }
           ''
-          ''
-            {
-              "wm_class": "steam",
-              "title": "Steam",
-              "scratch_layer": true,
-              "focus": true
-            }
-          ''
-          ''
-            {
-              "wm_class": "steam",
-              "title": "Friends List",
-              "scratch_layer": true,
-              "focus": true
-            }
-          ''
         ];
       };
 
