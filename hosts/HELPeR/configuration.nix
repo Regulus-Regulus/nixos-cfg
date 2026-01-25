@@ -8,8 +8,14 @@
   stylix,
   ...
 }: let
-  composeDir = "/etc/podman-stack"; # where files will live on the host
+  composeDir = "podman-stack"; # relative to /etc
 in {
+  # Copy docker-compose.yaml to the host
+  environment.etc."${composeDir}/docker-compose.yaml".text = builtins.readFile ./docker-compose.yaml;
+
+  # Copy envoy-config.yaml to the host
+  environment.etc."${composeDir}/envoy-config.yaml".text = builtins.readFile ./envoy-config.yaml;
+
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Bootloader.
@@ -129,29 +135,36 @@ in {
     };
   };
 
-  security.acme = {
-    acceptTerms = true;
-    defaults.email = "regulus-regulus@posteo.de";
-    certs."nextcloud.buebert.org" = {
-      webroot = null;
-      reloadServices = ["podman-envoy.service"];
-    };
-  };
+  # security.acme = {
+  #   acceptTerms = true;
+  #   defaults.email = "regulus-regulus@posteo.de";
+  #   certs."nextcloud.buebert.org" = {
+  #     webroot = null;
+  #     reloadServices = ["podman-envoy.service"];
+  #   };
+  # };
 
+  # Podman-compose systemd service
   systemd.services.podman-stack = {
     description = "Podman stack for homelab";
 
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
-      ExecStart = "${pkgs.bash}/bin/bash -c 'cd ${composeDir} && podman-compose up'";
-      ExecStop = "${pkgs.bash}/bin/bash -c 'cd ${composeDir} && podman-compose down'";
+
+      ExecStart = "${pkgs.bash}/bin/bash -c 'cd /etc/${composeDir} && /run/current-system/sw/bin/podman-compose up'";
+      ExecStop = "${pkgs.bash}/bin/bash -c 'cd /etc/${composeDir} && /run/current-system/sw/bin/podman-compose down'";
+
       Restart = "no";
+
+      # Make sure podman is in PATH for podman-compose
+      Environment = "PATH=${pkgs.podman}/bin:/run/current-system/sw/bin:/usr/bin:/bin";
+
+      After = ["network-online.target"];
+      Wants = ["network-online.target"];
     };
 
-    after = ["network-online.target"];
-    wants = ["network-online.target"];
-
+    # Start on boot
     wantedBy = ["multi-user.target"];
   };
 
