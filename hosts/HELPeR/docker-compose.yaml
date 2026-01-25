@@ -1,0 +1,56 @@
+services:
+  # Envoy Reverse Proxy
+  envoy:
+    image: envoyproxy/envoy:v1.33-latest
+    ports:
+      - "[::]:80:80"    # HTTP
+      - "[::]:443:443"  # HTTPS 
+    volumes:
+      - ./envoy-config.yaml:/etc/envoy/envoy.yaml  # Mount the Envoy config file
+      - /var/lib/acme/nextcloud.buebert.org:/etc/envoy/certs:ro
+
+
+  # Nextcloud Application
+  nextcloud:
+    image: nextcloud:apache
+    restart: always
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      REDIS_HOST: redis
+      NEXTCLOUD_ADMIN_USER: ${NEXTCLOUD_ADMIN_USER}
+      NEXTCLOUD_ADMIN_PASSWORD: ${NEXTCLOUD_ADMIN_PASSWORD}
+    volumes:
+      - nextcloud_data:/var/www/html  # Persistent storage for Nextcloud data
+    depends_on:
+      - postgres
+      - redis
+
+  # PostgreSQL Database for Nextcloud
+  postgres:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persistent storage for DB
+
+  # Redis for Nextcloud caching
+  redis:
+    image: redis:latest
+    restart: always
+    volumes:
+      - redis_data:/data  # Persistent Redis data
+
+# Volumes for persistent data
+volumes:
+  nextcloud_data:
+    driver: local
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local

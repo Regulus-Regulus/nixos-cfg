@@ -7,7 +7,9 @@
   inputs,
   stylix,
   ...
-}: {
+}: let
+  composeDir = "/etc/podman-stack"; # where files will live on the host
+in {
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Bootloader.
@@ -109,6 +111,10 @@
       interface = "end0";
     };
     nameservers = ["1.1.1.1" "8.8.8.8" "192.168.0.1"];
+    firewall = {
+      allowedTCPPorts = [80 443];
+      enable = true;
+    };
   };
 
   services.openssh = {
@@ -121,6 +127,32 @@
       PermitRootLogin = "prohibit-password";
       AllowUsers = ["jo"];
     };
+  };
+
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "regulus-regulus@posteo.de";
+    certs."nextcloud.buebert.org" = {
+      webroot = null;
+      reloadServices = ["podman-envoy.service"];
+    };
+  };
+
+  systemd.services.podman-stack = {
+    description = "Podman stack for homelab";
+
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart = "${pkgs.bash}/bin/bash -c 'cd ${composeDir} && podman-compose up'";
+      ExecStop = "${pkgs.bash}/bin/bash -c 'cd ${composeDir} && podman-compose down'";
+      Restart = "no";
+    };
+
+    after = ["network-online.target"];
+    wants = ["network-online.target"];
+
+    wantedBy = ["multi-user.target"];
   };
 
   # This value determines the NixOS release from which the default

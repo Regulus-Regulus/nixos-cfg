@@ -1,0 +1,76 @@
+static_resources:
+  listeners:
+    # HTTP (redirect to HTTPS)
+    - name: http_listener
+      address:
+        socket_address:
+          address: "::"
+          port_value: 80
+      filter_chains:
+        - filters:
+            - name: envoy.filters.network.http_connection_manager
+              typed_config:
+                "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+                stat_prefix: ingress_http
+                route_config:
+                  name: http_redirect
+                  virtual_hosts:
+                    - name: redirect
+                      domains: ["*"]
+                      routes:
+                        - match: { prefix: "/" }
+                          redirect:
+                            https_redirect: true
+                http_filters:
+                  - name: envoy.filters.http.router
+
+    # HTTPS
+    - name: https_listener
+      address:
+        socket_address:
+          address: "::"
+          port_value: 443
+      filter_chains:
+        - filter_chain_match:
+            server_names: ["nextcloud.buebert.org", "*"]
+          transport_socket:
+            name: envoy.transport_sockets.tls
+            typed_config:
+              "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.DownstreamTlsContext
+              common_tls_context:
+                tls_certificates:
+                  - certificate_chain:
+                      filename: /etc/envoy/certs/fullchain.pem
+                    private_key:
+                      filename: /etc/envoy/certs/privkey.pem
+          filters:
+            - name: envoy.filters.network.http_connection_manager
+              typed_config:
+                "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+                stat_prefix: ingress_https
+                route_config:
+                  name: https_routes
+                  virtual_hosts:
+                    - name: nextcloud
+                      domains: ["nextcloud.buebert.org"]
+                      routes:
+                        - match: { prefix: "/" }
+                          route:
+                            cluster: nextcloud
+                http_filters:
+                  - name: envoy.filters.http.router
+
+  clusters:
+    - name: nextcloud
+      connect_timeout: 0.25s
+      type: strict_dns
+      lb_policy: round_robin
+      load_assignment:
+        cluster_name: nextcloud
+        endpoints:
+          - lb_endpoints:
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: nextcloud
+                      port_value: 80
