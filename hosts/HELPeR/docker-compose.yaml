@@ -8,7 +8,8 @@ services:
     volumes:
       - ./envoy-config.yaml:/etc/envoy/envoy.yaml  # Mount the Envoy config file
       - /var/lib/acme/nextcloud.buebert.org:/etc/envoy/certs:ro
-
+    networks:
+      - podman-stack-net
 
   # Nextcloud Application
   nextcloud:
@@ -27,6 +28,8 @@ services:
     depends_on:
       - postgres
       - redis
+    networks:
+      - podman-stack-net
 
   # PostgreSQL Database for Nextcloud
   postgres:
@@ -38,14 +41,16 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - postgres_data:/var/lib/postgresql/data  # Persistent storage for DB
-
+    networks:
+      - podman-stack-net
   # Redis for Nextcloud caching
   redis:
     image: redis:latest
     restart: always
     volumes:
       - redis_data:/data  # Persistent Redis data
-
+    networks:
+      - podman-stack-net
 # Volumes for persistent data
 volumes:
   nextcloud_data:
@@ -54,3 +59,7 @@ volumes:
     driver: local
   redis_data:
     driver: local
+
+networks:
+  podman-stack-net:
+    external: true

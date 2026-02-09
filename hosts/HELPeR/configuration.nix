@@ -147,6 +147,9 @@ in {
     serviceConfig = {
       Type = "simple";
       RemainAfterExit = false;
+      # Ensure custom network exists before starting stack
+      ExecStartPre = "${pkgs.bash}/bin/bash -c 'if ! ${pkgs.podman}/bin/podman network inspect podman-stack-net >/dev/null 2>&1; then ${pkgs.podman}/bin/podman network create --subnet=10.90.0.0/24 podman-stack-net; fi'";
+
       ExecStart = "${pkgs.bash}/bin/bash -c 'cd /etc/${composeDir} && /run/current-system/sw/bin/podman-compose up -d'";
       ExecStop = "${pkgs.bash}/bin/bash -c 'cd /etc/${composeDir} && /run/current-system/sw/bin/podman-compose down'";
       Restart = "always";

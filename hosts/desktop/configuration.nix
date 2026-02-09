@@ -8,6 +8,13 @@
   stylix,
   ...
 }: {
+  environment.systemPackages = with pkgs; [
+    libreoffice-qt
+    hunspell
+    hunspellDicts.de_DE
+    hunspellDicts.en_GB-large
+  ];
+
   nix.settings.experimental-features = ["nix-command" "flakes"];
   services.displayManager.gdm.wayland = true;
   # Load nvidia driver for Xorg and Wayland
