@@ -32,7 +32,7 @@ read -rp "Commit message (enter to skip): " usermsg
 # Rebuild
 echo "Building system using [${host}] config..."
 start=$(date +%s)
-if ! sudo nixos-rebuild switch --flake "${flake_path}#${host}" &> "${logfile}"; then
+if ! sudo nixos-rebuild switch --flake "${flake_path}#${host}" &> "${logfile} --show-trace -L -v"; then
   echo "Build failed. Showing errors:"
   cat "${logfile}" | rg error || cat "${logfile}"
   exit 1
