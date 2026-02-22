@@ -5,6 +5,7 @@
   hostConfigName,
   ...
 }: {
+  config.my.home.programs.firefox.enable = true;
   homeSettings = {
     imports = [
       ./gnome.nix

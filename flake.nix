@@ -83,7 +83,12 @@
           ./hosts/laptop/hardware-configuration.nix
 
           # Nix Logic
-          home-manager.nixosModules.home-manager
+          home-manager.nixosModules.home-manager #
+          {
+            home-manager.sharedModules = [
+              ./home
+            ];
+          }
           inputs.stylix.nixosModules.stylix
           ./modules/nix-logic/common.nix
           ./modules/nix-logic/users.nix
@@ -99,7 +104,7 @@
           ./modules/programs/shell/zsh
           ./modules/programs/shell/fish
           ./modules/programs/terminal/kitty
-          ./modules/programs/browser/firefox
+          # ./modules/programs/browser/firefox
           ./modules/programs/browser/librewolf
           ./modules/programs/media/steam
           ./modules/programs/ide/vscodium
