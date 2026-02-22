@@ -9,7 +9,12 @@
   ...
 }: {
   nix.settings.experimental-features = ["nix-command" "flakes"];
-
+  environment.systemPackages = with pkgs; [
+    libreoffice-qt
+    hunspell
+    hunspellDicts.de_DE
+    hunspellDicts.en_GB-large
+  ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
