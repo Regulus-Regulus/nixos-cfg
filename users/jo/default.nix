@@ -5,13 +5,14 @@
   hostConfigName,
   ...
 }: {
-  config.my.home.programs.firefox.enable = true;
   homeSettings = {
+    my.home.programs.firefox.enable = true;
     imports = [
       ./gnome.nix
       ./hyfetch.nix
       ./stylix.nix
     ];
+
     home = {
       username = "jo";
       homeDirectory = "/home/jo";
