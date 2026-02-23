@@ -27,7 +27,7 @@
           ]
 
           # Just on the laptop
-          (lib.optionals (hostConfigName == "laptop") [
+          (lib.optionals (hostConfigName == "laptop" || hostConfigName == "desktop") [
             nmap
             wireshark
             discord
@@ -40,11 +40,6 @@
             # sqlmap
             # aircrack-ng
             # john
-          ])
-
-          # Only desktop
-          (lib.optionals (hostConfigName == "desktop") [
-            discord
             nmap
             obsidian # Personal Knowledge Management, unfree, no home-manager config as of now
           ])
