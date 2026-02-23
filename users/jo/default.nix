@@ -31,6 +31,7 @@
             nmap
             wireshark
             discord
+            btop # replacement of htop/nmon
             # hydra
             # nikto
             # amass
