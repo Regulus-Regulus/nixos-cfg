@@ -130,7 +130,7 @@
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   # Enable CUPS to print documents.
   services.blueman.enable = true;
-
+  services.printing.cups-pdf.enable = true;
   # Configure console keymap
   console.keyMap = "de";
 
