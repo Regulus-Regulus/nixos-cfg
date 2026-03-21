@@ -131,6 +131,14 @@
   # Enable CUPS to print documents.
   services.blueman.enable = true;
   services.printing.cups-pdf.enable = true;
+  services.printing.cups-pdf.instances = {
+    pdf = {
+      settings = {
+        Out = "\${HOME}/cups-pdf";
+        UserUMask = "0033";
+      };
+    };
+  };
   # Configure console keymap
   console.keyMap = "de";
 
