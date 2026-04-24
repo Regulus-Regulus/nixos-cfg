@@ -19,14 +19,14 @@
       ./programs
     ];
     my.home.programs = {
-      inteface.gnome = hostConfigName == "laptop" || hostConfigName == "desktop";
-      browser.firefox = hostConfigName == "laptop" || hostConfigName == "desktop";
-      browser.librewolf = hostConfigName == "laptop" || hostConfigName == "desktop";
-      cli.yazi = hostConfigName == "laptop" || hostConfigName == "desktop";
-      ide.vscodium = hostConfigName == "laptop" || hostConfigName == "desktop";
-      media.steam = hostConfigName == "laptop" || hostConfigName == "desktop";
-      shell.zsh = hostConfigName == "laptop" || hostConfigName == "desktop";
-      shell.fish = false;
+      interface.gnome.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
+      browser.firefox.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
+      browser.librewolf.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
+      cli.yazi.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
+      ide.vscodium.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
+      media.steam.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
+      shell.zsh.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
+      shell.fish.enable = false;
     };
 
     home = {

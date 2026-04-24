@@ -78,17 +78,16 @@
         };
 
         modules = [
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+          }
           # Host Files
           ./hosts/laptop/configuration.nix
           ./hosts/laptop/hardware-configuration.nix
 
           # Nix Logic
-          home-manager.nixosModules.home-manager #
-          {
-            home-manager.sharedModules = [
-              ./home
-            ];
-          }
           inputs.stylix.nixosModules.stylix
           ./modules/nix-logic/common.nix
           ./home/users/jo
@@ -103,9 +102,9 @@
           ./modules/programs/desktop/gnome
           ./modules/programs/evergreens.nix
           # ./modules/programs/cli/yazi
-          # ./modules/programs/shell/zsh
+          ./modules/programs/shell/zsh
           # ./modules/programs/shell/fish
-          ./modules/programs/terminal/kitty
+          # ./modules/programs/terminal/kitty
           # ./modules/programs/browser/firefox
           ./modules/programs/browser/firefox
           # ./modules/programs/media/steam

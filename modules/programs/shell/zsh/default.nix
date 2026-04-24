@@ -4,40 +4,6 @@
   ...
 }: {
   programs.zsh.enable = true;
-
-  home-manager.sharedModules = [
-    (_: {
-      programs.zsh = {
-        #enable = true;
-        autosuggestion.enable = true;
-        syntaxHighlighting.enable = true;
-        enableCompletion = true;
-        history = {
-          size = 100000;
-          path = "$HOME/.local/share/zsh/history";
-        };
-        dotDir = ".config/zsh";
-        # initContent = ''
-        #   source ${pkgs.spaceship-prompt}/share/zsh/themes/spaceship.zsh-theme;
-        # '';
-        oh-my-zsh = {
-          enable = true;
-          plugins = ["git" "gitignore" "z"];
-        };
-
-        initExtra = ''
-          function rebuild() {
-            ~/NixosConfiguration/scripts/rebuild.sh "$@"
-          }
-        '';
-        shellAliases = {
-          cls = "clear";
-          update-input = "nix flake update $@";
-          nrbuild = "sudo nixos-rebuild switch --flake ~/NixosConfiguration#laptop";
-        };
-      };
-    })
-  ];
 }
 # {
 #   self,

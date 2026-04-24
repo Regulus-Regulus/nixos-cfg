@@ -8,7 +8,7 @@
 with lib; let
   cfg = config.my.home.programs.shell.fish;
 in {
-  options.my.home.programs.media.steam = {
+  options.my.home.programs.shell.fish = {
     enable = mkEnableOption "Enable opinionated fish setup";
   };
   config = mkIf cfg.enable {
