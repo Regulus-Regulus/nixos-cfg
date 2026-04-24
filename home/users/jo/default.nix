@@ -16,12 +16,18 @@
 
   home-manager.users.jo = {
     imports = [
-      ./gnome.nix
-      ./hyfetch.nix
-      ./stylix.nix
+      ./programs
     ];
-
-    my.home.programs.firefox.enable = true;
+    my.home.programs = {
+      inteface.gnome = hostConfigName == "laptop" || hostConfigName == "desktop";
+      browser.firefox = hostConfigName == "laptop" || hostConfigName == "desktop";
+      browser.librewolf = hostConfigName == "laptop" || hostConfigName == "desktop";
+      cli.yazi = hostConfigName == "laptop" || hostConfigName == "desktop";
+      ide.vscodium = hostConfigName == "laptop" || hostConfigName == "desktop";
+      media.steam = hostConfigName == "laptop" || hostConfigName == "desktop";
+      shell.zsh = hostConfigName == "laptop" || hostConfigName == "desktop";
+      shell.fish = false;
+    };
 
     home = {
       username = "jo";

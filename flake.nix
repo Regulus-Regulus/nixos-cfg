@@ -91,23 +91,25 @@
           }
           inputs.stylix.nixosModules.stylix
           ./modules/nix-logic/common.nix
-          ./modules/nix-logic/users.nix
-          # module to set selectedUsers per-host:
-          {
-            myUsers.selectedUsers = ["jo" "katharina"];
-          }
+          ./home/users/jo
+          ./home/users/katharina
+          # ./modules/nix-logic/users.nix
+          # # module to set selectedUsers per-host:
+          # {
+          #   myUsers.selectedUsers = ["jo" "katharina"];
+          # }
 
           # Programs
           ./modules/programs/desktop/gnome
           ./modules/programs/evergreens.nix
           # ./modules/programs/cli/yazi
-          ./modules/programs/shell/zsh
-          ./modules/programs/shell/fish
+          # ./modules/programs/shell/zsh
+          # ./modules/programs/shell/fish
           ./modules/programs/terminal/kitty
           # ./modules/programs/browser/firefox
-          ./modules/programs/browser/librewolf
-          ./modules/programs/media/steam
-          ./modules/programs/ide/vscodium
+          ./modules/programs/browser/firefox
+          # ./modules/programs/media/steam
+          # ./modules/programs/ide/vscodium
         ];
       };
       HELPeR = nixpkgs.lib.nixosSystem {

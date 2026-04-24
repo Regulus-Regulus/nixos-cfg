@@ -6,9 +6,9 @@
   ...
 }:
 with lib; let
-  cfg = config.my.home.programs.firefox;
+  cfg = config.my.home.programs.browser.firefox;
 in {
-  options.my.home.programs.firefox = {
+  options.my.home.programs.browser.firefox = {
     enable = mkEnableOption "Enable opinionated firefox setup";
   };
 

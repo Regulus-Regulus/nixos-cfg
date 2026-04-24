@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-  programs.fish.enable = false;
+  programs.fish.enable = true;
 
   home-manager.sharedModules = [
     (_: {
