@@ -35,11 +35,11 @@ in {
           registers = "unnamedplus";
         };
 
-        theme = {
-          enable = false;
-          name = "gruvbox";
-          style = "dark";
-        };
+        # theme = {
+        #   enable = true;
+        #   name = "gruvbox";
+        #   style = "dark";
+        # };
 
         statusline.lualine.enable = true;
 
