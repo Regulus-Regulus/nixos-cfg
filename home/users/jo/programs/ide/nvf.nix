@@ -38,11 +38,11 @@ in {
           registers = "unnamedplus";
         };
 
-        # theme = {
-        #   enable = true;
-        #   name = "gruvbox";
-        #   style = "dark";
-        # };
+        theme = {
+          enable = true;
+          name = lib.mkForce "gruvbox";
+          style = "dark";
+        };
 
         statusline.lualine.enable = true;
 
