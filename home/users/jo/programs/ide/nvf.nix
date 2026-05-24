@@ -15,6 +15,11 @@ in {
     home.packages = with pkgs; [
       wl-clipboard
     ];
+
+    stylix.targets.vim.enable = false;
+    stylix.targets.nvf.enable = false;
+    stylix.targets.neovim.enable = false;
+
     programs.nvf = {
       enable = true;
       settings.vim = {
