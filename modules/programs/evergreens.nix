@@ -20,4 +20,6 @@
     presenterm # terminal slide-show-tool
     alejandra # nix code reformatting
   ];
+  programs.zsh.enable = true;
+  programs.fish.enable = true;
 }
