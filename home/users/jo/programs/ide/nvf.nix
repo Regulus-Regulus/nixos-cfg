@@ -12,6 +12,9 @@ in {
     enable = mkEnableOption "Enable opinionated nvf setup";
   };
   config = mkIf cfg.enable {
+    home.packages = with pkgs; [
+      wl-clipboard
+    ];
     programs.nvf = {
       enable = true;
       settings.vim = {
