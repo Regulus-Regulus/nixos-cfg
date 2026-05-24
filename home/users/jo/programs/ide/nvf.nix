@@ -59,7 +59,15 @@ in {
             nix = ["statix" "deadnix"];
           };
         };
+        extraPlugins = {
+          rainbow-delimiters = {
+            package = pkgs.vimPlugins.rainbow-delimiters-nvim;
+          };
+        };
 
+        luaConfigRC.rainbow-delimiters = ''
+          require("rainbow-delimiters.setup").setup {}
+        '';
         treesitter = {
           enable = true;
           indent.enable = true;
