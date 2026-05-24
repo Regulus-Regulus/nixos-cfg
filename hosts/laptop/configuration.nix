@@ -22,7 +22,7 @@
   networking.hostName = "rr-laptop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   stylix = {
-    enable = true;
+    enable = false;
     polarity = "dark";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
     targets.grub.enable = true;

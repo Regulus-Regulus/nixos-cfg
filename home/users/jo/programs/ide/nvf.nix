@@ -8,7 +8,7 @@
 with lib; let
   cfg = config.my.home.programs.ide.nvf;
 in {
-  options.my.home.programs.ide.nfv = {
+  options.my.home.programs.ide.nvf = {
     enable = mkEnableOption "Enable opinionated nvf setup";
   };
   config = mkIf cfg.enable {
@@ -36,9 +36,9 @@ in {
         };
 
         theme = {
-          enable = true;
-          name = "catppuccin";
-          style = "mocha";
+          enable = false;
+          name = "gruvbox";
+          style = "dark";
         };
 
         statusline.lualine.enable = true;
@@ -46,6 +46,16 @@ in {
         telescope.enable = true;
 
         filetree.neo-tree.enable = true;
+
+        diagnostics.nvim-lint = {
+          enable = true;
+
+          lint_after_save = true;
+
+          linters_by_ft = {
+            nix = ["statix" "deadnix"];
+          };
+        };
 
         treesitter = {
           enable = true;
@@ -77,10 +87,6 @@ in {
             format = {
               enable = true;
               type = "alejandra";
-            };
-            lint = {
-              enable = true;
-              package = pkgs.statix;
             };
           };
           go.enable = true;
