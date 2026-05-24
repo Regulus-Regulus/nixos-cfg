@@ -5,6 +5,7 @@
     ./interface/gnome.nix
     ./cli/yazi.nix
     ./ide/vscodium.nix
+    ./ide/nvf.nix
     ./media/steam.nix
     ./shell/fish.nix
     ./shell/zsh.nix

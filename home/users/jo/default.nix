@@ -2,6 +2,7 @@
   pkgs,
   lib,
   hostConfigName,
+  inputs,
   ...
 }: {
   users.users.jo = {
@@ -17,6 +18,7 @@
   home-manager.users.jo = {
     imports = [
       ./programs
+      inputs.nvf.homeManagerModules.default
     ];
     my.home.programs = {
       interface.gnome.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
@@ -24,6 +26,7 @@
       browser.librewolf.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
       cli.yazi.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
       ide.vscodium.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
+      ide.nfv.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
       media.steam.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
       shell.zsh.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
       shell.fish.enable = false;
