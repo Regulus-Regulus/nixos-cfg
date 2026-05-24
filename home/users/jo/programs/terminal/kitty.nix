@@ -8,11 +8,13 @@
 with lib; let
   cfg = config.my.home.programs.terminal.kitty;
 in {
-  options.my.home.programs.shell.kitty = {
+  options.my.home.programs.terminal.kitty = {
     enable = mkEnableOption "Enable opinionated kitty setup";
   };
   config = mkIf cfg.enable {
-    fonts.packages = with pkgs.nerd-fonts; [jetbrains-mono];
+    home.packages = [
+      pkgs.nerd-fonts.jetbrains-mono
+    ];
     programs.kitty = {
       enable = true;
       extraConfig = ''
