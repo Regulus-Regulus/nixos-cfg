@@ -42,6 +42,12 @@ in {
           enable = true;
           name = lib.mkForce "gruvbox";
           style = "dark";
+          transparent = false;
+        };
+
+        # THIS is the key if your nvf version supports it
+        globals = {
+          base16_colors = lib.mkForce false;
         };
 
         statusline.lualine.enable = true;
