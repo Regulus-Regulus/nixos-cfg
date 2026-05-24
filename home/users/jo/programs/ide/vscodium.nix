@@ -19,7 +19,7 @@ with lib; let
   cfg = config.my.home.programs.ide.vscodium;
 in {
   options.my.home.programs.ide.vscodium = {
-    enable = mkEnableOption "Enable opinionated yazi setup";
+    enable = mkEnableOption "Enable opinionated vscodium setup";
   };
   config = mkIf cfg.enable {
     programs.vscode = {
