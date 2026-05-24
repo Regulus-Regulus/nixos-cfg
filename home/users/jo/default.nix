@@ -28,6 +28,7 @@
       ide.vscodium.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
       ide.nvf.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
       media.steam.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
+      terminal.kitty.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
       shell.zsh.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
       shell.fish.enable = false;
     };

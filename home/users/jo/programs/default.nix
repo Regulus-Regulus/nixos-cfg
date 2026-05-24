@@ -7,6 +7,7 @@
     ./ide/vscodium.nix
     ./ide/nvf.nix
     ./media/steam.nix
+    ./terminal/kitty.nix
     ./shell/fish.nix
     ./shell/zsh.nix
   ];
