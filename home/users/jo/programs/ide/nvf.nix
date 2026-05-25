@@ -14,6 +14,8 @@ in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       wl-clipboard
+      statix
+      deadnix
     ];
 
     stylix.targets.vim.enable = false;
@@ -23,9 +25,12 @@ in {
     programs.nvf = {
       enable = true;
       settings.vim = {
+        globals = {
+          loaded_netrw = 1;
+          loaded_netrwPlugin = 1;
+        };
         viAlias = true;
         vimAlias = true;
-
         options = {
           number = true;
           relativenumber = true;
@@ -53,7 +58,16 @@ in {
 
         telescope.enable = true;
 
-        filetree.neo-tree.enable = true;
+        filetree.neo-tree = {
+          enable = true;
+
+          setupOpts = {
+            filesystem = {
+              hijack_netrw_behavior = "open_default";
+              followCurrentFile.enabled = true;
+            };
+          };
+        };
 
         diagnostics.nvim-lint = {
           enable = true;
@@ -96,7 +110,7 @@ in {
           enableTreesitter = true;
           enableFormat = true;
           enableLSP = true;
-
+          helm.enable = true;
           nix = {
             enable = true;
 
