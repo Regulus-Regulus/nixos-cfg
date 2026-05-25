@@ -24,7 +24,16 @@ in {
 
     programs.nvf = {
       enable = true;
+
       settings.vim = {
+        luaConfigRC.terminal_setup = ''
+          vim.api.nvim_create_autocmd("TermOpen", {
+            pattern = "*",
+            callback = function()
+              vim.cmd("startinsert")
+            end,
+          })
+        '';
         globals = {
           loaded_netrw = 1;
           loaded_netrwPlugin = 1;

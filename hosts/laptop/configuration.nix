@@ -14,6 +14,7 @@
     hunspell
     hunspellDicts.de_DE
     hunspellDicts.en_GB-large
+    via
   ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
