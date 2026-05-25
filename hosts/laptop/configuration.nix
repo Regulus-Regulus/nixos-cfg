@@ -9,19 +9,14 @@
   ...
 }: {
   nix.settings.experimental-features = ["nix-command" "flakes"];
-  hardware.keyboard.qmk.enable = true;
 
-  services.udev.packages = with pkgs; [
-    qmk-udev-rules
-    via
-  ];
   environment.systemPackages = with pkgs; [
     libreoffice-qt
     hunspell
     hunspellDicts.de_DE
     hunspellDicts.en_GB-large
   ];
-  # Bootloader.
+  # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   services.flatpak.enable = true;
