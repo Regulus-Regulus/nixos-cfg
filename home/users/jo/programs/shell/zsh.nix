@@ -21,10 +21,7 @@ in {
         size = 100000;
         path = "$HOME/.local/share/zsh/history";
       };
-      dotDir = ".config/zsh";
-      # initContent = ''
-      #   source ${pkgs.spaceship-prompt}/share/zsh/themes/spaceship.zsh-theme;
-      # '';
+      dotDir = "${config.xdg.configHome}/zsh";
       oh-my-zsh = {
         enable = true;
         plugins = ["git" "gitignore" "z"];
