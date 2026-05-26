@@ -19,6 +19,7 @@
     wiki-tui # wikipedfia text user interface
     presenterm # terminal slide-show-tool
     alejandra # nix code reformatting
+    kitty # terminal
   ];
   programs.zsh.enable = true;
   programs.fish.enable = true;

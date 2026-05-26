@@ -145,8 +145,7 @@
           ./nix-logic/common.nix
           ./nix-logic/users.nix
           ./system/programs/evergreens.nix
-          ./system/programs/terminal/kitty
-          ./system/programs/network/pihole
+          ./system/services/network/pihole
           # module to set selectedUsers per-host:
           {
             myUsers.selectedUsers = ["jo" "admin"];

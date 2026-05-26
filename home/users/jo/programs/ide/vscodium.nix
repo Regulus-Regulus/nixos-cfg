@@ -22,7 +22,7 @@ in {
     enable = mkEnableOption "Enable opinionated vscodium setup";
   };
   config = mkIf cfg.enable {
-    programs.vscode = {
+    programs.vscodium = {
       enable = true;
 
       # Choose which VS Code package to use:

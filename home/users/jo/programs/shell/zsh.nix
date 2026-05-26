@@ -21,7 +21,7 @@ in {
         size = 100000;
         path = "$HOME/.local/share/zsh/history";
       };
-      dotDir = ".config/zsh";
+      dotDir = config.home.homeDirectory;
       # initContent = ''
       #   source ${pkgs.spaceship-prompt}/share/zsh/themes/spaceship.zsh-theme;
       # '';
@@ -30,7 +30,7 @@ in {
         plugins = ["git" "gitignore" "z"];
       };
 
-      initExtra = ''
+      initContent = ''
         function rebuild() {
           ~/NixosConfiguration/scripts/rebuild.sh "$@"
         }

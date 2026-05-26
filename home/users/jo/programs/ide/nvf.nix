@@ -115,18 +115,16 @@ in {
           enable = true;
           formatOnSave = true;
         };
-
         languages = {
           enableTreesitter = true;
           enableFormat = true;
-          enableLSP = true;
           helm.enable = true;
           nix = {
             enable = true;
 
             format = {
               enable = true;
-              type = "alejandra";
+              type = ["alejandra"];
             };
           };
           go.enable = true;
