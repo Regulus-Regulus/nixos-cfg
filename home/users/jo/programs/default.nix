@@ -7,7 +7,7 @@
   imports = [
     ./browser/firefox.nix
     ./browser/librewolf.nix
-    ./interface/gnome.nix
+    ./desktop/gnome.nix
     ./cli/yazi.nix
     ./gameengine/godot.nix
     ./ide/vscodium.nix

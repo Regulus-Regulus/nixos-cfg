@@ -20,7 +20,7 @@
       ./programs
     ];
     jo.home.programs = {
-      interface.gnome.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
+      desktop.gnome.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
       # Firefox and Librewolf cannot be installed at the same time
       # browser.firefox.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
       browser.librewolf.enable = hostConfigName == "laptop" || hostConfigName == "desktop";

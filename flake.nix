@@ -100,7 +100,6 @@
               inherit inputs;
             };
           }
-
           # Host Files
           ./hosts/laptop/configuration.nix
           ./hosts/laptop/hardware-configuration.nix
@@ -108,24 +107,10 @@
           # Nix Logic
           inputs.stylix.nixosModules.stylix
           ./nix-logic/common.nix
+
+          # Users
           ./home/users/jo
           ./home/users/katharina
-          # ./nix-logic/users.nix
-          # # module to set selectedUsers per-host:
-          # {
-          #   myUsers.selectedUsers = ["jo" "katharina"];
-          # }
-
-          # Programs
-          ./system/programs/desktop/gnome
-          ./system/programs/evergreens.nix
-          # ./system/programs/cli/yazi
-          # ./system/programs/shell/fish
-          # ./system/programs/terminal/kitty
-          # ./system/programs/browser/firefox
-          # ./system/programs/browser/firefox
-          # ./system/programs/media/steam
-          # ./system/programs/ide/vscodium
         ];
       };
       HELPeR = nixpkgs.lib.nixosSystem {
@@ -143,18 +128,7 @@
           home-manager.nixosModules.home-manager
           inputs.stylix.nixosModules.stylix
           ./nix-logic/common.nix
-          ./nix-logic/users.nix
-          ./system/programs/evergreens.nix
-          ./system/services/network/pihole
-          # module to set selectedUsers per-host:
-          {
-            myUsers.selectedUsers = ["jo" "admin"];
-          }
-
-          ./system/programs/virtualisation/podman
-          # Programs
-          # ./system/programs/cli/yazi
-          ./system/programs/shell/zsh
+          ./home/users/jo
         ];
       };
     };

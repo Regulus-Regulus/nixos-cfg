@@ -10,6 +10,17 @@
 }: let
   composeDir = "podman-stack"; # relative to /etc
 in {
+  imports = [
+    ./../../system
+  ];
+  general.system.programs = {
+    virtualisation.podman.enable = true;
+    evergreens.enable = true;
+  };
+  homelab.system.services = {
+    network.pihole.enable = true;
+  };
+
   environment.etc."${composeDir}/docker-compose.yaml".text = builtins.readFile ./docker-compose.yaml;
   environment.etc."${composeDir}/envoy-config.yaml".text = builtins.readFile ./envoy-config.yaml;
 

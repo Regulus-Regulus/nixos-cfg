@@ -8,6 +8,18 @@
   stylix,
   ...
 }: {
+  imports = [
+    ./../../system
+  ];
+  general.system.programs = {
+    desktop.gnome.enable = true;
+    virtualisation.podman.enable = true;
+    evergreens.enable = true;
+  };
+  homelab.system.services = {
+    cloud.immich.enable = true;
+  };
+
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   environment.systemPackages = with pkgs; [
