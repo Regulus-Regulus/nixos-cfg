@@ -18,11 +18,11 @@
   home-manager.users.jo = {
     imports = [
       ./programs
-      inputs.nvf.homeManagerModules.default
     ];
     my.home.programs = {
       interface.gnome.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
-      browser.firefox.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
+      # Firefox and Librewolf cannot be installed at the same time
+      # browser.firefox.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
       browser.librewolf.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
       cli.yazi.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
       ide.vscodium.enable = hostConfigName == "laptop" || hostConfigName == "desktop";

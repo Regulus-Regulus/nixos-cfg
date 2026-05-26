@@ -12,6 +12,9 @@ in {
     enable = mkEnableOption "Enable opinionated nvf setup";
   };
   config = mkIf cfg.enable {
+    imports = [
+      inputs.nvf.homeManagerModules.default
+    ];
     home.packages = with pkgs; [
       wl-clipboard
       statix
