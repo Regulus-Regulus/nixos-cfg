@@ -9,6 +9,7 @@
     ./browser/librewolf.nix
     ./interface/gnome.nix
     ./cli/yazi.nix
+    ./gameengine/godot.nix
     ./ide/vscodium.nix
     inputs.nvf.homeManagerModules.default
     ./ide/nvf.nix

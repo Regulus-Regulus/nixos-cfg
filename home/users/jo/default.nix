@@ -25,6 +25,7 @@
       # browser.firefox.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
       browser.librewolf.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
       cli.yazi.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
+      gameEngine.godot.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
       ide.vscodium.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
       ide.nvf.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
       media.steam.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
