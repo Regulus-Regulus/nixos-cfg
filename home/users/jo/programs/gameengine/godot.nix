@@ -3,16 +3,18 @@
   pkgs,
   lib,
   config,
-  inputs,
   ...
 }:
 with lib; let
-  cfg = config.my.home.programs.ide.nvf;
+  cfg = config.my.home.programs.gameEngine.godot;
 in {
-  options.my.home.programs.ide.nvf = {
-    enable = mkEnableOption "Enable opinionated nvf setup";
+  options.my.home.programs.gameEngine.godot = {
+    enable = mkEnableOption "Enable opinionated godot setup";
   };
   config = mkIf cfg.enable {
+    imports = [
+      inputs.nvf.homeManagerModules.default
+    ];
     home.packages = with pkgs; [
       wl-clipboard
       statix

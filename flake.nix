@@ -86,7 +86,11 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+            };
           }
+
           # Host Files
           ./hosts/laptop/configuration.nix
           ./hosts/laptop/hardware-configuration.nix
