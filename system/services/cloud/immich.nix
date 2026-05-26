@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.homelab.services.cloud.immich;
+  cfg = config.homelab.system.services.cloud.immich;
 in {
-  options.homelab.services.cloud.immich = {
+  options.homelab.system.services.cloud.immich = {
     enable = lib.mkEnableOption "Immich";
 
     dataDir = lib.mkOption {
@@ -17,9 +17,6 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    # --- Docker runtime ---
-    virtualisation.docker.enable = true;
-
     # --- Persistent storage ---
     systemd.tmpfiles.rules = [
       "d ${cfg.dataDir} 0755 root root -"
