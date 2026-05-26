@@ -6,9 +6,9 @@
   ...
 }:
 with lib; let
-  cfg = config.my.home.programs.browser.librewolf;
+  cfg = config.jo.home.programs.browser.librewolf;
 in {
-  options.my.home.programs.browser.librewolf = {
+  options.jo.home.programs.browser.librewolf = {
     enable = mkEnableOption "Enable opinionated librewolf setup";
   };
 

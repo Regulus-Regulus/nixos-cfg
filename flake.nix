@@ -48,30 +48,40 @@
         };
 
         modules = [
-          # Host Files
-          ./hosts/desktop/configuration.nix
-          ./hosts/desktop/hardware-configuration.nix
-
-          # Nix Logic
           home-manager.nixosModules.home-manager
-          inputs.stylix.nixosModules.stylix
-          ./modules/nix-logic/common.nix
-          ./modules/nix-logic/users.nix
-          # module to set selectedUsers per-host:
           {
-            myUsers.selectedUsers = ["jo"];
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+            };
           }
 
+          # Host Files
+          ./hosts/laptop/configuration.nix
+          ./hosts/laptop/hardware-configuration.nix
+
+          # Nix Logic
+          inputs.stylix.nixosModules.stylix
+          ./nix-logic/common.nix
+          ./home/users/jo
+          ./home/users/katharina
+          # ./nix-logic/users.nix
+          # # module to set selectedUsers per-host:
+          # {
+          #   myUsers.selectedUsers = ["jo" "katharina"];
+          # }
+
           # Programs
-          ./modules/programs/desktop/gnome
-          ./modules/programs/evergreens.nix
-          ./modules/programs/shell/zsh
-          ./modules/programs/terminal/kitty
-          ./modules/programs/browser/firefox
-          ./modules/programs/browser/librewolf
-          ./modules/programs/media/steam
-          ./modules/programs/ide/vscodium
-          ./modules/programs/virtualisation/podman
+          ./system/programs/desktop/gnome
+          ./system/programs/evergreens.nix
+          # ./system/programs/cli/yazi
+          # ./system/programs/shell/fish
+          # ./system/programs/terminal/kitty
+          # ./system/programs/browser/firefox
+          # ./system/programs/browser/firefox
+          # ./system/programs/media/steam
+          # ./system/programs/ide/vscodium
         ];
       };
       laptop = nixpkgs.lib.nixosSystem {
@@ -97,25 +107,25 @@
 
           # Nix Logic
           inputs.stylix.nixosModules.stylix
-          ./modules/nix-logic/common.nix
+          ./nix-logic/common.nix
           ./home/users/jo
           ./home/users/katharina
-          # ./modules/nix-logic/users.nix
+          # ./nix-logic/users.nix
           # # module to set selectedUsers per-host:
           # {
           #   myUsers.selectedUsers = ["jo" "katharina"];
           # }
 
           # Programs
-          ./modules/programs/desktop/gnome
-          ./modules/programs/evergreens.nix
-          # ./modules/programs/cli/yazi
-          # ./modules/programs/shell/fish
-          # ./modules/programs/terminal/kitty
-          # ./modules/programs/browser/firefox
-          # ./modules/programs/browser/firefox
-          # ./modules/programs/media/steam
-          # ./modules/programs/ide/vscodium
+          ./system/programs/desktop/gnome
+          ./system/programs/evergreens.nix
+          # ./system/programs/cli/yazi
+          # ./system/programs/shell/fish
+          # ./system/programs/terminal/kitty
+          # ./system/programs/browser/firefox
+          # ./system/programs/browser/firefox
+          # ./system/programs/media/steam
+          # ./system/programs/ide/vscodium
         ];
       };
       HELPeR = nixpkgs.lib.nixosSystem {
@@ -132,20 +142,20 @@
           # Nix Logic
           home-manager.nixosModules.home-manager
           inputs.stylix.nixosModules.stylix
-          ./modules/nix-logic/common.nix
-          ./modules/nix-logic/users.nix
-          ./modules/programs/evergreens.nix
-          ./modules/programs/terminal/kitty
-          ./modules/programs/network/pihole
+          ./nix-logic/common.nix
+          ./nix-logic/users.nix
+          ./system/programs/evergreens.nix
+          ./system/programs/terminal/kitty
+          ./system/programs/network/pihole
           # module to set selectedUsers per-host:
           {
             myUsers.selectedUsers = ["jo" "admin"];
           }
 
-          ./modules/programs/virtualisation/podman
+          ./system/programs/virtualisation/podman
           # Programs
-          # ./modules/programs/cli/yazi
-          ./modules/programs/shell/zsh
+          # ./system/programs/cli/yazi
+          ./system/programs/shell/zsh
         ];
       };
     };

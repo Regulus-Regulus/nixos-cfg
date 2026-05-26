@@ -6,9 +6,9 @@
   ...
 }:
 with lib; let
-  cfg = config.my.home.programs.cli.yazi;
+  cfg = config.jo.home.programs.cli.yazi;
 in {
-  options.my.home.programs.cli.yazi = {
+  options.jo.home.programs.cli.yazi = {
     enable = mkEnableOption "Enable opinionated yazi setup";
   };
   config = mkIf cfg.enable {

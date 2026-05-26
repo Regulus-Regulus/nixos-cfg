@@ -6,9 +6,9 @@
   ...
 }:
 with lib; let
-  cfg = config.my.home.programs.interface.gnome;
+  cfg = config.jo.home.programs.interface.gnome;
 in {
-  options.my.home.programs.interface.gnome = {
+  options.jo.home.programs.interface.gnome = {
     enable = mkEnableOption "Enable opinionated firefox setup";
   };
   config = mkIf cfg.enable {

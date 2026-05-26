@@ -6,9 +6,9 @@
   ...
 }:
 with lib; let
-  cfg = config.my.home.programs.gameEngine.godot;
+  cfg = config.jo.home.programs.gameEngine.godot;
 in {
-  options.my.home.programs.gameEngine.godot = {
+  options.jo.home.programs.gameEngine.godot = {
     enable = mkEnableOption "Enable opinionated godot setup";
   };
   config = mkIf cfg.enable {

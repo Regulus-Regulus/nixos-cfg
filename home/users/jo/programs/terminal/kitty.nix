@@ -6,9 +6,9 @@
   ...
 }:
 with lib; let
-  cfg = config.my.home.programs.terminal.kitty;
+  cfg = config.jo.home.programs.terminal.kitty;
 in {
-  options.my.home.programs.terminal.kitty = {
+  options.jo.home.programs.terminal.kitty = {
     enable = mkEnableOption "Enable opinionated kitty setup";
   };
   config = mkIf cfg.enable {

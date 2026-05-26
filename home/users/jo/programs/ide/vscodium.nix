@@ -16,9 +16,9 @@ with lib; let
         hash = "sha256-86UWUuWKT6adx4hw4OJw3cSZxWZKLH4uLTO+Ssg75gY=";
       };
     };
-  cfg = config.my.home.programs.ide.vscodium;
+  cfg = config.jo.home.programs.ide.vscodium;
 in {
-  options.my.home.programs.ide.vscodium = {
+  options.jo.home.programs.ide.vscodium = {
     enable = mkEnableOption "Enable opinionated vscodium setup";
   };
   config = mkIf cfg.enable {

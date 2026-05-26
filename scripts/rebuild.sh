@@ -15,7 +15,7 @@ if [[ -z "$host" ]]; then
   exit
 fi
 echo "Host target: $host"
-
+cd ~/NixosConfiguration/
 # Autoformat
 echo "Formatting .nix files..."
 alejandra . || (echo "Formatting failed!" && exit 1)

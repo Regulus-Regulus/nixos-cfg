@@ -6,9 +6,9 @@
   ...
 }:
 with lib; let
-  cfg = config.my.home.programs.media.steam;
+  cfg = config.jo.home.programs.media.steam;
 in {
-  options.my.home.programs.media.steam = {
+  options.jo.home.programs.media.steam = {
     enable = mkEnableOption "Enable opinionated steam setup";
   };
   config = mkIf cfg.enable {

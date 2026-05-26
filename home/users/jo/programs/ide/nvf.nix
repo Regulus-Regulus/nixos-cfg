@@ -7,9 +7,9 @@
   ...
 }:
 with lib; let
-  cfg = config.my.home.programs.ide.nvf;
+  cfg = config.jo.home.programs.ide.nvf;
 in {
-  options.my.home.programs.ide.nvf = {
+  options.jo.home.programs.ide.nvf = {
     enable = mkEnableOption "Enable opinionated nvf setup";
   };
   config = mkIf cfg.enable {
