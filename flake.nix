@@ -58,8 +58,8 @@
           }
 
           # Host Files
-          ./hosts/laptop/configuration.nix
-          ./hosts/laptop/hardware-configuration.nix
+          ./hosts/desktop/configuration.nix
+          ./hosts/desktop/hardware-configuration.nix
 
           # Nix Logic
           inputs.stylix.nixosModules.stylix
