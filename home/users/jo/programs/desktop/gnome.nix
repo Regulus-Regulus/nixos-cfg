@@ -69,13 +69,13 @@ in {
         # https://github.com/paperwm/PaperWM/blob/3be8a508470a319be343c4f7171a44c69b6105a8/prefsKeybinding.js#L74
         "org/gnome/shell/extensions/paperwm/keybindings" = {
           "switch-down-workspace" = ["<Super>s" "<Super>j"];
-          "switch-up-workspace" = ["<Super>w"];
-          "switch-right" = ["<Super>d"];
-          "switch-left" = ["<Super>a"];
-          "move-right" = ["<Ctrl><Super>d"];
-          "move-left" = ["<Ctrl><Super>a"];
-          "move-down-workspace" = ["<Ctrl><Super>s"];
-          "move-up-workspace" = ["<Ctrl><Super>w"];
+          "switch-up-workspace" = ["<Super>w" "<Super>k"];
+          "switch-right" = ["<Super>d" "<Super>l"];
+          "switch-left" = ["<Super>a" "<Super>h"];
+          "move-right" = ["<Ctrl><Super>d" "<Ctrl><Super>l"];
+          "move-left" = ["<Ctrl><Super>a" "<Ctrl><Super>h"];
+          "move-down-workspace" = ["<Ctrl><Super>s" "<Ctrl><Super>j"];
+          "move-up-workspace" = ["<Ctrl><Super>w" "<Ctrl><Super>k"];
           "center-horizontally" = [];
         };
         "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
@@ -118,6 +118,7 @@ in {
           # Window movement
           move-left = [];
           move-right = [];
+          hide-window = [];
         };
 
         "org/gnome/shell/keybindings" = {
