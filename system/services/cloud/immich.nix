@@ -76,9 +76,11 @@ in {
     systemd.services.immich = {
       description = "Immich Docker Compose Stack";
 
-      after = ["docker.service"];
-      requires = ["docker.service"];
-
+      after = ["podman.service"];
+      requires = ["podman.service"];
+      environment = {
+        DOCKER_HOST = "unix:///run/podman/podman.sock";
+      };
       wantedBy = ["multi-user.target"];
 
       serviceConfig = {

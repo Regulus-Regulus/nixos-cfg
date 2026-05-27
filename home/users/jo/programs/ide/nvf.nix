@@ -75,6 +75,10 @@ in {
             filesystem = {
               hijack_netrw_behavior = "open_default";
               followCurrentFile.enabled = true;
+              filtered_items = {
+                hide_dotfiles = false;
+                hide_gitignored = false;
+              };
             };
           };
         };
