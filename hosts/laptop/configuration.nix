@@ -17,7 +17,7 @@
     evergreens.enable = true;
   };
   homelab.system.services = {
-    cloud.immich.enable = true;
+    cloud.immich.enable = false;
   };
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
