@@ -54,21 +54,21 @@ in {
           ];
         };
 
-        # https://github.com/paperwm/PaperWM/blob/3be8a508470a319be343c4f7171a44c69b6105a8/prefsKeybinding.js#L74
-        "org/gnome/shell/extensions/paperwm" = {
-          "switch-up-workspace" = ["<Super>w"];
-          "switch-right" = ["<Super>d"];
-          "switch-left" = ["<Super>a"];
-          "move-right" = ["<Ctrl><Super>d"];
-          "move-left" = ["<Ctrl><Super>a"];
-          "move-down-workspace" = ["<Ctrl><Super>s"];
-          "move-up-workspace" = ["<Ctrl><Super>w"];
-          "center-horizontally" = [];
-        };
+        #        # https://github.com/paperwm/PaperWM/blob/3be8a508470a319be343c4f7171a44c69b6105a8/prefsKeybinding.js#L74
+        #        "org/gnome/shell/extensions/paperwm" = {
+        #          "switch-up-workspace" = ["<Super>w"];
+        #          "switch-right" = ["<Super>d"];
+        #          "switch-left" = ["<Super>a"];
+        #          "move-right" = ["<Ctrl><Super>d"];
+        #          "move-left" = ["<Ctrl><Super>a"];
+        #          "move-down-workspace" = ["<Ctrl><Super>s"];
+        #          "move-up-workspace" = ["<Ctrl><Super>w"];
+        #          "center-horizontally" = [];
+        #        };
 
         # https://github.com/paperwm/PaperWM/blob/3be8a508470a319be343c4f7171a44c69b6105a8/prefsKeybinding.js#L74
         "org/gnome/shell/extensions/paperwm/keybindings" = {
-          "switch-down-workspace" = ["<Super>s"];
+          "switch-down-workspace" = ["<Super>s" "<Super>j"];
           "switch-up-workspace" = ["<Super>w"];
           "switch-right" = ["<Super>d"];
           "switch-left" = ["<Super>a"];
