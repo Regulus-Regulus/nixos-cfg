@@ -75,13 +75,6 @@
           # Programs
           ./system/programs/desktop/gnome
           ./system/programs/evergreens.nix
-          # ./system/programs/cli/yazi
-          # ./system/programs/shell/fish
-          # ./system/programs/terminal/kitty
-          # ./system/programs/browser/firefox
-          # ./system/programs/browser/firefox
-          # ./system/programs/media/steam
-          # ./system/programs/ide/vscodium
         ];
       };
       laptop = nixpkgs.lib.nixosSystem {

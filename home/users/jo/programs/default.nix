@@ -8,6 +8,7 @@
     ./browser/firefox.nix
     ./browser/librewolf.nix
     ./desktop/gnome.nix
+    ./desktop/stylix.nix
     ./cli/yazi.nix
     ./gameengine/godot.nix
     ./ide/vscodium.nix

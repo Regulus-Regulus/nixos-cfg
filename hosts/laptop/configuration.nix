@@ -8,6 +8,7 @@
   stylix,
   ...
 }: {
+  # Import and enable system modules
   imports = [
     ./../../system
   ];
@@ -15,54 +16,22 @@
     desktop.gnome.enable = true;
     virtualisation.podman.enable = true;
     evergreens.enable = true;
+    office.libreoffice = true;
   };
   homelab.system.services = {
     cloud.immich.enable = false;
   };
 
+  # Common
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  environment.systemPackages = with pkgs; [
-    libreoffice-qt
-    hunspell
-    hunspellDicts.de_DE
-    hunspellDicts.en_GB-large
-  ];
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   services.flatpak.enable = true;
   networking.hostName = "rr-laptop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  stylix = {
-    enable = true;
-    polarity = "dark";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-    targets.grub.enable = true;
-    targets.gnome.enable = true;
-    targets.nvf.enable = false;
-    fonts = {
-      serif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Serif";
-      };
 
-      sansSerif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Sans";
-      };
-
-      monospace = {
-        package = pkgs.maple-mono.NF;
-        name = "Maple Mono";
-      };
-
-      emoji = {
-        package = pkgs.noto-fonts-color-emoji;
-        name = "Noto Color Emoji";
-      };
-    };
-  };
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
