@@ -6,9 +6,9 @@
   ...
 }:
 with lib; let
-  cfg = config.general.system.programs.evergreens;
+  cfg = config.my.system.general.programs.evergreens;
 in {
-  options.general.system.programs.evergreens = {
+  options.my.system.general.programs.evergreens = {
     enable = mkEnableOption "Enable opinionated general programs setup";
   };
   config = mkIf cfg.enable {
@@ -20,6 +20,7 @@ in {
       git # git!
       ripgrep # Better grep
       ripgrep-all #ripgrep, but also searches pdfs, office, ebooks etc
+      htop # System metrics
       fd # Better find
       bat # Better cat
       eza # better ls

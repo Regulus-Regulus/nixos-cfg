@@ -19,21 +19,35 @@
     imports = [
       ./programs
     ];
-    jo.home.programs = {
-      desktop.gnome.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
-      # Firefox and Librewolf cannot be installed at the same time
-      # browser.firefox.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
-      browser.librewolf.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
-      cli.yazi.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
-      gameEngine.godot.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
-      ide.vscodium.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
-      ide.nvf.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
-      media.steam.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
-      terminal.kitty.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
-      shell.zsh.enable = hostConfigName == "laptop" || hostConfigName == "desktop";
-      shell.fish.enable = false;
-    };
 
+    jo.home = let
+      laptop = hostConfigName == "laptop";
+      desktop = hostConfigName == "desktop";
+    in {
+      programs = lib.mkMerge [
+        (lib.mkIf (laptop || desktop) {
+          desktop.gnome.enable = true;
+          desktop.stylix.enable = true;
+          browser.librewolf.enable = true;
+          cli.yazi.enable = true;
+          gameEngine.godot.enable = true;
+          generators.opencode.enable = false;
+          ide.vscodium.enable = true;
+          ide.nvf.enable = true;
+          media.steam.enable = true;
+          terminal.kitty.enable = true;
+          shell.zsh.enable = true;
+        })
+
+        (lib.mkIf laptop {
+          # generators.opencode.models = ["foo" "bar"];
+        })
+
+        (lib.mkIf desktop {
+          # generators.opencode.models = ["baz"];
+        })
+      ];
+    };
     home = {
       username = "jo";
       homeDirectory = "/home/jo";

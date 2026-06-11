@@ -5,9 +5,9 @@
   ...
 }:
 with lib; let
-  cfg = config.general.system.programs.virtualisation.podman;
+  cfg = config.my.system.general.programs.virtualisation.podman;
 in {
-  options.general.system.programs.virtualisation.podman = {
+  options.my.system.general.programs.virtualisation.podman = {
     enable = mkEnableOption "Enable general podman setup";
   };
   config = mkIf cfg.enable {

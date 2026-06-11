@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.homelab.system.services.cloud.immich;
+  cfg = config.my.system.homelab.services.cloud.immich;
 in {
-  options.homelab.system.services.cloud.immich = {
+  options.my.system.homelab.services.cloud.immich = {
     enable = lib.mkEnableOption "Immich";
 
     dataDir = lib.mkOption {

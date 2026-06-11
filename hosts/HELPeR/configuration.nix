@@ -13,11 +13,11 @@ in {
   imports = [
     ./../../system
   ];
-  general.system.programs = {
+  my.system.general.programs = {
     virtualisation.podman.enable = true;
     evergreens.enable = true;
   };
-  homelab.system.services = {
+  my.system.homelab.services = {
     network.pihole.enable = true;
   };
 

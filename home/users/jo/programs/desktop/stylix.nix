@@ -3,20 +3,22 @@
   pkgs,
   config,
   lib,
+  inputs,
   ...
 }:
 with lib; let
   cfg = config.jo.home.programs.desktop.stylix;
 in {
-  options.general.system.programs.desktop.stylix = {
-    enable = mkEnableOption "Enable base libreoffice setup";
+  options.jo.home.programs.desktop.stylix = {
+    enable = mkEnableOption "Enable Stylix setup";
   };
   config = mkIf cfg.enable {
     stylix = {
       enable = true;
+      autoEnable = true;
+
       polarity = "dark";
       base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-      targets.grub.enable = true;
       targets.gnome.enable = true;
       targets.nvf.enable = false;
       fonts = {
