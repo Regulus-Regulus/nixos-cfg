@@ -76,6 +76,7 @@
     cairo
     expat
     alsa-lib
+    cups
     pango
     xorg.libXScrnSaver
     xorg.libX11
