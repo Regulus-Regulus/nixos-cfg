@@ -66,6 +66,7 @@
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     glib
+    gdk-pixbuf
     nss
     nspr
     gtk3
