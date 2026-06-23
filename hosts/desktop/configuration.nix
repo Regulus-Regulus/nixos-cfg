@@ -75,7 +75,9 @@
     dbus
     cairo
     expat
+
     pango
+    xorg.libXScrnSaver
     xorg.libX11
     xorg.libXcomposite
     xorg.libXdamage
