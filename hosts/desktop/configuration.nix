@@ -64,6 +64,17 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
   programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    glib
+    nss
+    nspr
+    gtk3
+    atk
+    at-spi2-core
+    dbus
+    cairo
+    pango
+  ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
