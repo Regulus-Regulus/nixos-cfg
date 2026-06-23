@@ -60,6 +60,7 @@
           # z.B. eigene Aliase, die zum Default hinzukommen
           ll = "${pkgs.eza}/bin/eza -lha --icons=auto";
           ls = "${pkgs.eza}/bin/eza -1 --icons=auto";
+          hexkit = "./Hex\ Kit --disable-gpu --disable-gpu-compositing --disable-gpu-rasterization --disable-features=VizDisplayCompositor";
         };
         oh-my-zsh.plugins = lib.mkForce [
           "docker" # zusätzlich zum Default "git", "gitignore", "z"
