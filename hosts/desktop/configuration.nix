@@ -75,7 +75,7 @@
     dbus
     cairo
     expat
-
+    alsa-lib
     pango
     xorg.libXScrnSaver
     xorg.libX11
