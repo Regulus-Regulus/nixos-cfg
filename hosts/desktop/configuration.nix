@@ -74,6 +74,18 @@
     dbus
     cairo
     pango
+    xorg.libX11
+    xorg.libXcomposite
+    xorg.libXdamage
+    xorg.libXext
+    xorg.libXfixes
+    xorg.libXrandr
+    xorg.libxcb
+    xorg.libXcursor
+    xorg.libXi
+    xorg.libXtst
+    libdrm
+    mesa
   ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
