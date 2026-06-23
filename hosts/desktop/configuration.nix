@@ -74,6 +74,7 @@
     at-spi2-core
     dbus
     cairo
+    expat
     pango
     xorg.libX11
     xorg.libXcomposite
