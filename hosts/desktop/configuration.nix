@@ -79,6 +79,7 @@
     xorg.libXcomposite
     xorg.libXdamage
     xorg.libXext
+    xorg.libXrender
     xorg.libXfixes
     xorg.libXrandr
     xorg.libxcb
