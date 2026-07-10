@@ -9,6 +9,16 @@ in {
   options.my.system.homelab.services.cloud.immich = {
     enable = lib.mkEnableOption "Immich";
 
+    proxy = {
+      enable = lib.mkEnableOption "Expose Immich through Caddy";
+
+      hostName = lib.mkOption {
+        type = lib.types.str;
+        default = "immich.home";
+        description = "Hostname used by Caddy to expose Immich.";
+      };
+    };
+
     dataDir = lib.mkOption {
       type = lib.types.str;
       default = "/var/lib/immich";
@@ -17,71 +27,45 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    # --- Persistent storage ---
+    my.system.general.programs.virtualisation.podman.enable = true;
+
+    services.caddy = lib.mkIf cfg.proxy.enable {
+      enable = true;
+
+      virtualHosts.${cfg.proxy.hostName}.extraConfig = ''
+        reverse_proxy 127.0.0.1:2283
+      '';
+    };
+
+    # Persistent storage
     systemd.tmpfiles.rules = [
       "d ${cfg.dataDir} 0755 root root -"
       "d ${cfg.dataDir}/library 0755 root root -"
       "d ${cfg.dataDir}/postgres 0755 root root -"
     ];
 
-    # --- Immich configuration files ---
-    environment.etc."immich/docker-compose.yml".text = ''
-      version: "3.8"
+    # Immich configuration files
+    environment.etc."immich/docker-compose.yml".source = ./docker-compose.yaml;
+    environment.etc."immich/.env".source = ./.env;
 
-      services:
-        immich-server:
-          container_name: immich_server
-          image: ghcr.io/immich-app/immich-server:release
-
-          ports:
-            - "2283:2283"
-
-          volumes:
-            - ${cfg.dataDir}/library:/usr/src/app/upload
-
-          env_file:
-            - .env
-
-          depends_on:
-            - redis
-            - database
-
-          restart: always
-
-        redis:
-          container_name: immich_redis
-          image: docker.io/redis:6.2-alpine
-          restart: always
-
-        database:
-          container_name: immich_postgres
-          image: docker.io/tensorchord/pgvecto-rs:pg14-v0.2.0
-
-          environment:
-            POSTGRES_USER: postgres
-            POSTGRES_PASSWORD: postgres
-            POSTGRES_DB: immich
-
-          volumes:
-            - ${cfg.dataDir}/postgres:/var/lib/postgresql/data
-
-          restart: always
-    '';
-
-    environment.etc."immich/.env".text = ''
-      TZ=Europe/Berlin
-    '';
-
-    # --- Systemd service ---
+    # Systemd service
     systemd.services.immich = {
       description = "Immich Docker Compose Stack";
 
-      after = ["podman.service"];
-      requires = ["podman.service"];
-      environment = {
-        DOCKER_HOST = "unix:///run/podman/podman.sock";
-      };
-      wantedBy = ["multi-user.target"];
+      after = [
+        "podman.service"
+      ];
+      requires = [
+        "podman.service"
+      ];
+      wantedBy = [
+        "multi-user.target"
+      ];
+
+      restartTriggers = [
+        config.environment.etc."immich/docker-compose.yml".source
+        config.environment.etc."immich/.env".source
+      ];
 
       serviceConfig = {
         Type = "oneshot";
@@ -89,9 +73,8 @@ in {
 
         WorkingDirectory = "/etc/immich";
 
-        ExecStart = "${pkgs.docker-compose}/bin/docker-compose up -d";
-
-        ExecStop = "${pkgs.docker-compose}/bin/docker-compose down";
+        ExecStart = "${pkgs.docker}/bin/docker compose up -d";
+        ExecStop = "${pkgs.docker}/bin/docker compose down";
       };
     };
   };
