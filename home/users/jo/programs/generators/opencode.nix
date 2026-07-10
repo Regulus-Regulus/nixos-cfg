@@ -12,6 +12,6 @@ in {
     enable = mkEnableOption "Enable opinionated opencode setup";
   };
   config = mkIf cfg.enable {
-    opencode.enable = true;
+    programs.opencode.enable = true;
   };
 }
