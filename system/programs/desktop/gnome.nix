@@ -6,9 +6,9 @@
   ...
 }:
 with lib; let
-  cfg = config.my.system.general.programs.desktop.gnome;
+  cfg = config.my.programs.desktop.gnome;
 in {
-  options.my.system.general.programs.desktop.gnome = {
+  options.my.programs.desktop.gnome = {
     enable = mkEnableOption "Enable base gnome setup";
   };
   config = mkIf cfg.enable {

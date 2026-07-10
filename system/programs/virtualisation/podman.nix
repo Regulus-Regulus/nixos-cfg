@@ -3,32 +3,44 @@
   config,
   lib,
   ...
-}:
-with lib; let
+}: let
   cfg = config.my.system.general.programs.virtualisation.podman;
 in {
-  options.my.system.general.programs.virtualisation.podman = {
-    enable = mkEnableOption "Enable general podman setup";
+  options.my.programs.virtualisation.podman = {
+    enable = lib.mkEnableOption "Podman container runtime";
   };
-  config = mkIf cfg.enable {
+
+  config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      podman-compose
+      podman
+      docker-compose
     ];
-    # Enable common container config files in /etc/containers
+
     virtualisation = {
-      oci-containers.backend = "podman";
       containers.enable = true;
+
+      oci-containers.backend = "podman";
+
       podman = {
         enable = true;
+
+        dockerCompat = true;
+
+        dockerSocket.enable = true;
 
         autoPrune = {
           enable = true;
         };
-        # Create a `docker` alias for podman, to use it as a drop-in replacement
-        dockerCompat = true;
 
-        # Required for containers under podman-compose to be able to talk to each other.
-        defaultNetwork.settings.dns_enabled = true;
+        defaultNetwork.settings = {
+          dns_enabled = true;
+        };
+      };
+    };
+
+    virtualisation.containers.containersConf.settings = {
+      containers = {
+        log_driver = "journald";
       };
     };
   };

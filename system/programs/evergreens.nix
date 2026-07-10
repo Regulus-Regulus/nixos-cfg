@@ -6,9 +6,9 @@
   ...
 }:
 with lib; let
-  cfg = config.my.system.general.programs.evergreens;
+  cfg = config.my.programs.evergreens;
 in {
-  options.my.system.general.programs.evergreens = {
+  options.my.programs.evergreens = {
     enable = mkEnableOption "Enable opinionated general programs setup";
   };
   config = mkIf cfg.enable {

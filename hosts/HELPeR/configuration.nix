@@ -13,7 +13,7 @@ in {
   imports = [
     ./../../system
   ];
-  my.system.general.programs = {
+  my.programs = {
     virtualisation.podman.enable = true;
     evergreens.enable = true;
   };
