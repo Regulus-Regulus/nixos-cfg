@@ -1,0 +1,192 @@
+{
+  config,
+  pkgs,
+  inputs,
+  stylix,
+  ...
+}: {
+  imports = [
+    ./../../programs
+  ];
+  my.programs = {
+    system = {
+      virtualisation.podman.enable = true;
+      evergreens.enable = true;
+    };
+    homelab = {
+      pihole.enable = false;
+      immich = {
+        enable = true;
+      };
+      immich = {
+        enable = true;
+      };
+      nextcloud = {
+        enable = true;
+      };
+      paperless-ngx = {
+        enable = true;
+      };
+      uptimeKuma = {
+        enable = true;
+      };
+      homepage = {
+        enable = true;
+      };
+    };
+  };
+
+  nix.settings.experimental-features = ["nix-command" "flakes"];
+
+  # Bootloader.
+  boot.loader.systemd-boot.enable = false;
+  boot.loader.efi.canTouchEfiVariables = true;
+  # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
+  boot.loader.grub.enable = false;
+  # Enables the generation of /boot/extlinux/extlinux.conf
+  boot.loader.generic-extlinux-compatible.enable = true;
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # Configure network proxy if necessary
+  # networking.proxy.default = "http://user:password@proxy:port/";
+  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+  # Enable networking
+  networking.networkmanager.enable = true;
+
+  # Set your time zone.
+  time.timeZone = "Europe/Berlin";
+
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_GB.UTF-8";
+
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "de_DE.UTF-8";
+    LC_IDENTIFICATION = "de_DE.UTF-8";
+    LC_MEASUREMENT = "de_DE.UTF-8";
+    LC_MONETARY = "de_DE.UTF-8";
+    LC_NAME = "de_DE.UTF-8";
+    LC_NUMERIC = "de_DE.UTF-8";
+    LC_PAPER = "de_DE.UTF-8";
+    LC_TELEPHONE = "de_DE.UTF-8";
+    LC_TIME = "de_DE.UTF-8";
+  };
+
+  # Enable the X11 windowing system.
+  services.xserver.enable = false;
+
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    layout = "de";
+    variant = "deadacute";
+  };
+  nix.settings.trusted-users = ["jo"];
+  hardware.bluetooth.enable = false; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = false; # powers up the default Bluetooth controller on boot
+  # Enable CUPS to print documents.
+  services.blueman.enable = true;
+  # # Session-Datei für Hyprland hinzufügen (damit GDM es sieht)
+  # systemd.services.hyprland-session = {
+  #   description = "Hyprland Wayland Session";
+  #   wantedBy = ["graphical-session.target"];
+  #   serviceConfig = {
+  #     ExecStart = "${pkgs.hyprland}/bin/hyprland";
+  #     Restart = "on-failure";
+  #   };
+  # };
+  environment.systemPackages = with pkgs; [
+    haskellPackages.gpio
+    iproute2
+  ];
+  # Configure console keymap
+  console.keyMap = "de";
+
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
+
+  # Enable sound with pipewire.
+  services.pulseaudio.enable = false;
+  security.rtkit.enable = false;
+  services.pipewire = {
+    enable = false;
+    alsa.enable = false;
+    alsa.support32Bit = false;
+    pulse.enable = false;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+
+    # use the example session manager (no others are packaged yet so this is enabled by default,
+    # no need to redefine it in your config for now)
+    #media-session.enable = true;
+  };
+
+  # networking config. important for ssh!
+  networking = {
+    hostName = "the_compound";
+    interfaces.end0 = {
+      ipv4.addresses = [
+        {
+          address = "192.168.0.245";
+          prefixLength = 24;
+        }
+      ];
+    };
+    defaultGateway = {
+      address = "192.168.0.1";
+      interface = "end0";
+    };
+    nameservers = ["1.1.1.1" "8.8.8.8" "192.168.0.1"];
+    firewall = {
+      allowedTCPPorts = [80 443];
+      enable = true;
+    };
+  };
+
+  services.openssh = {
+    enable = true;
+    # Change default Port
+    ports = [7373];
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      PermitRootLogin = "prohibit-password";
+      AllowUsers = ["jo"];
+    };
+  };
+
+  # security.acme = {
+  #   acceptTerms = true;
+  #   defaults.email = "regulus-regulus@posteo.de";
+  #   certs."nextcloud.buebert.org" = {
+  #     webroot = null;
+  #     reloadServices = ["podman-envoy.service"];
+  #   };
+  # };
+
+  systemd.services.podman-stack = {
+    description = "Podman stack for homelab";
+
+    serviceConfig = {
+      Type = "simple";
+      RemainAfterExit = false;
+      # Ensure custom network exists before starting stack
+      ExecStartPre = "${pkgs.bash}/bin/bash -c 'if ! ${pkgs.podman}/bin/podman network inspect podman-stack-net >/dev/null 2>&1; then ${pkgs.podman}/bin/podman network create --subnet=10.90.0.0/24 podman-stack-net; fi'";
+
+      ExecStart = "${pkgs.bash}/bin/bash -c 'cd /etc/${composeDir} && /run/current-system/sw/bin/podman-compose up -d'";
+      ExecStop = "${pkgs.bash}/bin/bash -c 'cd /etc/${composeDir} && /run/current-system/sw/bin/podman-compose down'";
+      Restart = "always";
+      Environment = "PATH=${pkgs.podman}/bin:/run/current-system/sw/bin:/usr/bin:/bin";
+      after = ["network-online.target"];
+      wants = ["network-online.target"];
+    };
+
+    wantedBy = ["multi-user.target"];
+  };
+
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "24.11"; # Did you read the comment?
+}
