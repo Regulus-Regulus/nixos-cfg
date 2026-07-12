@@ -13,7 +13,7 @@
     ./cli/yazi.nix
     ./gameengine/godot.nix
     ./generators/opencode.nix
-    ./ide/vscodium.x
+    ./ide/vscodium.nix
     inputs.nvf.homeManagerModules.default
     ./ide/nvf.nix
     ./media/steam.nix

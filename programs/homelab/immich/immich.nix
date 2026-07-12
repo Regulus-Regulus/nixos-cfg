@@ -27,7 +27,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    programs.system.programs.virtualisation.podman.enable = true;
+    my.programs.system.virtualisation.podman.enable = true;
 
     services.caddy = lib.mkIf cfg.proxy.enable {
       enable = true;
