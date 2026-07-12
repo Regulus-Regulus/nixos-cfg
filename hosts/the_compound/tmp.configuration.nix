@@ -17,21 +17,27 @@
       pihole.enable = false;
       immich = {
         enable = true;
+        # port =
       };
-      immich = {
+      miniflux = {
         enable = true;
+        # port =
       };
       nextcloud = {
         enable = true;
+        # port =
       };
       paperless-ngx = {
         enable = true;
+        # port =
       };
       uptimeKuma = {
         enable = true;
+        # port =
       };
       homepage = {
         enable = true;
+        # port =
       };
     };
   };

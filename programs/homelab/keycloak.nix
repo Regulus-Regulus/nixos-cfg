@@ -1,0 +1,30 @@
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  cfg = config.my.programs.homelab.keycloak;
+in {
+  options.my.programs.homelab.keycloak = {
+    enable = lib.mkEnableOption "keycloak";
+
+    port = lib.mkOption {
+      type = lib.types.port;
+      default = 2283;
+      description = "Internal port keycloak listens on.";
+    };
+
+    proxy = {
+      enable = lib.mkEnableOption "Expose keycloak through Caddy";
+
+      hostName = lib.mkOption {
+        type = lib.types.str;
+        default = "keycloak.home";
+        description = "Hostname used by Caddy to expose keycloak.";
+      };
+    };
+  };
+
+  config = lib.mkIf cfg.enable {};
+}

@@ -6,9 +6,9 @@
   ...
 }:
 with lib; let
-  cfg = config.my.programs.homelab.network.pihole;
+  cfg = config.my.programs.homelab.pihole;
 in {
-  options.my.programs.homelab.network.pihole = {
+  options.my.programs.homelab.pihole = {
     enable = mkEnableOption "Enable homelab pihole setup";
   };
   config = mkIf cfg.enable {
