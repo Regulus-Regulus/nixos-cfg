@@ -4,9 +4,9 @@
   lib,
   ...
 }: let
-  cfg = config.my.system.general.programs.virtualisation.podman;
+  cfg = config.my.programs.system.virtualisation.podman;
 in {
-  options.my.programs.virtualisation.podman = {
+  options.my.programs.system.virtualisation.podman = {
     enable = lib.mkEnableOption "Podman container runtime";
   };
 

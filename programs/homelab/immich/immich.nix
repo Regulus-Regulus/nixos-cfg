@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.my.system.homelab.services.cloud.immich;
+  cfg = config.my.programs.homelab.immich;
 in {
-  options.my.system.homelab.services.cloud.immich = {
+  options.my.programs.homelab.immich = {
     enable = lib.mkEnableOption "Immich";
 
     proxy = {
@@ -27,7 +27,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    my.system.general.programs.virtualisation.podman.enable = true;
+    programs.system.programs.virtualisation.podman.enable = true;
 
     services.caddy = lib.mkIf cfg.proxy.enable {
       enable = true;

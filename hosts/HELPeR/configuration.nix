@@ -11,16 +11,17 @@
   composeDir = "podman-stack"; # relative to /etc
 in {
   imports = [
-    ./../../system
+    ./../../programs
   ];
   my.programs = {
-    virtualisation.podman.enable = true;
-    evergreens.enable = true;
+    system = {
+      virtualisation.podman.enable = true;
+      evergreens.enable = true;
+    };
+    homelab = {
+      pihole.enable = true;
+    };
   };
-  my.system.homelab.services = {
-    network.pihole.enable = true;
-  };
-
   environment.etc."${composeDir}/docker-compose.yaml".text = builtins.readFile ./docker-compose.yaml;
   environment.etc."${composeDir}/envoy-config.yaml".text = builtins.readFile ./envoy-config.yaml;
 

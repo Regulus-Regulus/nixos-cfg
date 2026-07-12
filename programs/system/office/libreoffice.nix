@@ -6,9 +6,9 @@
   ...
 }:
 with lib; let
-  cfg = config.my.programs.office.libreoffice;
+  cfg = config.my.programs.system.office.libreoffice;
 in {
-  options.my.programs.office.libreoffice = {
+  options.my.programs.system.office.libreoffice = {
     enable = mkEnableOption "Enable base libreoffice setup";
   };
   config = mkIf cfg.enable {

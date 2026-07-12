@@ -7,17 +7,17 @@
 }: {
   # Import and enable system modules
   imports = [
-    ./../../system
+    ./../../programs
   ];
-  my.system = {
-    general.programs = {
+  my.programs = {
+    system = {
       desktop.gnome.enable = true;
       virtualisation.podman.enable = true;
       office.libreoffice.enable = true;
       evergreens.enable = true;
     };
-    homelab.services = {
-      cloud.immich.enable = false;
+    homelab = {
+      immich.enable = false;
     };
   };
 
