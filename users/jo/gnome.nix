@@ -29,6 +29,10 @@
         cursor-theme = "Numix-Cursor";
       };
 
+      "org/gnome/mutter/wayland" = {
+        xwayland-disable-extension = ["SECURITY"];
+      };
+
       "org/gnome/shell/extensions/paperwm" = {
         winprops = [
           ''

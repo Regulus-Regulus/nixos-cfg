@@ -64,6 +64,36 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    glib
+    gdk-pixbuf
+    nss
+    nspr
+    gtk3
+    atk
+    at-spi2-core
+    dbus
+    cairo
+    expat
+    alsa-lib
+    cups
+    pango
+    xorg.libXScrnSaver
+    xorg.libX11
+    xorg.libXcomposite
+    xorg.libXdamage
+    xorg.libXext
+    xorg.libXrender
+    xorg.libXfixes
+    xorg.libXrandr
+    xorg.libxcb
+    xorg.libXcursor
+    xorg.libXi
+    xorg.libXtst
+    libdrm
+    mesa
+  ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
