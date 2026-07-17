@@ -8,12 +8,18 @@
   stylix,
   ...
 }: {
-  environment.systemPackages = with pkgs; [
-    libreoffice-qt
-    hunspell
-    hunspellDicts.de_DE
-    hunspellDicts.en_GB-large
+  # Import and enable system modules
+  imports = [
+    ./../../programs
   ];
+  my.programs = {
+    system = {
+      desktop.gnome.enable = true;
+      virtualisation.podman.enable = true;
+      office.libreoffice.enable = true;
+      evergreens.enable = true;
+    };
+  };
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
   services.displayManager.gdm.wayland = true;
@@ -27,110 +33,109 @@
     pkgs.brgenml1cupswrapper
   ];
   services.flatpak.enable = true;
-  # Disable the GNOME3/GDM auto-suspend feature that cannot be disabled in GUI!
-  # If no user is logged in, the machine will power down after 20 minutes.
-  systemd.targets.sleep.enable = false;
-  systemd.targets.suspend.enable = false;
-  systemd.targets.hibernate.enable = false;
-  systemd.targets.hybrid-sleep.enable = false;
-  hardware.sane.enable = true; # enables support for SANE scanners
-  hardware.nvidia = {
-    # Modesetting is required.
-    modesetting.enable = true;
 
-    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-    # Enable this if you have graphical corruption issues or application crashes after waking
-    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
-    # of just the bare essentials.
-    powerManagement.enable = true;
-
-    # Fine-grained power management. Turns off GPU when not in use.
-    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = false;
-
-    # Use the NVidia open source kernel module (not to be confused with the
-    # independent third-party "nouveau" open source driver).
-    # Support is limited to the Turing and later architectures. Full list of
-    # supported GPUs is at:
-    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
-    # Only available from driver 515.43.04+
-    open = true;
-
-    # Enable the Nvidia settings menu,
-    # accessible via `nvidia-settings`.
-    nvidiaSettings = true;
-
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  systemd = {
+    targets = {
+      # Disable, due to Bugs with NVIDIA it seems
+      sleep.enable = false;
+      suspend.enable = false;
+      hibernate.enable = false;
+      hybrid-sleep.enable = false;
+    };
   };
 
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    glib
-    gdk-pixbuf
-    nss
-    nspr
-    gtk3
-    atk
-    at-spi2-core
-    dbus
-    cairo
-    expat
-    alsa-lib
-    cups
-    pango
-    xorg.libXScrnSaver
-    xorg.libX11
-    xorg.libXcomposite
-    xorg.libXdamage
-    xorg.libXext
-    xorg.libXrender
-    xorg.libXfixes
-    xorg.libXrandr
-    xorg.libxcb
-    xorg.libXcursor
-    xorg.libXi
-    xorg.libXtst
-    libdrm
-    mesa
-  ];
+  hardware = {
+    # Bluetooth
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
+    # Support for Sane Scanners
+    sane.enable = true;
+    nvidia = {
+      # Modesetting is required.
+      modesetting.enable = true;
+
+      # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
+      # Enable this if you have graphical corruption issues or application crashes after waking
+      # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
+      # of just the bare essentials.
+      powerManagement.enable = true;
+
+      # Fine-grained power management. Turns off GPU when not in use.
+      # Experimental and only works on modern Nvidia GPUs (Turing or newer).
+      powerManagement.finegrained = false;
+
+      # Use the NVidia open source kernel module (not to be confused with the
+      # independent third-party "nouveau" open source driver).
+      # Support is limited to the Turing and later architectures. Full list of
+      # supported GPUs is at:
+      # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
+      # Only available from driver 515.43.04+
+      open = true;
+
+      # Enable the Nvidia settings menu,
+      # accessible via `nvidia-settings`.
+      nvidiaSettings = true;
+
+      # Optionally, you may need to select the appropriate driver version for your specific GPU.
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
+  };
+
+  programs = {
+    # STEAM
+    # Can't be fully managed via HomeManager
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+      dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+      localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+    };
+    # Ensuring HexKit Works
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        glib
+        gdk-pixbuf
+        nss
+        nspr
+        gtk3
+        atk
+        at-spi2-core
+        dbus
+        cairo
+        expat
+        alsa-lib
+        cups
+        pango
+        xorg.libXScrnSaver
+        xorg.libX11
+        xorg.libXcomposite
+        xorg.libXdamage
+        xorg.libXext
+        xorg.libXrender
+        xorg.libXfixes
+        xorg.libXrandr
+        xorg.libxcb
+        xorg.libXcursor
+        xorg.libXi
+        xorg.libXtst
+        libdrm
+        mesa
+      ];
+    };
+  };
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "rr-desktop"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  stylix = {
-    enable = true;
-    polarity = "dark";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-    targets.grub.enable = true;
-    targets.gnome.enable = true;
-    fonts = {
-      serif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Serif";
-      };
-
-      sansSerif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Sans";
-      };
-
-      monospace = {
-        package = pkgs.maple-mono.NF;
-        name = "Maple Mono";
-      };
-
-      emoji = {
-        package = pkgs.noto-fonts-color-emoji;
-        name = "Noto Color Emoji";
-      };
-    };
+  networking = {
+    hostName = "rr-desktop";
+    networkmanager.enable = true;
+    # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   };
-
-  # Enable networking
-  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -155,69 +160,45 @@
     layout = "de";
     variant = "deadacute";
   };
-
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-  # Enable CUPS to print documents.
-  services.blueman.enable = true;
-  services.printing.cups-pdf.enable = true;
-  services.printing.cups-pdf.instances = {
-    pdf = {
-      settings = {
-        Out = "\${HOME}/cups-pdf";
-        UserUMask = "0033";
+  security.rtkit.enable = true;
+  services = {
+    # Enable CUPS to print documents.
+    blueman.enable = true;
+    printing.enable = true;
+    printing.cups-pdf.enable = true;
+    printing.cups-pdf.instances = {
+      pdf = {
+        settings = {
+          Out = "\${HOME}/cups-pdf";
+          UserUMask = "0033";
+        };
       };
     };
+    # Network Printer AutoDiscovery
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
+    pulseaudio.enable = false;
+
+    pipewire = {
+      # Enable sound with pipewire.
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      # If you want to use JACK applications, uncomment this
+      #jack.enable = true;
+
+      # use the example session manager (no others are packaged yet so this is enabled by default,
+      # no need to redefine it in your config for now)
+      #media-session.enable = true;
+    };
   };
+
   # Configure console keymap
   console.keyMap = "de";
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-  # Network Printer AutoDiscovery
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-  };
-
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
