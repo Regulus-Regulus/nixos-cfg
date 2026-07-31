@@ -10,6 +10,11 @@ with lib; let
 in {
   options.my.programs.homelab.postgresql = {
     enable = lib.mkEnableOption "Shared Postgres";
+        port = lib.mkOption {
+      type = lib.types.port;
+      default = 5432;
+      description = "Internal port postgresql listens on.";
+    };
     databases = lib.mkOption {
       type = lib.types.listOf (lib.types.submodule ({config, ...}: {
         options = {

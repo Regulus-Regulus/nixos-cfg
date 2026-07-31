@@ -11,7 +11,7 @@ in {
 
     port = lib.mkOption {
       type = lib.types.port;
-      default = 2283;
+      default = 6379;
       description = "Internal port redis listens on.";
     };
   };
