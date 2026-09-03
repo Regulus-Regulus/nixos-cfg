@@ -4,7 +4,8 @@
   inputs = {
     # NixOS official package source, using the nixos-25.05 branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # Optional: a second nixpkgs revision
+    unstable-nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
@@ -32,6 +33,7 @@
   outputs = {
     self,
     nixpkgs,
+    unstable-nixpkgs,
     home-manager,
     nixos-hardware,
     nixos-raspberrypi,
@@ -44,6 +46,9 @@
         system = "x86_64-linux";
         specialArgs = {
           inherit inputs;
+          unstablePkgs = import unstable-nixpkgs {
+            system = "x86_64-linux";
+          };
           hostConfigName = "desktop"; # Defining hostname to allow users to install per-host
         };
 
@@ -54,6 +59,9 @@
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {
               inherit inputs;
+              unstablePkgs = import unstable-nixpkgs {
+                system = "x86_64-linux";
+              };
             };
           }
 
@@ -64,23 +72,19 @@
           # Nix Logic
           inputs.stylix.nixosModules.stylix
           ./nix-logic/common.nix
+
+          # Users
           ./home/users/jo
           ./home/users/katharina
-          # ./nix-logic/users.nix
-          # # module to set selectedUsers per-host:
-          # {
-          #   myUsers.selectedUsers = ["jo" "katharina"];
-          # }
-
-          # Programs
-          ./system/programs/desktop/gnome
-          ./system/programs/evergreens.nix
         ];
       };
       laptop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
           inherit inputs;
+          unstablePkgs = import unstable-nixpkgs {
+            system = "x86_64-linux";
+          };
           hostConfigName = "laptop"; # Defining hostname to allow users to install per-host
         };
 
@@ -91,6 +95,9 @@
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {
               inherit inputs;
+              unstablePkgs = import unstable-nixpkgs {
+                system = "x86_64-linux";
+              };
             };
           }
           # Host Files

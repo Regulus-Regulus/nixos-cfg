@@ -3,6 +3,7 @@
   lib,
   hostConfigName,
   inputs,
+  unstablePkgs,
   ...
 }: {
   users.users.jo = {
@@ -31,12 +32,16 @@
           browser.librewolf.enable = true;
           cli.yazi.enable = true;
           gameEngine.godot.enable = true;
-          generators.opencode.enable = false;
+
           ide.vscodium.enable = true;
-          ide.nvf.enable = true;
           media.steam.enable = true;
           terminal.kitty.enable = true;
           shell.zsh.enable = true;
+
+          # WIP
+          generators.opencode.enable = false;
+          # Something buggy about nvf
+          ide.nvf.enable = false;
         })
 
         (lib.mkIf laptop {

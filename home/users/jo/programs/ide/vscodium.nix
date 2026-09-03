@@ -43,6 +43,7 @@ in {
 
       # VS Code user settings.json overrides
       profiles.default.userSettings = {
+        "settingsSync.enabled" = false;
         "editor.insertSpaces" = true;
         "editor.tabSize" = 2;
         "files.autoSave" = "onFocusChange";

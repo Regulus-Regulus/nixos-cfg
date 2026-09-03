@@ -49,12 +49,11 @@ in {
 
       # TODO
       # Settings for immich here
-
+      #externalDomain = "https://${config.hostName}";
       # Keep Immich bound locally.
       # External access is handled by Caddy.
       #
 
-      externalDomain = "https://${config.hostName}";
       host = "127.0.0.1";
       port = cfg.port;
 

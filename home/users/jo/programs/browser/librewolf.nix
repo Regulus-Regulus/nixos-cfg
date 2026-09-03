@@ -3,6 +3,7 @@
   pkgs,
   lib,
   config,
+  unstablePkgs,
   ...
 }:
 with lib; let
@@ -15,7 +16,7 @@ in {
   config = mkIf cfg.enable {
     programs.firefox = {
       enable = true;
-      package = pkgs.librewolf;
+      package = unstablePkgs.librewolf;
       policies = {
         Cookies = {
           "Allow" = [
