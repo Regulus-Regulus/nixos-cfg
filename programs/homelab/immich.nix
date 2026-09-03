@@ -43,11 +43,9 @@ in {
     #
     # Reference:
     # https://search.nixos.org/options?channel=26.05&query=immich
+    services.redis.servers.immich.logLevel = "warning";
     services.immich = {
       enable = true;
-
-      # TODO
-      # Integrate shared REDIS
 
       # TODO
       # Settings for immich here

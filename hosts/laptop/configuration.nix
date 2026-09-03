@@ -17,7 +17,14 @@
       evergreens.enable = true;
     };
     homelab = {
-      immich.enable = false;
+      immich = {
+        enable = false;
+        proxy = false;
+      };
+      miniflux = {
+        enable = false;
+        proxy = false;
+      };
     };
   };
 
