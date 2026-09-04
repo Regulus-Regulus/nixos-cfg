@@ -63,7 +63,7 @@ in {
       mediaLocation = cfg.mediaLocation;
 
       #
-      # We manage PostgreSQL centrally.
+      # PostgreSQL is managed centrally.
       #
       database = {
         host = "/run/postgresql";

@@ -27,10 +27,11 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    
+    services.homepage-dashboard = {
+      enable = true;
+    };
     # CONFIG TODO
     # https://search.nixos.org/options?channel=26.05&query=homepage-dashboard&type=options#show=option%253Aservices.homepage-dashboard.listenPort
-    
     #
     # Optional reverse proxy through Caddy.
     #
@@ -41,6 +42,5 @@ in {
         reverse_proxy 127.0.0.1:${toString cfg.port}
       '';
     };
-
   };
 }

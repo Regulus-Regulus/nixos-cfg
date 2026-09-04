@@ -35,7 +35,13 @@ in {
   config = lib.mkIf cfg.enable {
     services.forgejo = {
       enable = true;
-      database.type = "postgres";
+      database = {
+        type = "postgres";
+        createDatabase = false;
+        name = "forgejo";
+        user = "forgejo";
+        socket = "/run/postgresql";
+      };
       # Enable Git Large File Storage
       lfs.enable = true;
       settings = {
