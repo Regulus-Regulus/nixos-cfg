@@ -26,8 +26,39 @@ in {
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  # TODO
+  # Declarative Users, requries SOPS
+  # Add Email Support
+  # Adding Runners
+  # See: https://wiki.nixos.org/wiki/Forgejo
 
+  config = lib.mkIf cfg.enable {
+    services.forgejo = {
+      enable = true;
+      database.type = "postgres";
+      # Enable Git Large File Storage
+      lfs.enable = true;
+      settings = {
+        server = {
+          DOMAIN = "${cfg.proxy.hostName}";
+          ROOT_URL = "https://${cfg.proxy.hostName}/";
+          HTTP_PORT = cfg.port;
+          SSH_PORT = lib.head config.services.openssh.ports;
+        };
+        service.DISABLE_REGISTRATION = true;
+      };
+    };
+    #
+    # Ensure shared PostgreSQL module provisions Forgejo database.
+    #
+    my.programs.homelab.postgresql = {
+      enable = true;
+      databases = [
+        {
+          name = "forgejo";
+        }
+      ];
+    };
 
     #
     # Optional reverse proxy through Caddy.
@@ -39,6 +70,5 @@ in {
         reverse_proxy 127.0.0.1:${toString cfg.port}
       '';
     };
-
   };
 }
