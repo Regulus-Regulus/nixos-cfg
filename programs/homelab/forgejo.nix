@@ -77,4 +77,15 @@ in {
       '';
     };
   };
+  #
+  # Add Forgejo to homepage if homepage exists
+  #
+  my.programs.homelab.homepage.moduleServiceEntries = lib.mkAfter [
+    {
+      group = "Applications";
+      name = "Forgejo";
+      href = "https://forgejo.home";
+      icon = "forgejo";
+    }
+  ];
 }
