@@ -85,7 +85,7 @@ in {
     #
     # Optional reverse proxy through Caddy.
     #
-    services.caddy = mkIf cfg.proxy.enable {
+    services.caddy = lib.mkIf cfg.proxy.enable {
       enable = true;
 
       virtualHosts.${cfg.proxy.hostName}.extraConfig = ''

@@ -27,17 +27,15 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-
     #
     # Optional reverse proxy through Caddy.
     #
-    services.caddy = mkIf cfg.proxy.enable {
+    services.caddy = lib.mkIf cfg.proxy.enable {
       enable = true;
 
       virtualHosts.${cfg.proxy.hostName}.extraConfig = ''
         reverse_proxy 127.0.0.1:${toString cfg.port}
       '';
     };
-
   };
 }

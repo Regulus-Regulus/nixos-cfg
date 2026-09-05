@@ -19,11 +19,27 @@
     homelab = {
       immich = {
         enable = false;
-        proxy = false;
+        proxy = {
+          enable = false;
+        };
       };
       miniflux = {
         enable = false;
-        proxy = false;
+        proxy = {
+          enable = false;
+        };
+      };
+      homepage = {
+        enable = true;
+        proxy = {
+          enable = false;
+        };
+      };
+      forgejo = {
+        enable = true;
+        proxy = {
+          enable = false;
+        };
       };
     };
   };
