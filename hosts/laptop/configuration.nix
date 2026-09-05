@@ -32,13 +32,15 @@
       homepage = {
         enable = true;
         proxy = {
-          enable = false;
+          enable = true;
+          hostName = "homepage.home";
         };
       };
       forgejo = {
         enable = true;
         proxy = {
-          enable = false;
+          enable = true;
+          hostName = "forgejo.home";
         };
       };
     };
