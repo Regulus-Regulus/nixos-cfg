@@ -51,6 +51,11 @@ in {
         title = "Homelab";
         theme = "dark";
         headerStyle = "clean";
+        allowedHosts = [
+          cfg.proxy.hostName
+          "localhost"
+          "127.0.0.1"
+        ];
       };
       services = lib.mapAttrsToList (group: entries: {
         "${group}" =
