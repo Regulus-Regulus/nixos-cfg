@@ -52,25 +52,24 @@ in {
         theme = "dark";
         headerStyle = "clean";
       };
-      services =
-        (lib.mapAttrsToList (group: entries: {
-          "${group}" =
-            map (service: {
-              "${service.name}" =
-                {
-                  href = service.href;
-                }
-                // lib.optionalAttrs (service.icon != null) {
-                  icon = service.icon;
-                };
-            })
-            entries;
-        }) (lib.groupBy (service: service.group) cfg.moduleServiceEntries))
-        ++ [
-          {
-            # Manual entries
-          }
-        ];
+      services = lib.mapAttrsToList (group: entries: {
+        "${group}" =
+          map (service: {
+            "${service.name}" =
+              {
+                href = service.href;
+              }
+              // lib.optionalAttrs (service.icon != null) {
+                icon = service.icon;
+              };
+          })
+          entries;
+      }) (lib.groupBy (service: service.group) cfg.moduleServiceEntries);
+      # ++ [
+      #   {
+      #     # Manual entries
+      #   }
+      # ];
       widgets = [
         {
           resources = {
