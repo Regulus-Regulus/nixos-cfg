@@ -45,6 +45,10 @@
       };
     };
   };
+  networking.extraHosts = ''
+    127.0.0.1 forgejo.home
+    127.0.0.1 homepage.home
+  '';
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
   time.timeZone = "Europe/Berlin";
