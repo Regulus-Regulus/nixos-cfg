@@ -32,23 +32,17 @@
       homepage = {
         enable = true;
         proxy = {
-          enable = true;
-          hostName = "homepage.home";
+          enable = false;
         };
       };
       forgejo = {
         enable = true;
         proxy = {
-          enable = true;
-          hostName = "forgejo.home";
+          enable = false;
         };
       };
     };
   };
-  networking.extraHosts = ''
-    127.0.0.1 forgejo.home
-    127.0.0.1 homepage.home
-  '';
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
   time.timeZone = "Europe/Berlin";

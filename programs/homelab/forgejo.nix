@@ -84,7 +84,7 @@ in {
       {
         group = "Applications";
         name = "Forgejo";
-        href = "https://forgejo.home";
+        href = "http://127.0.0.1:3000/";
         icon = "forgejo";
       }
     ];

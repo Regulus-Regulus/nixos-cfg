@@ -49,7 +49,7 @@ in {
       allowedHosts = "${cfg.proxy.hostName}:${toString cfg.port},localhost:${toString cfg.port},127.0.0.1:${toString cfg.port}";
       settings = {
         title = "Homelab";
-        theme = "dark";
+        theme = "slate";
         headerStyle = "clean";
       };
       services = lib.mapAttrsToList (group: entries: {
