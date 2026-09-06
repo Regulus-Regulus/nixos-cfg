@@ -15,6 +15,10 @@
       virtualisation.podman.enable = true;
       office.libreoffice.enable = true;
       evergreens.enable = true;
+      secrets.sops = {
+        enable = true;
+        sopsFileName = "laptop";
+      };
     };
     homelab = {
       immich = {
