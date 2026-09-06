@@ -70,6 +70,8 @@
 
           # Laptop or Desktop
           (lib.optionals (hostConfigName == "laptop" || hostConfigName == "desktop") [
+            age
+            sops
             nmap
             wireshark
             discord

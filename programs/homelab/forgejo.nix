@@ -33,6 +33,13 @@ in {
   # See: https://wiki.nixos.org/wiki/Forgejo
 
   config = lib.mkIf cfg.enable {
+    #
+    # Forgejo application configuration.
+    #
+    # PostgreSQL and Database creation is handled by the shared PostgreSQL module.
+    #
+    # Reference:
+    # https://search.nixos.org/options?channel=26.05&query=forgejo
     services.forgejo = {
       enable = true;
       database = {

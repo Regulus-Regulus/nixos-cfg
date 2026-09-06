@@ -30,13 +30,13 @@
         };
       };
       homepage = {
-        enable = true;
+        enable = false;
         proxy = {
           enable = false;
         };
       };
       forgejo = {
-        enable = true;
+        enable = false;
         proxy = {
           enable = false;
         };

@@ -25,6 +25,10 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-raspberrypi.url = "github:nvmd/nixos-raspberrypi/main";
     alejandra.url = "github:kamadorueda/alejandra/4.0.0";
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
@@ -39,6 +43,7 @@
     nixos-raspberrypi,
     alejandra,
     stylix,
+    sops-nix,
     ...
   } @ inputs: {
     nixosConfigurations = {
@@ -90,6 +95,7 @@
 
         modules = [
           home-manager.nixosModules.home-manager
+          sops-nix.nixosModules.sops
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
